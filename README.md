@@ -1,6 +1,5 @@
 # **mHealthDroid**
 
-
 ## What is mHealthDroid? 
 
 mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.
@@ -10,6 +9,22 @@ This framework has been developed independently from the biomedical type device 
 Android target version: 4.2
 
 Android minimum version: 2.3.3
+
+## Table of Contents
+
+- [What is mHealthDroid?](#what-is-mhealthdroid)
+- [Features. What does mHealthDroid offers me?](#features-what-does-mhealthdroid-offers-me)
+- [Installation instructions](#installation-instructions)
+- [mHealthDroid structure](#mhealthdroid-structure)
+- [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
+- [Contribution guidelines](#contribution-guidelines)
+- [Community](#community)
+- [Team Members](#team-members)
+	- [Authors](#authors)
+	- [Contributors](#contributors)
+- [Where can I get help?](#where-can-i-get-help)
+- [Inspiration](#inspiration)
+- [Copyright and license](#copyright-and-license)
 
 ## Features. What does mHealthDroid offers me?
 
