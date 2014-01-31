@@ -81,15 +81,109 @@ In the figure is shown the framework structure, with all the existing managers a
 
 - **Communication Manager**: heart of mHealthDroid. It is responsible for, among other things, the communication management with the biomedical devices, the data streaming, the local data storage and the broadcast of the received data to the rest of the framework.
 - **Remote Storage Manager**: is aim is to upload the data avalaible in the local database to a remote storage.
-- **Visualization Manager**: allow either online or offline visualization.
+- **Visualization Manager**: allow either online or offline visualization. It has been developed using the GraphView library (http://android-graphview.org/). The source code of the compatible version for this library can be found in the following repository https://github.com/mHealthDroid/myGraphView
 - **Data Processing Manager**: a really powerful manager, responsible for processing data and applying knowledge inference, either orline or offline.
 - **System Manager**: miscellaneous manager which offers easy management of instrinsic aspect of Android devices; guidelines functionalities specially useful for health applications; and send alerts.
 
 
 ## Examples. How to use mHealthDroid
 
-Coming soon.
+The aim of this section is to show basic examples of how to use each manager. More detailed information will be coming soon.
 
+### Communication Manager
+
+Every manager is singleton, which means it is necessary to get its instance like this:
+
+``` java
+CommunicationManager cm = CommunicationManager.getInstance();
+```
+Then, if one wants to storage data into the database, the variable storage must be initialized this way:
+
+``` java
+cm.CreateStorage(getApplicationContext());
+
+```
+
+To add devices to the manager, one just needs to call the appropriate functions:
+
+``` java
+cm.AddDeviceShimmer(getApplicationContext(), "Device Shimmer", true);
+cm.AddDeviceMobile(getApplicationContext(), "Mobile Device");
+```
+
+Since the mobile device uses the device's sensor, it is not necessary to connect it. But
+for the Shimmer devices, once they have been added, they need to be connected. This
+work is done by the function Connect, giving as parameter the mac address:
+
+``` java
+cm.connect("Device Shimmer", address);
+```
+
+Before the device starts to stream, the enabled sensors of the devices can be set:
+
+``` java
+ArrayList<SensorType> sensors = newArrayList<SensorType>();
+sensors.add(SensorType.ACCELEROMETER);
+sensors.add(SensorType.MAGNETOMETER);
+sensors.add(SensorType.GYROSCOPE);
+cm.writeEnabledSensors("Mobile Device", sensors);
+cm.writeEnabledSensors("Device Shimmer", sensors);
+```
+
+The number of samples to be stored in the buffer can be chosen too:
+
+``` java
+cm.setNumberOfSampleToStorage(100);
+```
+
+After all these things are done, it is the suitable moment to start (and stop whenever
+is wanted) to stream:
+
+``` java
+cm.startStreaming("Mobile Device");
+cm.startStreaming("Device Shimmer");
+cm.stopStreaming("Mobile Device");
+cm.stopStreaming("Device Shimmer");
+``` 
+
+There are a couple of features that can be set either before or during the data streaming
+such as to select what device is going to store its data (by default, it is set to true) or to set a label.
+
+``` java
+cm.setStoreData("Mobile Device", false);
+cm.setStoreData("device Shimmer", true);
+cm.setLabel("walking");
+```
+
+There is a way to get the device in case it is wanted to access to its specific functionalities:
+
+``` java
+DeviceShimmerdS = (DeviceShimmer) cm.getDevice("Device Shimmer");
+DeviceMobiledM = (DeviceMobile) cm.getDevice("Mobile Device");
+```
+
+To insert a new users profile there are a couple of things to consider. The database
+must be open and the table created. It is also possible to check whether the login
+already exists in order to avoid a SQL exception. Then the database should be closed.
+All of this is possible by doing:
+
+``` java
+cm.openDatabase();
+cm.createUsersTable();
+if(!cm.existsLogin(login))
+	cm.addUserProfile(login, password, age, sex, weight, height, email);
+else
+	Toast.makeText(getApplicationContext(), "this login already exists",Toast.LENGTH_SHORT).show();
+cm.closeDatabase();
+```
+In case there are devices streaming, it is advisable to check whether any of them store
+data before closing the database. It should be done in order to avoid a SQL exception.
+To do that, it is only necessary to call the function of the Communication Manager
+named isStoring():
+``` java
+if(!cm.isStoring())
+	cm.closeDatabase();
+```
 ## Contribution guidelines
 
 How can you help mHealthDroid to be a more completed tool? Here we propose you some ideas!
