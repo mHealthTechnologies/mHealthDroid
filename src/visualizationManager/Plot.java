@@ -6,11 +6,12 @@ import java.util.Set;
 
 import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphView.LegendAlign;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphViewSeries.GraphViewStyle;
 import com.jjoe64.graphview.LineGraphView;
+import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
+
 
 import android.content.Context;
 import android.widget.LinearLayout;
@@ -21,7 +22,8 @@ public class Plot {
 	public GraphView myGraphView; //Object of the library used to draw graphs
 	public Hashtable<String, GraphViewSeries> hashSeries; // set of the series in the graph
 	public Hashtable<String, Integer> hashCont; // set of counters of the series that represents the coordinate X of the serie
-
+	public int numMax; //maxium number of the data to be visualized in the graph
+	
 	public enum GraphType {
 		LINE, BAR;
 	}
@@ -41,6 +43,7 @@ public class Plot {
 
 		hashSeries = new Hashtable<String, GraphViewSeries>();
 		hashCont = new Hashtable<String, Integer>();
+		numMax = 0;
 	}
 
 	/**
@@ -48,14 +51,14 @@ public class Plot {
 	 * @param nameSerie Is the name given to the serie
 	 * @param data Is an array with the values to be represented
 	 */
-	public boolean addSeries(String nameSerie, float[] data) {
+	public boolean addSeries(String nameSerie, ArrayList<Float> data) {
 
 		if (hashSeries.get(nameSerie) == null) {
-			GraphViewData[] viewData = new GraphViewData[data.length];
-			for (int i = 0; i < data.length; i++) {
-				viewData[i] = new GraphViewData(i, data[i]);
+			GraphViewData[] viewData = new GraphViewData[data.size()];
+			for (int i = 0; i < data.size(); i++) {
+				viewData[i] = new GraphViewData(i, data.get(i));
 			}
-			Integer c = data.length;
+			Integer c = data.size();
 			hashCont.put(nameSerie, c);
 			GraphViewSeries serie = new GraphViewSeries(viewData);
 			myGraphView.addSeries(serie);
@@ -75,17 +78,17 @@ public class Plot {
 	 * @param color Is the serie's color 
 	 * @param thickness Is the thickness of the line/bar drawn in the graph
 	 */
-	public boolean addSeries(String nameSerie, float[] data, String description,
+	public boolean addSeries(String nameSerie, ArrayList<Float> data, String description,
 			int color, int thickness) {
 
 		if (hashSeries.get(nameSerie) == null) {
-			GraphViewData[] viewData = new GraphViewData[data.length];
-			for (int i = 0; i < data.length; i++) {
-				viewData[i] = new GraphViewData(i, data[i]);
+			GraphViewData[] viewData = new GraphViewData[data.size()];
+			for (int i = 0; i < data.size(); i++) {
+				viewData[i] = new GraphViewData(i, data.get(i));
 			}
-			Integer c = data.length;
+			Integer c = data.size();
 			hashCont.put(nameSerie, c);
-			GraphViewSeries serie = new GraphViewSeries(description, new GraphViewStyle(color, thickness), viewData);
+			GraphViewSeries serie = new GraphViewSeries(description, new GraphViewSeriesStyle(color, thickness), viewData);
 			myGraphView.addSeries(serie);
 			hashSeries.put(nameSerie, serie);
 			return true;
@@ -98,28 +101,29 @@ public class Plot {
 	 * @param nameSerie Is the serie's name
 	 * @param data Is the value to be inserted
 	 * @param scrollToEnd Indicates if the graph scroll to the end
+	 * @param maxData Is the maximum number of data to be visualized
 	 */
-	public void appendData(String nameSerie, float data, boolean scrollToEnd) {
+	public void appendData(String nameSerie, float data, boolean scrollToEnd, int maxData) {
 
 		Integer c = hashCont.get(nameSerie);
 		c++;
-		hashSeries.get(nameSerie).appendData(new GraphViewData(c, data), scrollToEnd);
+		hashSeries.get(nameSerie).appendData(new GraphViewData(c, data), scrollToEnd, maxData);
 		hashCont.put(nameSerie, c);
 	}
 
-	/**
-	 * Append a value at the end of the serie. If the serie doesn't exist a null exception will be thrown.
-	 * This method doesn't increment the size of the serie. It swaps the values from the first to the second-to-last
-	 * and introduce the new data at last position. That's it: X[0]=X[1], X[1]=X[2]...X[n-1]=X[n], X[n]=data
-	 * @param nameSerie Is the serie's name
-	 * @param data Is the value to be inserted
-	 * @param scrollToEnd Indicates if the graph scroll to the end
-	 */
-	public void appendData2(String nameSerie, float data, boolean scrollToEnd) {
-
-		Integer c = hashCont.get(nameSerie);
-		hashSeries.get(nameSerie).appendData2(new GraphViewData(c, data), scrollToEnd);
-	}
+//	/**
+//	 * Append a value at the end of the serie. If the serie doesn't exist a null exception will be thrown.
+//	 * This method doesn't increment the size of the serie. It swaps the values from the first to the second-to-last
+//	 * and introduce the new data at last position. That's it: X[0]=X[1], X[1]=X[2]...X[n-1]=X[n], X[n]=data
+//	 * @param nameSerie Is the serie's name
+//	 * @param data Is the value to be inserted
+//	 * @param scrollToEnd Indicates if the graph scroll to the end
+//	 */
+//	public void appendData2(String nameSerie, float data, boolean scrollToEnd) {
+//
+//		Integer c = hashCont.get(nameSerie);
+//		hashSeries.get(nameSerie).appendData2(new GraphViewData(c, data), scrollToEnd);
+//	}
 
 
 	/**

@@ -108,7 +108,7 @@ public class VisualizationManager extends Activity {
 	 * @param nameSerie Is the name given to the serie
 	 * @param data Is an array with the values to be represented
 	 */
-	public boolean addSeries(String nameGraph, String nameSerie, float[] data) {
+	public boolean addSeries(String nameGraph, String nameSerie,ArrayList<Float> data) {
 
 		if (Graphs.get(nameGraph) != null)
 			return Graphs.get(nameGraph).graph.addSeries(nameSerie, data);
@@ -125,7 +125,7 @@ public class VisualizationManager extends Activity {
 	 * @param color Is the serie's color 
 	 * @param thickness Is the thickness of the line/bar drawn in the graph
 	 */
-	public boolean addSeries(String nameGraph, String nameSerie, float[] data, int color, int thickness, String description) {
+	public boolean addSeries(String nameGraph, String nameSerie,ArrayList<Float> data, int color, int thickness, String description) {
 
 		if (Graphs.get(nameGraph) != null)
 			return Graphs.get(nameGraph).graph.addSeries(nameSerie, data, description, color, thickness);
@@ -139,10 +139,10 @@ public class VisualizationManager extends Activity {
 	 * @param data Is the value to be inserted
 	 * @param scrollToEnd Indicates if the graph scroll to the end
 	 */
-	public void appendData(String nameGraph, String nameSerie, float data, boolean scrollToEnd) {
+	public void appendData(String nameGraph, String nameSerie, float data, boolean scrollToEnd, int numMax) {
 
 		if (Graphs.get(nameGraph) != null)
-			Graphs.get(nameGraph).graph.appendData(nameSerie, data, scrollToEnd);
+			Graphs.get(nameGraph).graph.appendData(nameSerie, data, scrollToEnd, numMax);
 		else
 			throw new NullPointerException("There is no such graph");
 	}
@@ -160,13 +160,13 @@ public class VisualizationManager extends Activity {
 						ObjectVisualization ov = Graphs.get(names.get(i));
 						for (SensorType s : ov.sensors) {
 							if (od.hashData.containsKey(s)) {
-								if (ov.cont < ov.graph.myGraphView.getViewportSize()) {
-									if (!Double.isNaN(od.hashData.get(s).data)) 
-										ov.graph.appendData(s.toString(), (float) od.hashData.get(s).data, false);
-									
-								} else {
-									if (!Double.isNaN(od.hashData.get(s).data)) 
-										ov.graph.appendData2(s.toString(), (float) od.hashData.get(s).data,	false);
+								if (ov.cont < ov.graph.myGraphView.getViewPort()){ 
+									if (!Double.isNaN(od.hashData.get(s).data))
+										ov.graph.appendData(s.toString(), (float) od.hashData.get(s).data, false, ov.graph.numMax);
+								}
+								else{
+									if (!Double.isNaN(od.hashData.get(s).data))
+										ov.graph.appendData(s.toString(), (float) od.hashData.get(s).data, true, ov.graph.numMax);
 								}
 							}
 						}
@@ -184,15 +184,16 @@ public class VisualizationManager extends Activity {
 	 * @param nameDevice Is the device's name which will send the data
 	 * @param sensors A list with the sensors to be visualized
 	 */
-	public void visualizationOnline(String nameGraph, String nameDevice, ArrayList<SensorType> sensors) {
+	public void visualizationOnline(String nameGraph, String nameDevice, ArrayList<SensorType> sensors, int numMax) {
 
 		ObjectVisualization ov = Graphs.get(nameGraph);
 		if (ov != null) {
-			Log.d("viewport", "" + (int) ov.graph.myGraphView.getViewportSize());
 			int i = 0;
 			ov.sensors = sensors;
+			ov.graph.numMax = numMax;
+			ArrayList<Float> zero = new ArrayList<Float>();
 			for (SensorType s : sensors) {
-				ov.graph.addSeries(s.toString(), new float[0], s.toString(), colors[i], 1);
+				ov.graph.addSeries(s.toString(), zero, s.toString(), colors[i], 1);
 				i = (i + 1) % colors.length;
 			}
 			if (cManager == null)
@@ -216,14 +217,16 @@ public class VisualizationManager extends Activity {
 	 * @param thickness A list of thickness. Each series will have its thickness
 	 */
 	public void visualizationOnline(String nameGraph, final String nameDevice,
-			ArrayList<SensorType> sensors, int[] colors, int[] thickness) {
+			ArrayList<SensorType> sensors, int[] colors, int[] thickness, int numMax) {
 
 		ObjectVisualization ov = Graphs.get(nameGraph);
 		if (ov != null) {
 			int i = 0;
 			ov.sensors = sensors;
+			ov.graph.numMax = numMax;
+			ArrayList<Float> zero = new ArrayList<Float>();
 			for (SensorType s : sensors) {
-				ov.graph.addSeries(s.toString(), new float[0], s.toString(), colors[i], thickness[i]);
+				ov.graph.addSeries(s.toString(), zero, s.toString(), colors[i], thickness[i]);
 				i++;
 			}
 			if (cManager == null)
