@@ -804,7 +804,6 @@ How can you keep track of the development and news of mHealthDroid? Coming soon 
 Rafael García Fernández
 
 * http://github.com/rafagf
-* http://twitter.com/rafa_piki
 * Email: rafagarfer@gmail.com
 
 Alejandro Saez Fernandez
