@@ -818,7 +818,6 @@ Alejandro Sáez Fernández
 Oresti Baños Legran
 
 * _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
-
 * Email: oresti.bl@gmail.com
 
 ### Collaborators
