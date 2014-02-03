@@ -802,35 +802,36 @@ How can you keep track of the development and news of mHealthDroid? Coming soon 
 ### Authors
 
 Rafael García Fernández
-_University of Granada (UGR)_
 
+* _University of Granada (UGR)_
 * http://github.com/rafagf
 * Email: rafagarfer@gmail.com
 
-Alejandro Saez Fernandez
-_University of Granada (UGR)_
+Alejandro Sáez Fernández
 
+* _University of Granada (UGR)_
 * http://github.com/alsafer
 * Email: alejandrosaez3@gmail.com
 
 ### Original Idea and Project Supervisor
 
 Oresti Baños Legran
-_Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
+
+* _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
 
 * Email: oresti.bl@gmail.com
 
-Collaborators
+### Collaborators
 
 Juan Antonio Holgado Terriza
-_University of Granada (UGR)_
 
+* _University of Granada (UGR)_
 * Email: jholgado@ugr.es
 
 Jesús Luis Muros Cobos
-_Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
-*
-Email: jesusmuros@ugr.es
+
+* _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
+* Email: jesusmuros@ugr.es
 
 ## Where can I get help?
 
