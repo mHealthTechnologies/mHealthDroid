@@ -815,7 +815,7 @@ Alejandro Sáez Fernández
 
 ### Original Idea and Project Supervisor
 
-Oresti Baños Legran
+Oresti Baños Legrán
 
 * _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
 * Email: oresti.bl@gmail.com
