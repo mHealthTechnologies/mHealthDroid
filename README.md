@@ -828,11 +828,6 @@ Juan Antonio Holgado Terriza
 * _University of Granada (UGR)_
 * Email: jholgado@ugr.es
 
-Jesús Luis Muros Cobos
-
-* _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
-* Email: jesusmuros@ugr.es
-
 ## Where can I get help?
 
 You can get any help you need getting in contact with any of the authors. We are looking forward to help you!
