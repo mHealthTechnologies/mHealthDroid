@@ -8,6 +8,7 @@ import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.LegendAlign;
 import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewStyle;
 import com.jjoe64.graphview.LineGraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
@@ -304,6 +305,14 @@ public class Plot {
 	 */
 	public float getLegendWitdh(){
 		return myGraphView.getLegendWidth();
+	}
+	
+	/**
+	 * Get the graph's style
+	 * @return The graph's style
+	 */
+	public GraphViewStyle getGraphStyle(){
+		return myGraphView.getGraphViewStyle();
 	}
 	
 	/**

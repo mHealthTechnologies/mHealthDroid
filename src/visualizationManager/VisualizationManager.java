@@ -5,6 +5,7 @@ import java.util.Hashtable;
 
 
 import com.jjoe64.graphview.GraphView.LegendAlign;
+import com.jjoe64.graphview.GraphViewStyle;
 
 
 
@@ -468,6 +469,20 @@ public class VisualizationManager extends Activity {
 		
 		if (Graphs.get(nameGraph) != null)
 			return Graphs.get(nameGraph).graph.getLegendWitdh();
+		else
+			throw new NullPointerException("There is no such graph");
+	}
+	
+	/**
+	 * Get the graph's style
+	 * If the graph doesn't exist a null exception will be thrown.
+	 * @param nameGraph Is the graph's name
+	 * @return The graph's style
+	 */
+	public GraphViewStyle getGraphStyle(String nameGraph){
+		
+		if (Graphs.get(nameGraph) != null)
+			return Graphs.get(nameGraph).graph.getGraphStyle();
 		else
 			throw new NullPointerException("There is no such graph");
 	}
