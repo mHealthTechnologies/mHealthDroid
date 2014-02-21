@@ -20,7 +20,7 @@ Android minimum version: 2.3.3
 - [Contribution guidelines](#contribution-guidelines)
 - [Community](#community)
 - [Team Members](#team-members)
-	- [Authors](#authors)
+    - [Authors](#authors)
 	- [Original Idea and Project Supervisor](#original-idea-and-project-supervisor)
     - [Collaborators](#collaborators)
 - [Where can I get help?](#where-can-i-get-help)
@@ -86,6 +86,10 @@ In the figure is shown the framework structure, with all the existing managers a
 - **Data Processing Manager**: a really powerful manager, responsible for processing data and applying knowledge inference, either orline or offline.
 - **System Manager**: miscellaneous manager which offers easy management of instrinsic aspect of Android devices; guidelines functionalities specially useful for health applications; and send alerts.
 
+## Full documentation
+
+<a href="http://www.w3.org/">W3C</a>
+The full documentation of mHealthDroid can be found in both master thesis documents of the authors, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In this document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.
 
 ## Examples. How to use mHealthDroid
 
@@ -274,7 +278,7 @@ sysm.setWifiEnabled(false, getApplicationContext());
 To upload the local database, some PHP scripts are necessaries, provided along
 with the framework. It is just a simple implementation, different scripts could be used, but the framework user must be careful with the scripts name and the paths where these are located. By default, if the user does not change scripts names or paths, the files get _last ID.php, DB config.php, insert mobile metadata.php, insert mobile signals.php, insert mobile units.php, insert shimmer metadata.php, insert shimmer signals.php_ and _insert shimmer units.php_ must be located in a path where can be accessible by the address _http://serverIP/nameFile.php_ (for example, in the directory Htdocs for XAMPP).
 
-Consequently, if the user wants to use dierent scripts or just for server reasons
+Consequently, if the user wants to use different scripts or just for server reasons
 needs to change their path, it can be achieved by means of the following functions: _set-
 MobileUnitsPath(String path), setMobileSignalsPath(String path), setMobileMetadata-
 Path(String path), setShimmerUnitsPath(String path), setShimmerSignalsPath(String
@@ -472,7 +476,7 @@ screen brightness is used.
 
 #### Guidelines
 
-The manner of using any of the guidelines modules is slightly dierent. First, it is
+The manner of using any of the guidelines modules is slightly different. First, it is
 necessary to obtain an instance of the class which will be used and once this is done,
 just use its functions.
 
@@ -565,27 +569,27 @@ accelerometer X, accelerometer Y, accelerometer Z and timestamp of a given weara
 device called "Shimmer Chest" and the gyroscope X, gyroscope Y, gyroscope Z,
 humidity and timestamp of a portable mobile device called "Mobile Device".
 
-    ``` java
-    ArrayList<Pair<ArrayList<SensorType>, String>> sensorsAndDevices = new
-    ArrayList<Pair<ArrayList<SensorType>, String>>();
-    ArrayList<SensorType> sensors1 = new ArrayList<SensorType>();
-    ArrayList<SensorType> sensors2 = new ArrayList<SensorType>();
-    sensors1.add(SensorType.ACCELEROMETER_X);
-    sensors1.add(SensorType.ACCELEROMETER_Y);
-    sensors1.add(SensorType.ACCELEROMETER_Z);
-    sensors1.add(SensorType.TIMESTAMP);
-    sensors2.add(SensorType.GYROSCOPE_X);
-    sensors2.add(SensorType.GYROSCOPE_Y);
-    sensors2.add(SensorType.GYROSCOPE_Z);
-    sensors2.add(SensorType.HUMIDITY);
-    sensors2.add(SensorType.TIMESTAMP);
-    String nameDevice1 = "Shimmer CHEST";
-    String nameDevice2 = "Mobile Device";
-    Pair<ArrayList<SensorType>, String> pair1 = new Pair(sensors1, nameDevice1);
-    Pair<ArrayList<SensorType>, String> pair2 = new Pair(sensors2, nameDevice2);
-    sensorsAndDevices.add(pair1);
-    sensorsAndDevices.add(pair2);
-    ``` 
+``` java
+ArrayList<Pair<ArrayList<SensorType>, String>> sensorsAndDevices = new
+ArrayList<Pair<ArrayList<SensorType>, String>>();
+ArrayList<SensorType> sensors1 = new ArrayList<SensorType>();
+ArrayList<SensorType> sensors2 = new ArrayList<SensorType>();
+sensors1.add(SensorType.ACCELEROMETER_X);
+sensors1.add(SensorType.ACCELEROMETER_Y);
+sensors1.add(SensorType.ACCELEROMETER_Z);
+sensors1.add(SensorType.TIMESTAMP);
+sensors2.add(SensorType.GYROSCOPE_X);
+sensors2.add(SensorType.GYROSCOPE_Y);
+sensors2.add(SensorType.GYROSCOPE_Z);
+sensors2.add(SensorType.HUMIDITY);
+sensors2.add(SensorType.TIMESTAMP);
+String nameDevice1 = "Shimmer CHEST";
+String nameDevice2 = "Mobile Device";
+Pair<ArrayList<SensorType>, String> pair1 = new Pair(sensors1, nameDevice1);
+Pair<ArrayList<SensorType>, String> pair2 = new Pair(sensors2, nameDevice2);
+sensorsAndDevices.add(pair1);
+sensorsAndDevices.add(pair2);
+``` 
     
    Now that _sensorsAndDevices_ is ready, any Acquisition function may be used. To
 acquire all the selected data in the IDs range 100-500:
@@ -755,8 +759,8 @@ a determinate size.
 To make the online knowledge inference, it is necessary to define the features to
 be extracted. The classification model and the class attribute must be defined as well.
 The previous section, Offine knowledge inference, shows how to do it.
-In order to execute the knowledge inference as a sequence, all the steps are dened
-under one function:
+In order to execute the knowledge inference as a sequence, all the steps are defined under one function:
+
 ``` java
 dpm.inferenceOnline(2, sensorsAndDevices, null, 0, 1);
 ```
