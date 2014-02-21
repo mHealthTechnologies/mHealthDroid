@@ -3,7 +3,7 @@
 ## What is mHealthDroid? 
 
 mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.
-
+)
 This framework has been developed independently from the biomedical type device or communication protocol. Owing to that, it is necessary to create an intermediate driver for every portable biomedical device to be used which will work between the device and the framework. The drivers are included in the framework and remain unnoticed to the user. Thanks to this approach, an application can run simultaneously with different kinds of devices, providing a great flexibility.
 
 Android target version: 4.2
@@ -16,6 +16,7 @@ Android minimum version: 2.3.3
 - [Features. What does mHealthDroid offers me?](#features-what-does-mhealthdroid-offers-me)
 - [Installation instructions](#installation-instructions)
 - [mHealthDroid structure](#mhealthdroid-structure)
+- [Full Documentation](#full-documentation)
 - [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
 - [Contribution guidelines](#contribution-guidelines)
 - [Community](#community)
@@ -88,8 +89,7 @@ In the figure is shown the framework structure, with all the existing managers a
 
 ## Full documentation
 
-<a href="http://www.w3.org/">W3C</a>
-The full documentation of mHealthDroid can be found in both master thesis documents of the authors, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In this document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.
+The full documentation of mHealthDroid can be found in both authors master thesis, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In these document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.
 
 ## Examples. How to use mHealthDroid
 
