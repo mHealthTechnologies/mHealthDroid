@@ -3,7 +3,7 @@
 ## What is mHealthDroid? 
 
 mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.
-)
+
 This framework has been developed independently from the biomedical type device or communication protocol. Owing to that, it is necessary to create an intermediate driver for every portable biomedical device to be used which will work between the device and the framework. The drivers are included in the framework and remain unnoticed to the user. Thanks to this approach, an application can run simultaneously with different kinds of devices, providing a great flexibility.
 
 Android target version: 4.2
