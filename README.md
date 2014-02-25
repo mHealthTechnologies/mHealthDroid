@@ -1,6 +1,6 @@
 # **mHealthDroid**
 
-<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/Foto%20logo%202.png" height=210>
+<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/Foto%20logo%202.png" align="right" height=200>
 
 ## What is mHealthDroid? 
 
