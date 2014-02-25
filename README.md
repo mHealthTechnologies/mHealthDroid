@@ -1,5 +1,7 @@
 # **mHealthDroid**
 
+<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/Foto%20logo%202.png" height=210>
+
 ## What is mHealthDroid? 
 
 mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.
