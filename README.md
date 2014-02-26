@@ -10,6 +10,53 @@ Android target version: 4.2
 
 Android minimum version: 2.3.3
 
+**Table of Contents**
+
+- [What is mHealthDroid?](#what-is-mhealthdroid)
+- [Features. What does mHealthDroid offers me?](#features-what-does-mhealthdroid-offers-me)
+- [Installation instructions](#installation-instructions)
+- [mHealthDroid structure](#mhealthdroid-structure)
+- [Full documentation](#full-documentation)
+- [mHealthDroid APP](#mhealthdroid-app)
+	- [Main Features](#main-features)
+	- [Demostration Video](#demostration-video)
+	- [APP Usage](#app-usage)
+		- [Connectivity](#connectivity)
+		- [Visualization](#visualization)
+		- [Activity Recognition](#activity-recognition)
+		- [Notifications](#notifications)
+		- [YouTube Guidelines](#youtube-guidelines)
+		- [Remote Storage](#remote-storage)
+- [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
+	- [Communication Manager](#communication-manager)
+	- [Remote Storage Manager](#remote-storage-manager)
+	- [Visualization Manager](#visualization-manager)
+	- [System Manager](#system-manager)
+		- [Services and Setup](#services-and-setup)
+		- [Guidelines](#guidelines)
+			- [YouTube](#youtube)
+			- [Audio](#audio)
+			- [Video](#video)
+	- [Data Processing Manager](#data-processing-manager)
+		- [Offline](#offline)
+			- [Acquisition](#acquisition)
+		- [Pre-Processing](#pre-processing)
+		- [Segmentation](#segmentation)
+		- [Features Extraction](#features-extraction)
+		- [Classification](#classification)
+	- [Online](#online)
+		- [Acquisition and Segmentation](#acquisition-and-segmentation)
+		- [Pre-Processing, Feature Extraction, and Classification](#pre-processing-feature-extraction-and-classification)
+- [Contribution guidelines](#contribution-guidelines)
+- [Community](#community)
+- [Team Members](#team-members)
+	- [Authors](#authors)
+	- [Original Idea and Project Supervisor](#original-idea-and-project-supervisor)
+	- [Collaborators](#collaborators)
+- [Where can I get help?](#where-can-i-get-help)
+- [Inspiration](#inspiration)
+- [Copyright and license](#copyright-and-license)
+
 ## Features. What does mHealthDroid offers me?
 
 * Rapid development of medical, health and wellbeing applications.
