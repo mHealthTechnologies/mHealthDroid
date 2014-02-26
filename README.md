@@ -948,7 +948,6 @@ There is also another function for the online knowledge inference:
 dpm.inferenceOnline(2, sensorsAndDevices, null, 0, 1, mHandler);
 ```
 
-
 ## Contribution guidelines
 
 How can you help mHealthDroid to be a more completed tool? Here we propose you some ideas!
