@@ -808,7 +808,7 @@ To retrieve all the information available:
 dpm.retrieveAllInformation(sensorsAndDevices);
 ```
 
-#### Pre-Processing
+##### Pre-Processing
 
 From this point, it is assumed that the data has been already acquired and stored
 in the hash variable (which is defined in this manager). Thus, to calculate either the
@@ -820,7 +820,7 @@ dpm.upSampling(3);
 The result will be stored into the _hashProcessed_ variable, which is defined in this
 manager.
 
-#### Segmentation
+##### Segmentation
 
 To make the segmentation, first it is necessary to get the devices' sample rate. For
 this example, an array with false sample rates is created:
@@ -837,7 +837,7 @@ dpm.windowing_NoOverlap(DataType.Raw, (float) 2, rates);
 and the windowing overlap as follow:
 dpm.windowing_overlap(DataType.Raw, (float) 2.5, (float) 0.5, rates);
 ```
-#### Features Extraction
+##### Features Extraction
 
 The features must be defined in order to make the features extraction. These are
 some features definitions:
@@ -874,7 +874,7 @@ dpm.feature_extraction(DataType.Raw, true, false);
 dpm.feature_extraction(DataType.Processed, true, true);
 ```
 
-#### Classification
+##### Classification
 
 The way to use the Classification module does not change depending on the selected
 approach (offine or online). The first thing to do is to read a Weka file (arff format).
@@ -920,15 +920,15 @@ String label = dpm.classifyInstanceToString(instances.firstInstance());
 Double label = dpm.classifyInstanceToDouble(instances.firstInstance());
 ```
 
-### Online
+#### Online
 
-#### Acquisition and Segmentation
+##### Acquisition and Segmentation
 
 These modules are not used in the online inference knowledge process, due to that
 the Communication Manager is the one which provides the data through windows with
 a determinate size.
 
-#### Pre-Processing, Feature Extraction, and Classification
+##### Pre-Processing, Feature Extraction, and Classification
 
 To make the online knowledge inference, it is necessary to define the features to
 be extracted. The classification model and the class attribute must be defined as well.
