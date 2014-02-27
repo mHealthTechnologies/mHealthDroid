@@ -136,6 +136,8 @@ This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It
 
 In the following video the mHealthDroid APP and all its functionalities are shown: 
 
+[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoYoutubeSnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)]
+
 ### APP Usage
 
 It is possible to navigate around the app making use of the available tabs in the top of the screen. Each tab offers a functionality for the following: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.
