@@ -1,4 +1,4 @@
-# **mHealthDroid**
+<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/Foto%20logo%202.png" height=225>
 
 ## What is mHealthDroid? 
 
@@ -10,19 +10,49 @@ Android target version: 4.2
 
 Android minimum version: 2.3.3
 
-## Table of Contents
+**Table of Contents**
 
 - [What is mHealthDroid?](#what-is-mhealthdroid)
 - [Features. What does mHealthDroid offers me?](#features-what-does-mhealthdroid-offers-me)
 - [Installation instructions](#installation-instructions)
 - [mHealthDroid structure](#mhealthdroid-structure)
+- [Full documentation](#full-documentation)
+- [mHealthDroid APP](#mhealthdroid-app)
+	- [Main Features](#main-features)
+	- [Demostration Video](#demostration-video)
+	- [APP Usage](#app-usage)
+		- [Connectivity](#connectivity)
+		- [Visualization](#visualization)
+		- [Activity Recognition](#activity-recognition)
+		- [Notifications](#notifications)
+		- [YouTube Guidelines](#youtube-guidelines)
+		- [Remote Storage](#remote-storage)
 - [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
+	- [Communication Manager](#communication-manager)
+	- [Remote Storage Manager](#remote-storage-manager)
+	- [Visualization Manager](#visualization-manager)
+	- [System Manager](#system-manager)
+		- [Services and Setup](#services-and-setup)
+		- [Guidelines](#guidelines)
+			- [YouTube](#youtube)
+			- [Audio](#audio)
+			- [Video](#video)
+	- [Data Processing Manager](#data-processing-manager)
+		- [Offline](#offline)
+			- [Acquisition](#acquisition)
+			- [Pre-Processing](#pre-processing)
+			- [Segmentation](#segmentation)
+			- [Features Extraction](#features-extraction)
+			- [Classification](#classification)
+		- [Online](#online)
+			- [Acquisition and Segmentation](#acquisition-and-segmentation)
+			- [Pre-Processing, Feature Extraction, and Classification](#pre-processing-feature-extraction-and-classification)
 - [Contribution guidelines](#contribution-guidelines)
 - [Community](#community)
 - [Team Members](#team-members)
 	- [Authors](#authors)
 	- [Original Idea and Project Supervisor](#original-idea-and-project-supervisor)
-    - [Collaborators](#collaborators)
+	- [Collaborators](#collaborators)
 - [Where can I get help?](#where-can-i-get-help)
 - [Inspiration](#inspiration)
 - [Copyright and license](#copyright-and-license)
@@ -86,6 +116,156 @@ In the figure is shown the framework structure, with all the existing managers a
 - **Data Processing Manager**: a really powerful manager, responsible for processing data and applying knowledge inference, either orline or offline.
 - **System Manager**: miscellaneous manager which offers easy management of instrinsic aspect of Android devices; guidelines functionalities specially useful for health applications; and send alerts.
 
+## Full documentation
+
+The full documentation of mHealthDroid can be found in both authors master thesis, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In these document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.
+
+## mHealthDroid APP
+
+This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It is important to point out that there was no effort to implement its functionalities thanks to mHealthDroid simplicity (we spent the most of the developing time in the app visual appearance). It can be found in Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&hl=es_419">here</a>.
+
+### Main Features
+
+- The app allows to collect data from Shimmer devices in order to obtain physiological and kinematic data, although existing sensors in the mobile device may be also used for monitoring. 
+- Visualization of any of the received data streams from the portable biomedical devices.
+- Local and remote storage of the collected data. 
+- Activity Recognition of the physical activity that an app user is performing thanks to an expert system built as part of the app.
+- To help the user to keep healthy habits, guidelines are supported through online video broadcasting and schedulable notifications.
+
+### Demostration Video
+
+In the following video the mHealthDroid APP and all its functionalities are shown: 
+
+[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoYoutubeSnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)]
+
+### APP Usage
+
+It is possible to navigate around the app making use of the available tabs in the top of the screen. Each tab offers a functionality for the following: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.
+
+#### Connectivity
+
+This tab offers to the user all the connectivity features and the devices configuration. The tab has a Button to add the new devices, and a ListView to visualize them.
+
+In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. The message also have two buttons in order to select the kind of device. It can be either *Mobile* or *Shimmer*.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/connectivity.png?raw=true" height=300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/addingDevice.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/scanning.png?raw=true" height = 300>
+
+
+Once the device is added, it will be displayed in the ListView. It is showed three fields for each device: The first one is the device's name, the second one is the device's type, and the third one is its state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorInsertion1.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorInsertion2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesStatus.png?raw=true" height = 300>
+
+When a device is pressed, a menu with several options is displayed. These options will depend on the device's type and its status. The possible options are the following ones:
+
+- *Connect/Disconnect*. With this option, the device is either connected (if it was disconnected) or disconnected (if it was connected). Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.
+- *Start/Stop streaming*. With this option, the device either starts or stops streaming.
+- *Sensors*. This option throws a window to set the enabled sensors. The sensors available can be different for each kind of device. It is only showed when the device is not streaming.
+- *Configuration*. This option opens a window to set the device configuration. Here, it is also set whether the data must be stored into the database. The device configuration can be different for each kind of device. It is only showed when the device is not streaming.
+- *Remove*. This option removes a device from the devices list.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuMobile.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuMobileStreaming.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuShimmerConnected.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuShimmerStreaming.png?raw=true" height = 300>
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/sensorsMobile.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmerSensors.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/mobileConfiguration.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmerConfiguration.png?raw=true" height = 300>
+
+
+#### Visualization
+
+This tab permits to visualize the signals recorded through the sensors. The tab is composed by a graph and two buttons: the *Configuration* button and the *Start* button.
+
+When the *Configuration* button is pressed, a menu is open in order to set the graph configurations. The options are initially disabled (the graph has a configuration by default). These have to be enabled in order to use them. The configuration menu is not available during the visualization, so the graph must be set before starting. The configuration options are the following ones:
+
+- *View Port*. This option sets the graph view port. That is, the number of samples to be shown in the graph. 
+- *Y coordinates*. This option sets the maximum and minimum values for the Y axis. 
+- *Legend*. This option shows the legend of the graph series. It can be aligned in three different positions. On the top of the graph, in the middle, or at the bottom.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualization.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationInit.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationConfiguration1.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationConfiguration2.png?raw=true" height = 300>
+
+When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesVisualization.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceAndSensors.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceAndSensors2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorVisualization.png?raw=true" height = 300>
+
+#### Activity Recognition
+
+This tab uses inference knowledge module to perform activity recognition of a set of activities.  
+
+The activities are the following: standing still, sitting and relaxing, lying down, walking, climbing stairs, waist bends forward, frontal (vertical) up/down, knees bended, cycling, jogging, running, jump forward and back.
+
+In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/subjectSensors.png?raw=true" height = 375>
+
+To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activitySpinner.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityStart.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorActivity.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityRecognition.png?raw=true" height = 300>
+
+#### Notifications
+
+This tab permits to create different kind of notifications. When the tab is selected, it appears a form that it must be filled in order to create the notification. This field is composed:
+
+- *Title*. Title of the notification.
+- *Description*. Full description text of the notification.
+- *Sound*. A field where three different sounds may be selected to be reproduced when the notification is launched: Alarm, Ringtone and Notification sounds. There is also the possibility of set this sound to "None".    
+- *Launch Recommendations*. It is a checkbox that in the case of being checked, when the notification is clicked the YouTube guidelines is launched.
+- *Schedule Notification*. It allows for the scheduling the notification to a specified date and time.
+
+As an example, it can be used an app user with back problems that needs to be reminded about his daily exercises. Thus, for this purpose, the user can create a notification and customize it by putting the notification title and description, as well as setting the hour of its appearance. Moreover, if the user wants to visualize some recommended exercises he can mark the *Launch Recommendations* option that after clicking on the notification will automatically open the YouTube Guidelines tab.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications1.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications3.png?raw=true" height = 300>
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications4.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications5.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications6.png?raw=true" height = 300>
+
+#### YouTube Guidelines
+
+This tab allows the app user the visualization of videos in order to keep healthy habits or learn new exercises with physical therapy purposes. There are five different playlists that can be selected by the user using the button *Playlists*:
+
+- General Health: playlist about how to keep healthy daily habits and how to maintain a healthy diet.
+- Knee: playlist with videos of knee rehabilitation, orientate to user with knee problems.
+- Back: playlist with videos of back rehabilitation, orientate to user with back problems.
+- Ankle: playlist with videos of ankle rehabilitation, orientate to user with ankle problems.
+- Neck: playlist with videos of neck rehabilitation, orientate to user with neck problems.	
+    
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube1.png?raw=true" height = 350>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube2.png?raw=true" height = 350>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube3.png?raw=true" height = 350>
+
+Once that a playlist has been selected, a scrollable list of videos will appear on the screen. This list can be extended pressing on the *Extend List* button and collapse by pressing on it again. When the user selects a video to be reproduced, this appears on the player and can be reproduced when the start icon is clicked. The player may also be extended using the button *Extend Player* or collapse clicking on it again.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube4.png?raw=true" height = 350>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube5.png?raw=true" height = 350>
+
+#### Remote Storage
+
+This tab allows the user app to upload to a remote storage the collected data from the portable biomedical devices. It is composed of a list with every of the available devices in the app and a button to set the WiFi connection (for the sake of simplicity, since 3G connection can be used as well).
+
+When a device of the list is pressed on, it appears a dialog asking the app user to define which tables must be uploaded. There are three options: Units, Metadata and Signals. After pressing the OK button the uploading of the selected data starts. A message will appear in the screen to notify the end of the uploading process.
+
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote1.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote3.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote4.png?raw=true" height = 300>
 
 ## Examples. How to use mHealthDroid
 
@@ -274,7 +454,7 @@ sysm.setWifiEnabled(false, getApplicationContext());
 To upload the local database, some PHP scripts are necessaries, provided along
 with the framework. It is just a simple implementation, different scripts could be used, but the framework user must be careful with the scripts name and the paths where these are located. By default, if the user does not change scripts names or paths, the files get _last ID.php, DB config.php, insert mobile metadata.php, insert mobile signals.php, insert mobile units.php, insert shimmer metadata.php, insert shimmer signals.php_ and _insert shimmer units.php_ must be located in a path where can be accessible by the address _http://serverIP/nameFile.php_ (for example, in the directory Htdocs for XAMPP).
 
-Consequently, if the user wants to use dierent scripts or just for server reasons
+Consequently, if the user wants to use different scripts or just for server reasons
 needs to change their path, it can be achieved by means of the following functions: _set-
 MobileUnitsPath(String path), setMobileSignalsPath(String path), setMobileMetadata-
 Path(String path), setShimmerUnitsPath(String path), setShimmerSignalsPath(String
@@ -472,7 +652,7 @@ screen brightness is used.
 
 #### Guidelines
 
-The manner of using any of the guidelines modules is slightly dierent. First, it is
+The manner of using any of the guidelines modules is slightly different. First, it is
 necessary to obtain an instance of the class which will be used and once this is done,
 just use its functions.
 
@@ -565,27 +745,27 @@ accelerometer X, accelerometer Y, accelerometer Z and timestamp of a given weara
 device called "Shimmer Chest" and the gyroscope X, gyroscope Y, gyroscope Z,
 humidity and timestamp of a portable mobile device called "Mobile Device".
 
-    ``` java
-    ArrayList<Pair<ArrayList<SensorType>, String>> sensorsAndDevices = new
-    ArrayList<Pair<ArrayList<SensorType>, String>>();
-    ArrayList<SensorType> sensors1 = new ArrayList<SensorType>();
-    ArrayList<SensorType> sensors2 = new ArrayList<SensorType>();
-    sensors1.add(SensorType.ACCELEROMETER_X);
-    sensors1.add(SensorType.ACCELEROMETER_Y);
-    sensors1.add(SensorType.ACCELEROMETER_Z);
-    sensors1.add(SensorType.TIMESTAMP);
-    sensors2.add(SensorType.GYROSCOPE_X);
-    sensors2.add(SensorType.GYROSCOPE_Y);
-    sensors2.add(SensorType.GYROSCOPE_Z);
-    sensors2.add(SensorType.HUMIDITY);
-    sensors2.add(SensorType.TIMESTAMP);
-    String nameDevice1 = "Shimmer CHEST";
-    String nameDevice2 = "Mobile Device";
-    Pair<ArrayList<SensorType>, String> pair1 = new Pair(sensors1, nameDevice1);
-    Pair<ArrayList<SensorType>, String> pair2 = new Pair(sensors2, nameDevice2);
-    sensorsAndDevices.add(pair1);
-    sensorsAndDevices.add(pair2);
-    ``` 
+``` java
+ArrayList<Pair<ArrayList<SensorType>, String>> sensorsAndDevices = new
+ArrayList<Pair<ArrayList<SensorType>, String>>();
+ArrayList<SensorType> sensors1 = new ArrayList<SensorType>();
+ArrayList<SensorType> sensors2 = new ArrayList<SensorType>();
+sensors1.add(SensorType.ACCELEROMETER_X);
+sensors1.add(SensorType.ACCELEROMETER_Y);
+sensors1.add(SensorType.ACCELEROMETER_Z);
+sensors1.add(SensorType.TIMESTAMP);
+sensors2.add(SensorType.GYROSCOPE_X);
+sensors2.add(SensorType.GYROSCOPE_Y);
+sensors2.add(SensorType.GYROSCOPE_Z);
+sensors2.add(SensorType.HUMIDITY);
+sensors2.add(SensorType.TIMESTAMP);
+String nameDevice1 = "Shimmer CHEST";
+String nameDevice2 = "Mobile Device";
+Pair<ArrayList<SensorType>, String> pair1 = new Pair(sensors1, nameDevice1);
+Pair<ArrayList<SensorType>, String> pair2 = new Pair(sensors2, nameDevice2);
+sensorsAndDevices.add(pair1);
+sensorsAndDevices.add(pair2);
+``` 
     
    Now that _sensorsAndDevices_ is ready, any Acquisition function may be used. To
 acquire all the selected data in the IDs range 100-500:
@@ -630,7 +810,7 @@ To retrieve all the information available:
 dpm.retrieveAllInformation(sensorsAndDevices);
 ```
 
-#### Pre-Processing
+##### Pre-Processing
 
 From this point, it is assumed that the data has been already acquired and stored
 in the hash variable (which is defined in this manager). Thus, to calculate either the
@@ -642,7 +822,7 @@ dpm.upSampling(3);
 The result will be stored into the _hashProcessed_ variable, which is defined in this
 manager.
 
-#### Segmentation
+##### Segmentation
 
 To make the segmentation, first it is necessary to get the devices' sample rate. For
 this example, an array with false sample rates is created:
@@ -659,7 +839,7 @@ dpm.windowing_NoOverlap(DataType.Raw, (float) 2, rates);
 and the windowing overlap as follow:
 dpm.windowing_overlap(DataType.Raw, (float) 2.5, (float) 0.5, rates);
 ```
-#### Features Extraction
+##### Features Extraction
 
 The features must be defined in order to make the features extraction. These are
 some features definitions:
@@ -696,7 +876,7 @@ dpm.feature_extraction(DataType.Raw, true, false);
 dpm.feature_extraction(DataType.Processed, true, true);
 ```
 
-#### Classification
+##### Classification
 
 The way to use the Classification module does not change depending on the selected
 approach (offine or online). The first thing to do is to read a Weka file (arff format).
@@ -742,21 +922,21 @@ String label = dpm.classifyInstanceToString(instances.firstInstance());
 Double label = dpm.classifyInstanceToDouble(instances.firstInstance());
 ```
 
-### Online
+#### Online
 
-#### Acquisition and Segmentation
+##### Acquisition and Segmentation
 
 These modules are not used in the online inference knowledge process, due to that
 the Communication Manager is the one which provides the data through windows with
 a determinate size.
 
-#### Pre-Processing, Feature Extraction, and Classification
+##### Pre-Processing, Feature Extraction, and Classification
 
 To make the online knowledge inference, it is necessary to define the features to
 be extracted. The classification model and the class attribute must be defined as well.
 The previous section, Offine knowledge inference, shows how to do it.
-In order to execute the knowledge inference as a sequence, all the steps are dened
-under one function:
+In order to execute the knowledge inference as a sequence, all the steps are defined under one function:
+
 ``` java
 dpm.inferenceOnline(2, sensorsAndDevices, null, 0, 1);
 ```
@@ -769,7 +949,6 @@ There is also another function for the online knowledge inference:
 ``` java
 dpm.inferenceOnline(2, sensorsAndDevices, null, 0, 1, mHandler);
 ```
-
 
 ## Contribution guidelines
 
