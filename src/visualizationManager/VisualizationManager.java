@@ -161,7 +161,7 @@ public class VisualizationManager extends Activity {
 						ObjectVisualization ov = Graphs.get(names.get(i));
 						for (SensorType s : ov.sensors) {
 							if (od.hashData.containsKey(s)) {
-								if (ov.cont < ov.graph.myGraphView.getViewPort()){ 
+								if (ov.cont < ov.graph.myGraphView.getViewportSize()){ 
 									if (!Double.isNaN(od.hashData.get(s).data))
 										ov.graph.appendData(s.toString(), (float) od.hashData.get(s).data, false, ov.graph.numMax);
 								}
