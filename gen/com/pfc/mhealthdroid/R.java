@@ -13,8 +13,68 @@ public final class R {
     public static final class drawable {
         public static int ic_launcher=0x7f020000;
     }
+    public static final class raw {
+        public static int activityrecognition=0x7f030000;
+        public static int activityrecognitioninit=0x7f030001;
+        public static int activityspinner=0x7f030002;
+        public static int activitystart=0x7f030003;
+        public static int addingdevice=0x7f030004;
+        public static int connectivity=0x7f030005;
+        public static int deviceandsensors=0x7f030006;
+        public static int deviceandsensors2=0x7f030007;
+        public static int deviceconnected=0x7f030008;
+        public static int devicesstatus=0x7f030009;
+        public static int devicesvisualization=0x7f03000a;
+        public static int electrodos=0x7f03000b;
+        public static int erroractivity=0x7f03000c;
+        public static int errorinsertion1=0x7f03000d;
+        public static int errorinsertion2=0x7f03000e;
+        public static int errorvisualization=0x7f03000f;
+        public static int fotologo2=0x7f030010;
+        public static int fotologo4=0x7f030011;
+        public static int frameworkdiagram=0x7f030012;
+        public static int menumobile=0x7f030013;
+        public static int menumobilestreaming=0x7f030014;
+        public static int menushimmerconnected=0x7f030015;
+        public static int menushimmerdisconected=0x7f030016;
+        public static int menushimmerstreaming=0x7f030017;
+        public static int mobileconfiguration=0x7f030018;
+        public static int mobileconfigurationrate=0x7f030019;
+        public static int notifications1=0x7f03001a;
+        public static int notifications2=0x7f03001b;
+        public static int notifications3=0x7f03001c;
+        public static int notifications4=0x7f03001d;
+        public static int notifications5=0x7f03001e;
+        public static int notifications6=0x7f03001f;
+        public static int pairing=0x7f030020;
+        public static int positionsubject=0x7f030021;
+        public static int positiontemp=0x7f030022;
+        public static int remote1=0x7f030023;
+        public static int remote2=0x7f030024;
+        public static int remote3=0x7f030025;
+        public static int remote4=0x7f030026;
+        public static int rufo=0x7f030027;
+        public static int scanning=0x7f030028;
+        public static int sensorsmobile=0x7f030029;
+        public static int shimmerconfiguration=0x7f03002a;
+        public static int shimmerconfigurationrate=0x7f03002b;
+        public static int shimmersensors=0x7f03002c;
+        public static int shimmersensors2=0x7f03002d;
+        public static int subjectsensors=0x7f03002e;
+        public static int subjectsensorspdf=0x7f03002f;
+        public static int videoyoutubesnapshot=0x7f030030;
+        public static int visualization=0x7f030031;
+        public static int visualizationconfiguration1=0x7f030032;
+        public static int visualizationconfiguration2=0x7f030033;
+        public static int visualizationinit=0x7f030034;
+        public static int youtube1=0x7f030035;
+        public static int youtube2=0x7f030036;
+        public static int youtube3=0x7f030037;
+        public static int youtube4=0x7f030038;
+        public static int youtube5=0x7f030039;
+    }
     public static final class string {
-        public static int app_name=0x7f030000;
+        public static int app_name=0x7f040000;
     }
     public static final class style {
         /** 
@@ -38,10 +98,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static int AppBaseTheme=0x7f040000;
+        public static int AppBaseTheme=0x7f050000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static int AppTheme=0x7f040001;
+        public static int AppTheme=0x7f050001;
     }
 }
