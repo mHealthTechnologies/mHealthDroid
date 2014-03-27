@@ -122,7 +122,7 @@ The full documentation of mHealthDroid can be found in both authors master thesi
 
 ## mHealthDroid APP
 
-This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It was developed in only 2-3 days and it is important to point out that there was no effort to implement its functionalities thanks to mHealthDroid simplicity (we spent the most of the time in the app visual appearance). It can be found in Google Play by the name of mHealthDroid APP.
+This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It is important to point out that there was no effort to implement its functionalities thanks to mHealthDroid simplicity (we spent the most of the developing time in the app visual appearance). It can be found in Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&hl=es_419">here</a>.
 
 ### Main Features
 
@@ -135,6 +135,8 @@ This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It
 ### Demostration Video
 
 In the following video the mHealthDroid APP and all its functionalities are shown: 
+
+[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoYoutubeSnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)]
 
 ### APP Usage
 
