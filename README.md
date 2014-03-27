@@ -136,7 +136,7 @@ This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It
 
 In the following video the mHealthDroid APP and all its functionalities are shown: 
 
-[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoyoutubesnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)]
+[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoyoutubesnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)
 
 ### APP Usage
 
@@ -194,10 +194,10 @@ When the *Configuration* button is pressed, a menu is open in order to set the g
 
 When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.
 
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesvisualization.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors2.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorvisualization.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesvisualization1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors21.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorvisualization1.png?w=253" height = 300>
 
 #### Activity Recognition
 
@@ -207,14 +207,22 @@ The activities are the following: standing still, sitting and relaxing, lying do
 
 In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:
 
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/subjectsensors.png?w=253" height = 375>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/subjectsensors.png?w=601" height = 375>
 
 To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.
 
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activitystart.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/erroractivity.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityrecognition.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activitystart1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/erroractivity1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityrecognition1.png?w=253" height = 300>
+
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/running-activity.png?w=346" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/walking-activity.png?w=346" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/cycling-activity.png?w=346" height = 300>
+
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
+
 
 #### Notifications
 
