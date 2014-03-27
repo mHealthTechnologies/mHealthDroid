@@ -136,7 +136,7 @@ This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It
 
 In the following video the mHealthDroid APP and all its functionalities are shown: 
 
-[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoyoutubesnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)
+[<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](http://google.com.au/)
 
 ### APP Usage
 
@@ -216,12 +216,13 @@ To start the activity recognition, it is necessary to set each connected device 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/erroractivity1.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/activityrecognition1.png?w=253" height = 300>
 
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/running-activity.png?w=346" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/walking-activity.png?w=346" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/cycling-activity.png?w=346" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/running-activity.png?w=346" height = 280>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/jogging-activity.png?w=337" height = 280>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/cycling-activity.png?w=346" height = 280>
 
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/walking-activity.png?w=337" height = 280>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/up-down-activity.png?w=338" height = 280>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/waist-bends-activity.png?w=337" height = 280>
 
 
 #### Notifications
