@@ -13,7 +13,7 @@ Android minimum version: 2.3.3
 **Table of Contents**
 
 - [What is mHealthDroid?](#what-is-mhealthdroid)
-- [Features. What does mHealthDroid offers me?](#features-what-does-mhealthdroid-offers-me)
+- [Features. What does mHealthDroid offer me?](#features-what-does-mhealthdroid-offer-me)
 - [Installation instructions](#installation-instructions)
 - [mHealthDroid structure](#mhealthdroid-structure)
 - [Full documentation](#full-documentation)
@@ -57,7 +57,7 @@ Android minimum version: 2.3.3
 - [Inspiration](#inspiration)
 - [Copyright and license](#copyright-and-license)
 
-## Features. What does mHealthDroid offers me?
+## Features. What does mHealthDroid offer me?
 
 * Rapid development of medical, health and wellbeing applications.
 
