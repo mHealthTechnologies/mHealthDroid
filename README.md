@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/fotologo2.png" height=225>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/fotologo2.png?w=712" height=225>
 
 ## What is mHealthDroid? 
 
@@ -106,7 +106,7 @@ https://github.com/mHealthDroid/libraries
 
 ## mHealthDroid structure
 
-<img src=https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/frameworkdiagram.png?raw=true />
+<img src=http://apuestasrafag.files.wordpress.com/2014/03/frameworkdiagram.png?w=800 />
 
 In the figure is shown the framework structure, with all the existing managers and how they interact with each other. All these managers are Singleton, which means that only exist one unique instance of each and this instance is available from every point of the framework. In short, is described each manager aim. More details of every manager and its development in our website soon.
 
@@ -148,16 +148,15 @@ This tab offers to the user all the connectivity features and the devices config
 
 In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. The message also have two buttons in order to select the kind of device. It can be either *Mobile* or *Shimmer*.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/connectivity.png?raw=true" height=300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/addingdevice.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/scanning.png?raw=true" height = 300>
-
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/connectivity1.png?w=253" height=300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/addingdevice1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/scanning.png?w=253" height = 300>
 
 Once the device is added, it will be displayed in the ListView. It is showed three fields for each device: The first one is the device's name, the second one is the device's type, and the third one is its state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorinsertion1.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorinsertion2.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesstatus.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion11.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion21.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesstatus1.png?w=253" height = 300>
 
 When a device is pressed, a menu with several options is displayed. These options will depend on the device's type and its status. The possible options are the following ones:
 
@@ -167,15 +166,15 @@ When a device is pressed, a menu with several options is displayed. These option
 - *Configuration*. This option opens a window to set the device configuration. Here, it is also set whether the data must be stored into the database. The device configuration can be different for each kind of device. It is only showed when the device is not streaming.
 - *Remove*. This option removes a device from the devices list.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menumobile.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menumobilestreaming.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menushimmerconnected.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menushimmerstreaming.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/menumobile1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/menumobilestreaming1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/menushimmerconnected1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/menushimmerstreaming.png?w=253" height = 300>
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/sensorsmobile.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmersensors.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/mobileconfiguration.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmerconfiguration.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/sensorsmobile.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/shimmersensors.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/mobileconfiguration.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/shimmerconfiguration.png?w=253" height = 300>
 
 
 #### Visualization
@@ -188,17 +187,17 @@ When the *Configuration* button is pressed, a menu is open in order to set the g
 - *Y coordinates*. This option sets the maximum and minimum values for the Y axis. 
 - *Legend*. This option shows the legend of the graph series. It can be aligned in three different positions. On the top of the graph, in the middle, or at the bottom.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualization.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationinit.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationconfiguration1.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationconfiguration2.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualization.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationinit.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration2.png?w=253" height = 300>
 
 When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesvisualization.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceandsensors.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceandsensors2.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorvisualization.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesvisualization.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors2.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorvisualization.png?w=253" height = 300>
 
 #### Activity Recognition
 
@@ -208,14 +207,14 @@ The activities are the following: standing still, sitting and relaxing, lying do
 
 In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/subjectsensors.png?raw=true" height = 375>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/subjectsensors.png?w=253" height = 375>
 
 To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityspinner.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activitystart.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/erroractivity.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityrecognition.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activitystart.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/erroractivity.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityrecognition.png?w=253" height = 300>
 
 #### Notifications
 
@@ -229,13 +228,13 @@ This tab permits to create different kind of notifications. When the tab is sele
 
 As an example, it can be used an app user with back problems that needs to be reminded about his daily exercises. Thus, for this purpose, the user can create a notification and customize it by putting the notification title and description, as well as setting the hour of its appearance. Moreover, if the user wants to visualize some recommended exercises he can mark the *Launch Recommendations* option that after clicking on the notification will automatically open the YouTube Guidelines tab.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications1.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications2.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications3.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications2.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications3.png?w=253" height = 300>
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications4.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications5.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/notifications6.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications4.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications5.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications6.png?w=253" height = 300>
 
 #### YouTube Guidelines
 
@@ -247,14 +246,14 @@ This tab allows the app user the visualization of videos in order to keep health
 - Ankle: playlist with videos of ankle rehabilitation, orientate to user with ankle problems.
 - Neck: playlist with videos of neck rehabilitation, orientate to user with neck problems.	
     
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube1.png?raw=true" height = 350>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube2.png?raw=true" height = 350>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube3.png?raw=true" height = 350>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube1.png?w=253" height = 350>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube2.png?w=253" height = 350>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube3.png?w=253" height = 350>
 
 Once that a playlist has been selected, a scrollable list of videos will appear on the screen. This list can be extended pressing on the *Extend List* button and collapse by pressing on it again. When the user selects a video to be reproduced, this appears on the player and can be reproduced when the start icon is clicked. The player may also be extended using the button *Extend Player* or collapse clicking on it again.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube4.png?raw=true" height = 350>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/youtube5.png?raw=true" height = 350>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube4.png?w=253" height = 350>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube5.png?w=253" height = 350>
 
 #### Remote Storage
 
@@ -262,10 +261,10 @@ This tab allows the user app to upload to a remote storage the collected data fr
 
 When a device of the list is pressed on, it appears a dialog asking the app user to define which tables must be uploaded. There are three options: Units, Metadata and Signals. After pressing the OK button the uploading of the selected data starts. A message will appear in the screen to notify the end of the uploading process.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote1.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote2.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote3.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/remote4.png?raw=true" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote1.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote2.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote3.png?w=253" height = 300>
+<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote4.png?w=253" height = 300>
 
 ## Examples. How to use mHealthDroid
 
