@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/Foto%20logo%202.png" height=225>
+<img src="https://raw.github.com/mHealthDroid/mHealthDroid/master/res/raw/fotologo2.png" height=225>
 
 ## What is mHealthDroid? 
 
@@ -136,7 +136,7 @@ This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It
 
 In the following video the mHealthDroid APP and all its functionalities are shown: 
 
-[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoYoutubeSnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)]
+[![ScreenShot](https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/videoyoutubesnapshot.png?raw=true)](http://youtu.be/AMdxw4osjCU)]
 
 ### APP Usage
 
@@ -149,15 +149,15 @@ This tab offers to the user all the connectivity features and the devices config
 In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. The message also have two buttons in order to select the kind of device. It can be either *Mobile* or *Shimmer*.
 
 <img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/connectivity.png?raw=true" height=300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/addingDevice.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/addingdevice.png?raw=true" height = 300>
 <img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/scanning.png?raw=true" height = 300>
 
 
 Once the device is added, it will be displayed in the ListView. It is showed three fields for each device: The first one is the device's name, the second one is the device's type, and the third one is its state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorInsertion1.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorInsertion2.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesStatus.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorinsertion1.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorinsertion2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesstatus.png?raw=true" height = 300>
 
 When a device is pressed, a menu with several options is displayed. These options will depend on the device's type and its status. The possible options are the following ones:
 
@@ -167,15 +167,15 @@ When a device is pressed, a menu with several options is displayed. These option
 - *Configuration*. This option opens a window to set the device configuration. Here, it is also set whether the data must be stored into the database. The device configuration can be different for each kind of device. It is only showed when the device is not streaming.
 - *Remove*. This option removes a device from the devices list.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuMobile.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuMobileStreaming.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuShimmerConnected.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menuShimmerStreaming.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menumobile.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menumobilestreaming.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menushimmerconnected.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/menushimmerstreaming.png?raw=true" height = 300>
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/sensorsMobile.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmerSensors.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/mobileConfiguration.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmerConfiguration.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/sensorsmobile.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmersensors.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/mobileconfiguration.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/shimmerconfiguration.png?raw=true" height = 300>
 
 
 #### Visualization
@@ -189,16 +189,16 @@ When the *Configuration* button is pressed, a menu is open in order to set the g
 - *Legend*. This option shows the legend of the graph series. It can be aligned in three different positions. On the top of the graph, in the middle, or at the bottom.
 
 <img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualization.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationInit.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationConfiguration1.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationConfiguration2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationinit.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationconfiguration1.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/visualizationconfiguration2.png?raw=true" height = 300>
 
 When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesVisualization.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceAndSensors.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceAndSensors2.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorVisualization.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/devicesvisualization.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceandsensors.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/deviceandsensors2.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorvisualization.png?raw=true" height = 300>
 
 #### Activity Recognition
 
@@ -208,14 +208,14 @@ The activities are the following: standing still, sitting and relaxing, lying do
 
 In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/subjectSensors.png?raw=true" height = 375>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/subjectsensors.png?raw=true" height = 375>
 
 To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.
 
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activitySpinner.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityStart.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/errorActivity.png?raw=true" height = 300>
-<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityRecognition.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityspinner.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activitystart.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/erroractivity.png?raw=true" height = 300>
+<img src="https://github.com/mHealthDroid/mHealthDroid/blob/master/res/raw/activityrecognition.png?raw=true" height = 300>
 
 #### Notifications
 
