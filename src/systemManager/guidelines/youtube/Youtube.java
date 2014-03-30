@@ -24,6 +24,7 @@ import com.google.android.youtube.player.YouTubePlayer.Provider;
 public class Youtube {
 
 	YouTubePlayerView youtubeView;
+	YouTubePlayer player;
 	String keyDeveloper;
 	ListView videosListView;
 	int videoEntryViewID;
@@ -39,13 +40,11 @@ public class Youtube {
 	 * @param youtubeView a youtubePlayerView view where videos are reproduced
 	 * @param keyDeveloper a google key developer
 	 */
-	public Youtube(Context context, YouTubePlayerView youtubeView,
-			String keyDeveloper) {
+	public Youtube(Context context, YouTubePlayerView youtubeView) {
 
 		this.context = context;
 		this.youtubeView = youtubeView;
-		this.keyDeveloper = keyDeveloper;
-
+		player = null;
 	}
 
 	/**
@@ -122,29 +121,13 @@ public class Youtube {
 				Video chosen = (Video) pariente.getItemAtPosition(position);
 				String url = chosen.getUrl();
 				IDVideo = getYoutubeVideoId(url);
-
-				youtubeView.initialize(keyDeveloper,
-						new YouTubePlayer.OnInitializedListener() {
-
-							@Override
-							public void onInitializationFailure(Provider arg0,
-									YouTubeInitializationResult arg1) {
-
-							}
-
-							@Override
-							public void onInitializationSuccess(Provider arg0,
-									YouTubePlayer player, boolean wasRestored) {
-
-								if (!wasRestored) {
-
-									player.cueVideo(IDVideo);
-								}
-							}
-						});
+				if(player != null){
+					player.cueVideo(IDVideo);
+				}
 			}
 		});
 	}
+		
 
 	/**
      * Method to reproduce a single video
@@ -153,24 +136,9 @@ public class Youtube {
 	public void reproduceSingleVideoMode(String longUrl) {
 
 		IDVideo = getYoutubeVideoId(longUrl);
-		youtubeView.initialize(keyDeveloper,
-				new YouTubePlayer.OnInitializedListener() {
-
-					@Override
-					public void onInitializationSuccess(Provider arg0,
-							YouTubePlayer player, boolean arg2) {
-						// TODO Auto-generated method stub
-						player.cueVideo(IDVideo);
-					}
-
-					@Override
-					public void onInitializationFailure(Provider arg0,
-							YouTubeInitializationResult arg1) {
-							
-						Toast.makeText(context, "Error. Couldnt reproduce video", Toast.LENGTH_LONG).show();
-
-					}
-				});
+		if(player != null){
+			player.cueVideo(IDVideo);
+		}
 	}
 
 	/**
@@ -189,5 +157,14 @@ public class Youtube {
 		}
 
 		return input;
+	}
+	
+	/**
+	 * Method to set the YouTube player where videos will be played
+	 * @param player the YouTube player where videos will be played
+	 */
+	public void setPlayer(YouTubePlayer player){
+		
+		this.player = player;
 	}
 }

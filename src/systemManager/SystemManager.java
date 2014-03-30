@@ -9,6 +9,7 @@ import android.widget.VideoView;
 
 import android.content.Context;
 
+import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import systemManager.guidelines.audio.Audio;
@@ -72,13 +73,12 @@ public class SystemManager {
 	 * Method to get a Youtube object
 	 * @param context the IU current context
 	 * @param youtubeView a youtubePlayerView view where videos will be reproduced
-	 * @param keyDeveloper a google developer key
 	 * @return a Youtube object
 	 */
 	public Youtube getYoutubePlayer(Context context,
-			YouTubePlayerView youtubeView, String keyDeveloper) {
+			YouTubePlayerView youtubeView) {
 
-		youtube = new Youtube(context, youtubeView, keyDeveloper);
+		youtube = new Youtube(context, youtubeView);
 		return youtube;
 	}
 	
