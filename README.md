@@ -136,7 +136,7 @@ This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It
 
 In the following video the mHealthDroid APP and all its functionalities are shown: 
 
-[<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](http://google.com.au/)
+[<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](https://www.youtube.com/watch?v=AMdxw4osjCU)
 
 ### APP Usage
 
