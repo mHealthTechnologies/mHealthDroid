@@ -26,6 +26,12 @@ import com.shimmerresearch.driver.FormatCluster;
 import com.shimmerresearch.driver.ObjectCluster;
 import com.shimmerresearch.driver.Shimmer;
 
+/*
+ * 
+ * This is the driver for the version 0.5 of the Shimmer driver.
+ * 
+ */
+
 public class DeviceShimmer extends Activity implements Device {
 
 	private Shimmer myShimmerDevice = null;
