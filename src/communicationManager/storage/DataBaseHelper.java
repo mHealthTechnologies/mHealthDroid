@@ -8,6 +8,11 @@ import android.os.Environment;
 
 class DatabaseHelper extends SQLiteOpenHelper {
 
+	
+	private static String external = "Environment.getExternalStorageDirectory()" + "/";
+	private static String standarDatabaseName = "MyDB";
+	
+	
 	/**
 	 * Constructor. Creates a new DB
 	 * @param context  IU current activity context

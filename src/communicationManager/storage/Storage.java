@@ -8,7 +8,6 @@ import communicationManager.dataStructure.ObjectData;
 import communicationManager.dataStructure.ObjectData.SensorType;
 import communicationManager.dataStructure.ObjectMetadata;
 import communicationManager.dataStructure.ObjectMetadata.FormatType;
-
 import android.content.Context;
 import android.text.format.Time;
 import android.util.Pair;
@@ -47,7 +46,7 @@ public class Storage {
 
 
 	/**
-	 * Method to insert shimmer signal rows
+	 * Method to insert signal rows from the device shimmer 2
 	 * @param list objectData list with all the rows to insert in the table
 	 * @param label labeling for the rows
 	 * @param nameTable table name
@@ -55,7 +54,7 @@ public class Storage {
 	 * @param complete boolean to know if the buffer sample is complete (check communication manager buffer)
 	 * @param numSamples is the number of samples that store the buffer
 	 */
-	public void insertShimmer(ArrayList<ObjectData> list, String label, String nameTable, int index, boolean complete, int numSamples) {
+	public void insertShimmer2(ArrayList<ObjectData> list, String label, String nameTable, int index, boolean complete, int numSamples) {
 
 
 		double[][] matrix;
@@ -64,16 +63,16 @@ public class Storage {
 
 		if (complete == true) {
 			init = index - numSamples;
-			matrix = new double[numSamples][19];
+			matrix = new double[numSamples][29];
 		} else {
 			init = index - (index % numSamples);
-			matrix = new double[index % numSamples][19];
+			matrix = new double[index % numSamples][29];
 		}
 
 		for (int i = 0; i < matrix.length; i++)
-			for (int k = 0; k < 19; k++)
+			for (int k = 0; k < 29; k++)
 				matrix[i][k] = Double.NaN;
-
+		
 		for (int i = init; i < index; i++) {
 			Set<SensorType> sensors = list.get(i).hashData.keySet();
 			for (SensorType s : sensors) {
@@ -132,8 +131,38 @@ public class Storage {
 				case EXP_BOARDA7:
 					matrix[j][17] = list.get(i).hashData.get(s).data;
 					break;
-				case TIME_STAMP:
+				case V_SENSE_REG:
 					matrix[j][18] = list.get(i).hashData.get(s).data;
+					break;
+				case V_SENSE_BATT:
+					matrix[j][19] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_A:
+					matrix[j][20] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_X:
+					matrix[j][21] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_Y:
+					matrix[j][22] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_Z:
+					matrix[j][23] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION0:
+					matrix[j][24] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION1:
+					matrix[j][25] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION2:
+					matrix[j][26] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION3:
+					matrix[j][27] = list.get(i).hashData.get(s).data;
+					break;
+				case TIME_STAMP:
+					matrix[j][28] = list.get(i).hashData.get(s).data;
 					break;
 
 				}
@@ -142,18 +171,202 @@ public class Storage {
 			j++;
 		}
 
-		dbadapter.insertShimmerSignal(matrix,label, nameTable);
+		dbadapter.insertShimmer2Signal(matrix,label, nameTable);
 	}
+	
+	/**
+	 * Method to insert signal rows from the device shimmer 3
+	 * @param list objectData list with all the rows to insert in the table
+	 * @param label labeling for the rows
+	 * @param nameTable table name
+	 * @param index buffer index
+	 * @param complete boolean to know if the buffer sample is complete (check communication manager buffer)
+	 * @param numSamples is the number of samples that store the buffer
+	 */
+	public void insertShimmer3(ArrayList<ObjectData> list, String label, String nameTable, int index, boolean complete, int numSamples) {
+
+		
+		double[][] matrix;
+		int j = 0;
+		int init = 0;
+
+		if (complete == true) {
+			init = index - numSamples;
+			matrix = new double[numSamples][47];
+		} else {
+			init = index - (index % numSamples);
+			matrix = new double[index % numSamples][47];
+		}
+
+		for (int i = 0; i < matrix.length; i++)
+			for (int k = 0; k < 47; k++)
+				matrix[i][k] = Double.NaN;
+
+		for (int i = init; i < index; i++) {
+			Set<SensorType> sensors = list.get(i).hashData.keySet();
+			for (SensorType s : sensors) {
+				switch (s) {
+				case LOW_NOISE_ACCELEROMETER_X:
+					matrix[j][0] = list.get(i).hashData.get(s).data;
+					break;
+				case LOW_NOISE_ACCELEROMETER_Y:
+					matrix[j][1] = list.get(i).hashData.get(s).data;
+					break;
+				case LOW_NOISE_ACCELEROMETER_Z:
+					matrix[j][2] = list.get(i).hashData.get(s).data;
+					break;
+				case WIDE_RANGE_ACCELEROMETER_X:
+					matrix[j][3] = list.get(i).hashData.get(s).data;
+					break;
+				case WIDE_RANGE_ACCELEROMETER_Y:
+					matrix[j][4] = list.get(i).hashData.get(s).data;
+					break;
+				case WIDE_RANGE_ACCELEROMETER_Z:
+					matrix[j][5] = list.get(i).hashData.get(s).data;
+					break;
+				case MAGNETOMETER_X:
+					matrix[j][6] = list.get(i).hashData.get(s).data;
+					break;
+				case MAGNETOMETER_Y:
+					matrix[j][7] = list.get(i).hashData.get(s).data;
+					break;
+				case MAGNETOMETER_Z:
+					matrix[j][8] = list.get(i).hashData.get(s).data;
+					break;
+				case GYROSCOPE_X:
+					matrix[j][9] = list.get(i).hashData.get(s).data;
+					break;
+				case GYROSCOPE_Y:
+					matrix[j][10] = list.get(i).hashData.get(s).data;
+					break;
+				case GYROSCOPE_Z:
+					matrix[j][11] = list.get(i).hashData.get(s).data;
+					break;
+				case GSR:
+					matrix[j][12] = list.get(i).hashData.get(s).data;
+					break;
+				case V_SENSE_BATT:
+					matrix[j][13] = list.get(i).hashData.get(s).data;
+					break;
+				case EXTERNAL_ADC_A6:
+					matrix[j][14] = list.get(i).hashData.get(s).data;
+					break;
+				case EXTERNAL_ADC_A7:
+					matrix[j][15] = list.get(i).hashData.get(s).data;
+					break;
+				case EXTERNAL_ADC_A15:
+					matrix[j][16] = list.get(i).hashData.get(s).data;
+					break;
+				case INTERNAL_ADC_A1:
+					matrix[j][17] = list.get(i).hashData.get(s).data;
+					break;
+				case INTERNAL_ADC_A12:
+					matrix[j][18] = list.get(i).hashData.get(s).data;
+					break;
+				case INTERNAL_ADC_A13:
+					matrix[j][19] = list.get(i).hashData.get(s).data;
+					break;
+				case INTERNAL_ADC_A14:
+					matrix[j][20] = list.get(i).hashData.get(s).data;
+					break;
+				case PRESSURE:
+					matrix[j][21] = list.get(i).hashData.get(s).data;
+					break;
+				case TEMPERATURE:
+					matrix[j][22] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG1_STATUS:
+					matrix[j][23] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG2_STATUS:
+					matrix[j][24] = list.get(i).hashData.get(s).data;
+					break;
+				case ECG_LLRA:
+					matrix[j][25] = list.get(i).hashData.get(s).data;
+					break;
+				case ECG_LARA:
+					matrix[j][26] = list.get(i).hashData.get(s).data;
+					break;
+				case EMG_CH1:
+					matrix[j][27] = list.get(i).hashData.get(s).data;
+					break;
+				case EMG_CH2:
+					matrix[j][28] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG1_CH1:
+					matrix[j][29] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG1_CH2:
+					matrix[j][30] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG2_CH1:
+					matrix[j][31] = list.get(i).hashData.get(s).data;
+					break;
+				case ECG_VXRL:
+					matrix[j][32] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG2_CH2:
+					matrix[j][33] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG1_CH1_16B:
+					matrix[j][34] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG1_CH2_16B:
+					matrix[j][35] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG2_CH1_16B:
+					matrix[j][36] = list.get(i).hashData.get(s).data;
+					break;
+				case EXG2_16B:
+					matrix[j][37] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_A:
+					matrix[j][38] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_X:
+					matrix[j][39] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_Y:
+					matrix[j][40] = list.get(i).hashData.get(s).data;
+					break;
+				case ANGLE_AXIS_Z:
+					matrix[j][41] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION0:
+					matrix[j][42] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION1:
+					matrix[j][43] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION2:
+					matrix[j][44] = list.get(i).hashData.get(s).data;
+					break;
+				case QUARTENION3:
+					matrix[j][45] = list.get(i).hashData.get(s).data;
+					break;
+				case TIME_STAMP:
+					matrix[j][46] = list.get(i).hashData.get(s).data;
+					break;
+
+				}
+
+			}
+			j++;
+		}
+
+		dbadapter.insertShimmer3Signal(matrix,label, nameTable);
+	}
+	
 
 	/**
-	 * Method to insert a shimmer metadata row (a session)
+	 * Method to insert a shimmer 2 metadata row (a session)
 	 * @param mt ObjectData to insert in the table
 	 * @param nameTable table name
 	 */
-	public void insertShimmerMetadata(ObjectMetadata mt, String nameTable) {
+	public void insertShimmer2Metadata(ObjectMetadata mt, String nameTable) {
 
 		String format;
-		int[] array = new int[12];
+		int[] array = new int[15];
 
 		if (mt.format == FormatType.CALIBRATED)
 			format = "Calibrated";
@@ -193,15 +406,108 @@ public class Storage {
 				case EXP_BOARDA7:
 					array[9] = 1;
 				break;
+				case V_SENSE_BATT:
+					array[10] = 1;
+				break;
+				case V_SENSE_REG:
+					array[11] = 1;
+				break;
+				case ORIENTATION:
+					array[12]=1;
+				break;
 			}
 		}
 
-		array[10] = mt.firstIndex;
-		array[11] = mt.lastIndex;
+		array[13] = mt.firstIndex;
+		array[14] = mt.lastIndex;
 
-		dbadapter.insertShimmerMetadata(array, nameTable, format, mt.startToString(), mt.finishToString(), mt.rate);
+		dbadapter.insertShimmer2Metadata(array, nameTable, "Shimmer 2",  format, mt.startToString(), mt.finishToString(), mt.rate);
 	}
 
+	/**
+	 * Method to insert a shimmer 3 metadata row (a session)
+	 * @param mt ObjectData to insert in the table
+	 * @param nameTable table name
+	 */
+	public void insertShimmer3Metadata(ObjectMetadata mt, String nameTable) {
+
+		String format;
+		int[] array = new int[21];
+
+		if (mt.format == FormatType.CALIBRATED)
+			format = "Calibrated";
+		else
+			format = "Uncalibrated";
+
+		Set<SensorType> set = mt.hashMetadata.keySet();
+		for (SensorType s : set) {
+			switch (s) {
+				case LOW_NOISE_ACCELEROMETER:
+					array[0] = 1;
+				break;
+				case WIDE_RANGE_ACCELEROMETER:
+					array[1] = 1;
+				break;
+				case MAGNETOMETER:
+					array[2] = 1;
+				break;
+				case GYROSCOPE:
+					array[3] = 1;
+				break;
+				case GSR:
+					array[4] = 1;
+				break;
+				case BMP180:
+					array[5] = 1;
+				break;
+				case EXG1_24B:
+					array[6] = 1;
+				break;
+				case EXG2_24B:
+					array[7] = 1;
+				break;
+				case EXG1_16B:
+					array[8] = 1;
+				break;
+				case EXG2_16B:
+					array[9] = 1;
+				break;
+				case V_SENSE_BATT:
+					array[10] = 1;
+				break;
+				case EXTERNAL_ADC_A6:
+					array[11] = 1;
+				break;
+				case EXTERNAL_ADC_A7:
+					array[12] = 1;
+				break;
+				case EXTERNAL_ADC_A15:
+					array[13] = 1;
+				break;
+				case INTERNAL_ADC_A1:
+					array[14] = 1;
+				break;
+				case INTERNAL_ADC_A12:
+					array[15] = 1;
+				break;
+				case INTERNAL_ADC_A13:
+					array[16] = 1;
+				break;
+				case INTERNAL_ADC_A14:
+					array[17] = 1;
+				break;
+				case ORIENTATION:
+					array[18]=1;
+				break;
+			}
+		}
+
+		array[19] = mt.firstIndex;
+		array[20] = mt.lastIndex;
+
+		dbadapter.insertShimmer3Metadata(array, nameTable, "Shimmer 3",  format, mt.startToString(), mt.finishToString(), mt.rate);
+	}
+	
 	/**
 	 * Method to insert a mobile metadata row (a session)
 	 * @param mt ObjectData to insert in the table
@@ -417,21 +723,39 @@ public class Storage {
 	}
 
 	/**
-	 * Method to create a shimmer signal table
+	 * Method to create a shimmer 2 signal table
 	 * @param name table name
 	 */
-	public void createShimmerTable(String name) {
+	public void createShimmer2Table(String name) {
 
-		dbadapter.createShimmerTable(name);
+		dbadapter.createShimmer2Table(name);
+	}
+	
+	/**
+	 * Method to create a shimmer 3 signal table
+	 * @param name table name
+	 */
+	public void createShimmer3Table(String name) {
+
+		dbadapter.createShimmer3Table(name);
 	}
 
 	/**
-	 * Method to create a shimmer signal table
+	 * Method to create a shimmer 2 signal table
 	 * @param name table name
 	 */
-	public void createShimmerTableMetadata(String name) {
+	public void createShimmer2TableMetadata(String name) {
 
-		dbadapter.createShimmerTableMetadata(name);
+		dbadapter.createShimmer2TableMetadata(name);
+	}
+	
+	/**
+	 * Method to create a shimmer 3 signal table
+	 * @param name table name
+	 */
+	public void createShimmer3TableMetadata(String name) {
+
+		dbadapter.createShimmer3TableMetadata(name);
 	}
 	
 	/**

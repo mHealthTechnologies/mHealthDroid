@@ -22,6 +22,8 @@ public class DBAdapter {
 	public static final String ACCELEROMETER_Y = "AccY";
 	public static final String ACCELEROMETER_Z = "AccZ";
 	public static final String ACCELEROMETER = "Acc";
+	public static final String LOW_NOISE_ACCELEROMETER = "LNAcc";
+	public static final String WIDE_RANGE_ACCELEROMETER = "WRAcc";
 	public static final String MAGNOMETER_X = "MagX";
 	public static final String MAGNOMETER_Y = "MagY";
 	public static final String MAGNOMETER_Z = "MagZ";
@@ -41,6 +43,54 @@ public class DBAdapter {
 	public static final String HEART_RATE = "HeartRate";
 	public static final String EXP_BOARDA0 = "ExpBA0";
 	public static final String EXP_BOARDA7 = "ExpBA7";
+	
+	public static final String ANGLE_AXIS_A = "AAA";
+	public static final String ANGLE_AXIS_X = "AAX";
+	public static final String ANGLE_AXIS_Y = "AAY";
+	public static final String ANGLE_AXIS_Z = "AAZ";
+	public static final String QUARTENION0 = "Q0";
+	public static final String QUARTENION1 = "Q1";
+	public static final String QUARTENION2 = "Q2";
+	public static final String QUARTENION3 = "Q3";
+	public static final String ORIENTATION_3D = "3DOrientation";
+	public static final String V_SENSE_REG = "VSReg";
+	public static final String V_SENSE_BATT = "VSBatt";
+	
+	public static final String LOW_NOISE_ACCELEROMETER_X = "LNAccX";
+	public static final String LOW_NOISE_ACCELEROMETER_Y = "LNAccY";
+	public static final String LOW_NOISE_ACCELEROMETER_Z = "LNAccZ";
+	public static final String WIDE_RANGE_ACCELEROMETER_X = "WRAccX";
+	public static final String WIDE_RANGE_ACCELEROMETER_Y = "WRAccY";
+	public static final String WIDE_RANGE_ACCELEROMETER_Z = "WRAccZ";
+	public static final String TEMPERATURE = "Temp";
+	public static final String EXTERNAL_ADC_A6 = "ExADCA6";
+	public static final String EXTERNAL_ADC_A7 = "ExADCA7";
+	public static final String EXTERNAL_ADC_A15 = "ExADCA15";
+	public static final String INTERNAL_ADC_A1 = "InADCA1";
+	public static final String INTERNAL_ADC_A12 = "InADCA12";
+	public static final String INTERNAL_ADC_A13 = "InADCA13";
+	public static final String INTERNAL_ADC_A14 = "InADCA14";
+	public static final String ECG_LLRA = "EcgLL";
+	public static final String ECG_LARA = "EcgLA";
+	public static final String EMG_CH1 = "EmgCh1";
+	public static final String EMG_CH2 = "EmgCh2";
+	public static final String EXG1_CH1 = "EXg1Ch1";
+	public static final String EXG1_CH2 = "EXg1Ch2";
+	public static final String EXG1_CH1_16BIT = "EXg1Ch1.16Bit";
+	public static final String EXG1_CH2_16BIT = "EXg1Ch2.16Bit";
+	public static final String EXG2_CH1 = "EXg2Ch1";
+	public static final String EXG2_CH2 = "EXg2Ch2";
+	public static final String ECG_VxRL = "EcgVxRL";
+	public static final String EXG2_CH1_16BIT = "EXg2Ch1.16Bit";
+	public static final String EXG2_CH2_16BIT = "EXg2Ch2.16Bit";
+	public static final String EXG1_STATUS = "EXg1Status";
+	public static final String EXG2_STATUS = "EXg2Status";
+	public static final String EXG1_24BIT = "EXg1.24Bit";
+	public static final String EXG2_24BIT = "EXg2.24Bit";
+	public static final String EXG1_16BIT = "EXg1.16Bit";
+	public static final String EXG2_16BIT = "EXg2.16Bit";
+	public static final String BMP180 = "BMP180"; // this is the sensor for the pressure and the temperature
+	
 	public static final String TIME_STAMP = "TimeStamp";
 	public static final String LIGHT = "Light";
 	public static final String PRESSURE = "Pressure";
@@ -77,6 +127,7 @@ public class DBAdapter {
 	public static final String HEIGHT = "Height";
 	public static final String WEIGHT = "Weight";
 	public static final String EMAIL = "Email";
+	public static final String TYPE_DEVICE = "Device";
 	public static final String TABLE_SHIMMER_UNITS = "Shimmer_Units";
 	public static final String TABLE_MOBILE_UNITS = "Mobile_Units";
 	public static final String TABLE_USER_PROFILE = "User_Profile";
@@ -117,10 +168,10 @@ public class DBAdapter {
 	}
 
 	/**
-	 * Method to create a shimmer signal table
+	 * Method to create a shimmer 2 signal table
 	 * @param name table name
 	 */
-	public void createShimmerTable(String name) {
+	public void createShimmer2Table(String name) {
 
 		String sql = "create table if not exists " + name + " (" + ID
 				+ " integer primary key autoincrement, " + ACCELEROMETER_X
@@ -132,16 +183,57 @@ public class DBAdapter {
 				+ ECG_LALL + " double," + EMG + " double," + STRAIN_GAUGE_HIGH
 				+ " double," + STRAIN_GAUGE_LOW + " double," + HEART_RATE
 				+ " double," + EXP_BOARDA0 + " double," + EXP_BOARDA7
+				+ " double," + V_SENSE_REG + " double," + V_SENSE_BATT 
+				+ " double," + ANGLE_AXIS_A + " double," + ANGLE_AXIS_X
+				+ " double," + ANGLE_AXIS_Y + " double," + ANGLE_AXIS_Z
+				+ " double," + QUARTENION0 + " double," + QUARTENION1
+				+ " double," + QUARTENION2 + " double," + QUARTENION3
+				+ " double," + LABEL +" text,"+ TIME_STAMP + " double" + ");";
+
+		db.execSQL(sql);
+	}
+	
+	/**
+	 * Method to create a shimmer 3 signal table
+	 * @param name table name
+	 */
+	public void createShimmer3Table(String name) {
+
+		String sql = "create table if not exists " + name + " (" + ID
+				+ " integer primary key autoincrement, " + LOW_NOISE_ACCELEROMETER_X
+				+ " double," + LOW_NOISE_ACCELEROMETER_Y + " double," + LOW_NOISE_ACCELEROMETER_Z
+				+ " double," + WIDE_RANGE_ACCELEROMETER_X + " double," + WIDE_RANGE_ACCELEROMETER_Y
+				+ " double," + WIDE_RANGE_ACCELEROMETER_Z
+				+ " double," + MAGNOMETER_X + " double," + MAGNOMETER_Y
+				+ " double," + MAGNOMETER_Z + " double," + GYROSCOPE_X
+				+ " double," + GYROSCOPE_Y + " double," + GYROSCOPE_Z
+				+ " double," + GSR + " double," + V_SENSE_BATT + " double," + EXTERNAL_ADC_A6
+				+ " double," + EXTERNAL_ADC_A7 + " double," + EXTERNAL_ADC_A15
+				+ " double," + INTERNAL_ADC_A1 + " double," + INTERNAL_ADC_A12
+				+ " double," + INTERNAL_ADC_A13 + " double," + INTERNAL_ADC_A14
+				+ " double," + PRESSURE + " double," + TEMPERATURE
+				+ " double," + EXG1_STATUS + " double," + EXG2_STATUS
+				+ " double," + ECG_LLRA + " double," + ECG_LARA
+				+ " double," + EMG_CH1 + " double," + EMG_CH2
+				+ " double," + EXG1_CH1 + " double," + EXG1_CH2
+				+ " double," + EXG2_CH1 + " double," + ECG_VxRL
+				+ " double," + EXG2_CH2
+				+ " double," + EXG1_CH1_16BIT + " double," + EXG1_CH2_16BIT
+				+ " double," + EXG2_CH1_16BIT + " double," + EXG2_CH2_16BIT
+				+ " double," + ANGLE_AXIS_A + " double," + ANGLE_AXIS_X
+				+ " double," + ANGLE_AXIS_Y + " double," + ANGLE_AXIS_Z
+				+ " double," + QUARTENION0 + " double," + QUARTENION1
+				+ " double," + QUARTENION2 + " double," + QUARTENION3
 				+ " double," + LABEL +" text,"+ TIME_STAMP + " double" + ");";
 
 		db.execSQL(sql);
 	}
 
 	/**
-	 * Method to create a metadata signal table
+	 * Method to create a metadata signal table for the Shimmer 2
 	 * @param nameMetadata table name
 	 */
-	public void createShimmerTableMetadata(String nameMetadata) {
+	public void createShimmer2TableMetadata(String nameMetadata) {
 
 		String sql = "create table if not exists " + nameMetadata + " (" + ID
 				+ " integer primary key autoincrement, " + ACCELEROMETER
@@ -149,7 +241,34 @@ public class DBAdapter {
 				+ " integer," + GSR + " integer," + ECG + " integer," + EMG
 				+ " integer," + STRAIN_GAUGE + " integer," + HEART_RATE
 				+ " integer," + EXP_BOARDA0 + " integer," + EXP_BOARDA7
-				+ " integer," + FORMAT + " text," + START + " text," + FINISH
+				+ " integer," + V_SENSE_BATT + " integer," + V_SENSE_REG 
+				+ " integer," + ORIENTATION_3D + " integer," + TYPE_DEVICE 
+				+ " text," + FORMAT + " text," + START + " text," + FINISH
+				+ " text," + FIRST_INDEX + " integer," + LAST_INDEX	
+				+ " integer," + RATE + " integer"+ ");";
+
+		db.execSQL(sql);
+	}
+	
+	/**
+	 * Method to create a metadata signal table for the Shimmer 3
+	 * @param nameMetadata table name
+	 */
+	public void createShimmer3TableMetadata(String nameMetadata) {
+
+		String sql = "create table if not exists " + nameMetadata + " (" + ID
+				+ " integer primary key autoincrement, " + LOW_NOISE_ACCELEROMETER
+				+ " integer," + WIDE_RANGE_ACCELEROMETER 
+				+ " integer," + MAGNOMETER + " integer," + GYROSCOPE
+				+ " integer," + GSR + " integer," + BMP180 
+				+ " integer," + EXG1_24BIT + " integer," + EXG2_24BIT
+				+ " integer," + EXG1_16BIT + " integer," + EXG2_16BIT
+				+ " integer," + V_SENSE_BATT + " integer," + EXTERNAL_ADC_A6
+				+ " integer," + EXTERNAL_ADC_A7 + " integer," + EXTERNAL_ADC_A15
+				+ " integer," + INTERNAL_ADC_A1 + " integer," + INTERNAL_ADC_A12
+				+ " integer," + INTERNAL_ADC_A13 + " integer," + INTERNAL_ADC_A14
+				+ " integer," + ORIENTATION_3D + " integer," + TYPE_DEVICE
+				+ " text," + FORMAT + " text," + START + " text," + FINISH
 				+ " text," + FIRST_INDEX + " integer," + LAST_INDEX	
 				+ " integer," + RATE + " integer"+ ");";
 
@@ -270,20 +389,23 @@ public class DBAdapter {
 	}
 
 	/**
-	 * Method to insert shimmer signal rows
+	 * Method to insert signal rows from the device shimmer 2
 	 * @param array array with the information to insert in the table
 	 * @param label labeling column for the rows
 	 * @param nameTable table name
 	 */
-	public void insertShimmerSignal(double[][] array, String label,  String nameTable) {
+	public void insertShimmer2Signal(double[][] array, String label,  String nameTable) {
 
 		String sql = "INSERT INTO "	+ nameTable	+ " (" + ACCELEROMETER_X + ", "	+ ACCELEROMETER_Y
 				+ ", " + ACCELEROMETER_Z + ", "	+ MAGNOMETER_X + ", " + MAGNOMETER_Y + ", "
 				+ MAGNOMETER_Z + ", " + GYROSCOPE_X	+ ", " + GYROSCOPE_Y + ", "	+ GYROSCOPE_Z
 				+ ", " + GSR + ", "	+ ECG_RALL + ", " + ECG_LALL + ", " + EMG + ", "
 				+ STRAIN_GAUGE_HIGH + ", " + STRAIN_GAUGE_LOW + ", " + HEART_RATE + ", "
-				+ EXP_BOARDA0 + ", " + EXP_BOARDA7 	+ ", " + TIME_STAMP + ", "+ LABEL 
-				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ EXP_BOARDA0 + ", " + EXP_BOARDA7 	+ ", " + V_SENSE_REG + ", " + V_SENSE_BATT
+				+ ", " + ANGLE_AXIS_A + ", " + ANGLE_AXIS_X + ", " + ANGLE_AXIS_Y
+				+ ", " + ANGLE_AXIS_Z + ", " + QUARTENION0 + ", " + QUARTENION1 
+				+ ", " + QUARTENION2 + ", " + QUARTENION3 + TIME_STAMP + ", "+ LABEL 
+				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		db.beginTransaction();
 		SQLiteStatement stmt = db.compileStatement(sql);
@@ -365,10 +487,280 @@ public class DBAdapter {
 				stmt.bindDouble(19, array[i][18]);
 			else
 				stmt.bindNull(19);
-			if (label!=null)
-				stmt.bindString(20, label);
+			if (!Double.isNaN(array[i][19]))
+				stmt.bindDouble(20, array[i][19]);
 			else
 				stmt.bindNull(20);
+			if (!Double.isNaN(array[i][20]))
+				stmt.bindDouble(21, array[i][20]);
+			else
+				stmt.bindNull(21);
+			if (!Double.isNaN(array[i][21]))
+				stmt.bindDouble(22, array[i][21]);
+			else
+				stmt.bindNull(22);
+			if (!Double.isNaN(array[i][22]))
+				stmt.bindDouble(23, array[i][22]);
+			else
+				stmt.bindNull(23);
+			if (!Double.isNaN(array[i][23]))
+				stmt.bindDouble(24, array[i][23]);
+			else
+				stmt.bindNull(24);
+			if (!Double.isNaN(array[i][24]))
+				stmt.bindDouble(25, array[i][24]);
+			else
+				stmt.bindNull(25);
+			if (!Double.isNaN(array[i][25]))
+				stmt.bindDouble(26, array[i][25]);
+			else
+				stmt.bindNull(26);
+			if (!Double.isNaN(array[i][26]))
+				stmt.bindDouble(27, array[i][26]);
+			else
+				stmt.bindNull(27);
+			if (!Double.isNaN(array[i][27]))
+				stmt.bindDouble(28, array[i][27]);
+			else
+				stmt.bindNull(28);			
+			if (!Double.isNaN(array[i][28]))
+				stmt.bindDouble(29, array[i][28]);
+			else
+				stmt.bindNull(29);
+			if (label!=null)
+				stmt.bindString(30, label);
+			else
+				stmt.bindNull(30);
+
+			stmt.executeInsert();
+			stmt.clearBindings();
+		}
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
+	}
+	
+	/**
+	 * Method to insert signal rows from the device shimmer 2
+	 * @param array array with the information to insert in the table
+	 * @param label labeling column for the rows
+	 * @param nameTable table name
+	 */
+	public void insertShimmer3Signal(double[][] array, String label,  String nameTable) {
+
+		String sql = "INSERT INTO "	+ nameTable	
+				+ " (" + LOW_NOISE_ACCELEROMETER_X + ", " + LOW_NOISE_ACCELEROMETER_Y + ", " + LOW_NOISE_ACCELEROMETER_Z 
+				+ ", " + WIDE_RANGE_ACCELEROMETER_X + ", " + WIDE_RANGE_ACCELEROMETER_Y + ", " + WIDE_RANGE_ACCELEROMETER_Z
+				+ ", " + MAGNOMETER_X + ", " + MAGNOMETER_Y + ", " + MAGNOMETER_Z 
+				+ ", " + GYROSCOPE_X	+ ", " + GYROSCOPE_Y + ", "	+ GYROSCOPE_Z
+				+ ", " + GSR + ", "	+ V_SENSE_BATT 
+				+ ", " + EXTERNAL_ADC_A6 + ", " + EXTERNAL_ADC_A7 + ", " + EXTERNAL_ADC_A15
+				+ ", " + INTERNAL_ADC_A1 + ", " + INTERNAL_ADC_A12 + ", " + INTERNAL_ADC_A13 + ", " + INTERNAL_ADC_A14
+				+ ", " + PRESSURE + ", " + TEMPERATURE
+				+ ", " + EXG1_STATUS + ", " + EXG2_STATUS
+				+ ", " + ECG_LLRA + ", " + ECG_LARA + ", " + EMG_CH1 + ", " + EMG_CH2
+				+ ", " + EXG1_CH1 + ", " + EXG1_CH2 
+				+ ", " + EXG2_CH1 + ", " + ECG_VxRL + ", " + EXG2_CH2
+				+ ", " + EXG1_CH1_16BIT + ", " + EXG1_CH2_16BIT
+				+ ", " + EXG2_CH1_16BIT + ", " + EXG2_CH2_16BIT
+				+ ", " + ANGLE_AXIS_A + ", " + ANGLE_AXIS_X + ", " + ANGLE_AXIS_Y
+				+ ", " + ANGLE_AXIS_Z + ", " + QUARTENION0 + ", " + QUARTENION1 
+				+ ", " + QUARTENION2 + ", " + QUARTENION3 + TIME_STAMP + ", "+ LABEL 
+				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+				+ ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		db.beginTransaction();
+		SQLiteStatement stmt = db.compileStatement(sql);
+
+		for (int i = 0; i < array.length; i++) {
+			if (!Double.isNaN(array[i][0]))
+				stmt.bindDouble(1, array[i][0]);
+			else
+				stmt.bindNull(1);
+			if (!Double.isNaN(array[i][1]))
+				stmt.bindDouble(2, array[i][1]);
+			else
+				stmt.bindNull(2);
+			if (!Double.isNaN(array[i][2]))
+				stmt.bindDouble(3, array[i][2]);
+			else
+				stmt.bindNull(3);
+			if (!Double.isNaN(array[i][3]))
+				stmt.bindDouble(4, array[i][3]);
+			else
+				stmt.bindNull(4);
+			if (!Double.isNaN(array[i][4]))
+				stmt.bindDouble(5, array[i][4]);
+			else
+				stmt.bindNull(5);
+			if (!Double.isNaN(array[i][5]))
+				stmt.bindDouble(6, array[i][5]);
+			else
+				stmt.bindNull(6);
+			if (!Double.isNaN(array[i][6]))
+				stmt.bindDouble(7, array[i][6]);
+			else
+				stmt.bindNull(7);
+			if (!Double.isNaN(array[i][7]))
+				stmt.bindDouble(8, array[i][7]);
+			else
+				stmt.bindNull(8);
+			if (!Double.isNaN(array[i][8]))
+				stmt.bindDouble(9, array[i][8]);
+			else
+				stmt.bindNull(9);
+			if (!Double.isNaN(array[i][9]))
+				stmt.bindDouble(10, array[i][9]);
+			else
+				stmt.bindNull(10);
+			if (!Double.isNaN(array[i][10]))
+				stmt.bindDouble(11, array[i][10]);
+			else
+				stmt.bindNull(11);
+			if (!Double.isNaN(array[i][11]))
+				stmt.bindDouble(12, array[i][11]);
+			else
+				stmt.bindNull(12);
+			if (!Double.isNaN(array[i][12]))
+				stmt.bindDouble(13, array[i][12]);
+			else
+				stmt.bindNull(13);
+			if (!Double.isNaN(array[i][13]))
+				stmt.bindDouble(14, array[i][13]);
+			else
+				stmt.bindNull(14);
+			if (!Double.isNaN(array[i][14]))
+				stmt.bindDouble(15, array[i][14]);
+			else
+				stmt.bindNull(15);
+			if (!Double.isNaN(array[i][15]))
+				stmt.bindDouble(16, array[i][15]);
+			else
+				stmt.bindNull(16);
+			if (!Double.isNaN(array[i][16]))
+				stmt.bindDouble(17, array[i][16]);
+			else
+				stmt.bindNull(17);
+			if (!Double.isNaN(array[i][17]))
+				stmt.bindDouble(18, array[i][17]);
+			else
+				stmt.bindNull(18);
+			if (!Double.isNaN(array[i][18]))
+				stmt.bindDouble(19, array[i][18]);
+			else
+				stmt.bindNull(19);
+			if (!Double.isNaN(array[i][19]))
+				stmt.bindDouble(20, array[i][19]);
+			else
+				stmt.bindNull(20);
+			if (!Double.isNaN(array[i][20]))
+				stmt.bindDouble(21, array[i][20]);
+			else
+				stmt.bindNull(21);
+			if (!Double.isNaN(array[i][21]))
+				stmt.bindDouble(22, array[i][21]);
+			else
+				stmt.bindNull(22);
+			if (!Double.isNaN(array[i][22]))
+				stmt.bindDouble(23, array[i][22]);
+			else
+				stmt.bindNull(23);
+			if (!Double.isNaN(array[i][23]))
+				stmt.bindDouble(24, array[i][23]);
+			else
+				stmt.bindNull(24);
+			if (!Double.isNaN(array[i][24]))
+				stmt.bindDouble(25, array[i][24]);
+			else
+				stmt.bindNull(25);
+			if (!Double.isNaN(array[i][25]))
+				stmt.bindDouble(26, array[i][25]);
+			else
+				stmt.bindNull(26);
+			if (!Double.isNaN(array[i][26]))
+				stmt.bindDouble(27, array[i][26]);
+			else
+				stmt.bindNull(27);
+			if (!Double.isNaN(array[i][27]))
+				stmt.bindDouble(28, array[i][27]);
+			else
+				stmt.bindNull(28);			
+			if (!Double.isNaN(array[i][28]))
+				stmt.bindDouble(29, array[i][28]);
+			else
+				stmt.bindNull(29);
+			if (!Double.isNaN(array[i][29]))
+				stmt.bindDouble(30, array[i][29]);
+			else
+				stmt.bindNull(30);
+			if (!Double.isNaN(array[i][30]))
+				stmt.bindDouble(31, array[i][30]);
+			else
+				stmt.bindNull(31);
+			if (!Double.isNaN(array[i][31]))
+				stmt.bindDouble(32, array[i][31]);
+			else
+				stmt.bindNull(32);
+			if (!Double.isNaN(array[i][32]))
+				stmt.bindDouble(33, array[i][32]);
+			else
+				stmt.bindNull(33);
+			if (!Double.isNaN(array[i][33]))
+				stmt.bindDouble(34, array[i][33]);
+			else
+				stmt.bindNull(34);
+			if (!Double.isNaN(array[i][34]))
+				stmt.bindDouble(35, array[i][34]);
+			else
+				stmt.bindNull(35);
+			if (!Double.isNaN(array[i][35]))
+				stmt.bindDouble(36, array[i][35]);
+			else
+				stmt.bindNull(36);
+			if (!Double.isNaN(array[i][37]))
+				stmt.bindDouble(38, array[i][37]);
+			else
+				stmt.bindNull(38);
+			if (!Double.isNaN(array[i][38]))
+				stmt.bindDouble(39, array[i][38]);
+			else
+				stmt.bindNull(39);
+			if (!Double.isNaN(array[i][39]))
+				stmt.bindDouble(40, array[i][39]);
+			else
+				stmt.bindNull(40);
+			if (!Double.isNaN(array[i][40]))
+				stmt.bindDouble(41, array[i][40]);
+			else
+				stmt.bindNull(41);
+			if (!Double.isNaN(array[i][41]))
+				stmt.bindDouble(42, array[i][41]);
+			else
+				stmt.bindNull(42);
+			if (!Double.isNaN(array[i][42]))
+				stmt.bindDouble(43, array[i][42]);
+			else
+				stmt.bindNull(43);
+			if (!Double.isNaN(array[i][43]))
+				stmt.bindDouble(44, array[i][43]);
+			else
+				stmt.bindNull(44);
+			if (!Double.isNaN(array[i][44]))
+				stmt.bindDouble(45, array[i][44]);
+			else
+				stmt.bindNull(45);
+			if (!Double.isNaN(array[i][45]))
+				stmt.bindDouble(46, array[i][45]);
+			else
+				stmt.bindNull(46);
+			if (!Double.isNaN(array[i][46]))
+				stmt.bindDouble(47, array[i][46]);
+			else
+				stmt.bindNull(47);			
+			if (label!=null)
+				stmt.bindString(48, label);
+			else
+				stmt.bindNull(48);
 
 			stmt.executeInsert();
 			stmt.clearBindings();
@@ -379,7 +771,7 @@ public class DBAdapter {
 	}
 
 	/**
-	 * Method to insert a shimmer medatata row (a session)
+	 * Method to insert a shimmer 2 medatata row (a session)
 	 * @param array array with metadata values related to Sensors activated
 	 * @param nameTable table name
 	 * @param format format (calibrated or uncalibrated)
@@ -387,15 +779,16 @@ public class DBAdapter {
 	 * @param finish session ending time
 	 * @param rate session rate
 	 */
-	public void insertShimmerMetadata(int[] array, String nameTable,
+	public void insertShimmer2Metadata(int[] array, String nameTable, String typeDevice,
 			String format, String start, String finish, double rate) {
 
 		String sql = "INSERT INTO " + nameTable + " (" + ACCELEROMETER + ", "
 				+ MAGNOMETER + ", " + GYROSCOPE + ", " + GSR + ", " + ECG
 				+ ", " + EMG + ", " + STRAIN_GAUGE + ", " + HEART_RATE + ", "
-				+ EXP_BOARDA0 + ", " + EXP_BOARDA7 + ", " + FORMAT + ", "
-				+ START + ", " + FINISH + ", " + FIRST_INDEX + ", "
-				+ LAST_INDEX+ ", "+ RATE +") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ EXP_BOARDA0 + ", " + EXP_BOARDA7 + ", " + V_SENSE_BATT
+				+ ", " + V_SENSE_REG + ", " + ORIENTATION_3D + ", " + TYPE_DEVICE
+				+ ", " + FORMAT + START + ", " + FINISH + ", " + FIRST_INDEX + ", "
+				+ LAST_INDEX+ ", "+ RATE +") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		db.beginTransaction();
 		SQLiteStatement stmt = db.compileStatement(sql);
@@ -410,12 +803,75 @@ public class DBAdapter {
 		stmt.bindLong(8, array[7]);
 		stmt.bindLong(9, array[8]);
 		stmt.bindLong(10, array[9]);
-		stmt.bindString(11, format);
-		stmt.bindString(12, start);
-		stmt.bindString(13, finish);
-		stmt.bindLong(14, array[10]);
-		stmt.bindLong(15, array[11]);
-		stmt.bindDouble(16, rate);
+		stmt.bindLong(11, array[10]);
+		stmt.bindLong(12, array[11]);
+		stmt.bindLong(13, array[12]);
+		stmt.bindString(14, typeDevice);
+		stmt.bindString(15, format);
+		stmt.bindString(16, start);
+		stmt.bindString(17, finish);
+		stmt.bindLong(18, array[13]);
+		stmt.bindLong(19, array[14]);
+		stmt.bindDouble(20, rate);
+		stmt.executeInsert();
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
+	}
+	
+	/**
+	 * Method to insert a shimmer 3 medatata row (a session)
+	 * @param array array with metadata values related to Sensors activated
+	 * @param nameTable table name
+	 * @param format format (calibrated or uncalibrated)
+	 * @param start session starting time
+	 * @param finish session ending time
+	 * @param rate session rate
+	 */
+	public void insertShimmer3Metadata(int[] array, String nameTable, String typeDevice,
+			String format, String start, String finish, double rate) {
+
+		String sql = "INSERT INTO " + nameTable + " (" + LOW_NOISE_ACCELEROMETER 
+				+ ", " + WIDE_RANGE_ACCELEROMETER + ", "+ MAGNOMETER + ", " + GYROSCOPE 
+				+ ", " + GSR + ", " + BMP180 
+				+ ", " + EXG1_24BIT + ", " + EXG2_24BIT
+				+ ", " + EXG1_16BIT + ", " + EXG2_16BIT + ", " + V_SENSE_BATT
+				+ ", " + EXTERNAL_ADC_A6 + ", " + EXTERNAL_ADC_A7 + ", " + EXTERNAL_ADC_A15
+				+ ", " + INTERNAL_ADC_A1 + ", " + INTERNAL_ADC_A12
+				+ ", " + INTERNAL_ADC_A13 + ", " + INTERNAL_ADC_A14
+				+ ", " + ORIENTATION_3D + ", " + TYPE_DEVICE
+				+ ", " + FORMAT + START + ", " + FINISH + ", " + FIRST_INDEX + ", "
+				+ LAST_INDEX+ ", "+ RATE +") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		db.beginTransaction();
+		SQLiteStatement stmt = db.compileStatement(sql);
+
+		stmt.bindLong(1, array[0]);
+		stmt.bindLong(2, array[1]);
+		stmt.bindLong(3, array[2]);
+		stmt.bindLong(4, array[3]);
+		stmt.bindLong(5, array[4]);
+		stmt.bindLong(6, array[5]);
+		stmt.bindLong(7, array[6]);
+		stmt.bindLong(8, array[7]);
+		stmt.bindLong(9, array[8]);
+		stmt.bindLong(10, array[9]);
+		stmt.bindLong(11, array[10]);
+		stmt.bindLong(12, array[11]);
+		stmt.bindLong(13, array[12]);
+		stmt.bindLong(14, array[13]);
+		stmt.bindLong(15, array[14]);
+		stmt.bindLong(16, array[15]);
+		stmt.bindLong(17, array[16]);
+		stmt.bindLong(18, array[17]);
+		stmt.bindLong(19, array[18]);
+		stmt.bindString(20, typeDevice);
+		stmt.bindString(21, format);
+		stmt.bindString(22, start);
+		stmt.bindString(23, finish);
+		stmt.bindLong(24, array[19]);
+		stmt.bindLong(25, array[20]);
+		stmt.bindDouble(26, rate);
 		stmt.executeInsert();
 
 		db.setTransactionSuccessful();
@@ -605,9 +1061,12 @@ public class DBAdapter {
 		String sql = "INSERT INTO " + TABLE_SHIMMER_UNITS + " (" + SENSORS
 				+ ", " + CALIBRATED + ", " + UNCALIBRATED + ") VALUES (?, ?, ?)";
 
-		String[] sensors = { "TIME", "ACC", "GYR", "MAG", "GSR", "ECG", "EMG", "STRAIN", "HEART", "EXP_A0", "EXP_A7" };
-		String[] calibrated = { "ms", "m/(sec^2)", "deg/s", "local", "kohms", "mV", "mV", "mV", "bmp", "mV", "mV" };
-		String[] uncalibrated = { "u16", "u12", "u12", "i16", "u16", "u12", "u12", "u12", "", "u12", "u12" };
+		String[] sensors = { "TIME", "ACC", "GYR", "MAG", "GSR", "ECG", "EMG", "STRAIN", "HEART", "EXP_A0", "EXP_A7", 
+				"VSENSE_REG", "VSENSE_BATT", "3D_ORIENT", "LNACC", "WRACC", "EXT_AX", "INT_AX", "PRESS", "TEMP", "EXG"};
+		String[] calibrated = { "ms", "m/(sec^2)", "deg/s", "local", "kOhms", "mV", "mV", "mV", "bmp", "mV", "mV", "mV", "mV",
+				"local",  "m/(sec^2)",  "m/(sec^2)", "mV", "mV", "kPa", "C", "mV" };
+		String[] uncalibrated = { "u12", "u12", "u12", "i16", "u16", "u12", "u12", "u12", "u12", "u12", "u12", "", "",
+				"", "i16", "i16", "u12", "u12", "u24r", "u16r", ""};
 
 		db.beginTransaction();
 		SQLiteStatement stmt = db.compileStatement(sql);
