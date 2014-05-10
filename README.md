@@ -8,7 +8,7 @@ This framework has been developed independently from the biomedical type device 
 
 Android target version: 4.2
 
-Android minimum version: 2.3.3
+Android minimum version: 2.3.3 
 
 **Table of Contents**
 
