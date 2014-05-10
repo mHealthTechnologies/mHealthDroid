@@ -23,7 +23,7 @@ Android minimum version: 2.3.3
 	- [APP Usage](#app-usage)
 		- [Connectivity](#connectivity)
 		- [Visualization](#visualization)
-		- [Activity Recognition](#activity-recognition)
+		- [Activity Recognition](#activity-recognition) 
 		- [Notifications](#notifications)
 		- [YouTube Guidelines](#youtube-guidelines)
 		- [Remote Storage](#remote-storage) 
