@@ -26,7 +26,7 @@ Android minimum version: 2.3.3
 		- [Activity Recognition](#activity-recognition)
 		- [Notifications](#notifications)
 		- [YouTube Guidelines](#youtube-guidelines)
-		- [Remote Storage](#remote-storage)
+		- [Remote Storage](#remote-storage) 
 - [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
 	- [Communication Manager](#communication-manager)
 	- [Remote Storage Manager](#remote-storage-manager)
