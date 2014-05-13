@@ -2,9 +2,14 @@
 
 ## What is mHealthDroid?  
 
-mHealhDroid is an open-source mobile framework designed to facilitate the rapid and easy development of mhealth and biomedical applications. The framework is devised to leverage the potential of mobile devices such as smartphones or tablets, wearable sensors and portable biomedical devices which are used increasingly for the monitoring and delivery of personal health care and wellbeing. Likewise, mHealthDroid aims at bringing together heterogeneous platforms and multimodal sensors, including both research and commercial systems. The framework comprises an extensive set of modules and libraries for sensor data acquisition, data management, remote storage, signal processing, machine learning, intelligent recommendations and multimedia guidelines, as well as multidimensional data visualization among others features. The core of the framework is defined to operate on the Android OS; however, it has been implemented in a way that allows its use with any portable device. 
+mHealhDroid is an open-source mobile framework designed to facilitate the rapid and easy development of mhealth and biomedical applications. The framework is devised to leverage the potential of mobile devices such as smartphones or tablets, wearable sensors and portable biomedical devices which are used increasingly for the monitoring and delivery of personal health care and wellbeing. Likewise, mHealthDroid aims at bringing together heterogeneous platforms and multimodal sensors, including both research and commercial systems. 
 
-This framework has been developed independently from the biomedical type device or communication protocol. Owing to that, it is necessary to create an intermediate driver for every portable biomedical device to be used which will work between the device and the framework. The drivers are included in the framework and remain unnoticed to the user. Thanks to this approach, an application can run simultaneously with different kinds of devices, providing a great flexibility.
+The framework comprises an extensive set of modules and libraries for sensor data acquisition, data management, remote storage, signal processing, machine learning, multidimensional data visualization, as well as intelligent recommendations and multimedia guidelines among others features. The core of the framework is defined to operate on the Android operating system; however, it has been implemented in a way that allows its use with any portable device. In fact, the core modules and components are defined to be completely independent of the underlying sensing and communication technology. To utilize a new device (commercial or not) it is only required to include the corresponding drivers that allow the communication between the mHealthDroid modules and the specific device (anyway transparent to the end user). The mHealthDroid initiative already includes drivers for a wide sort of portable devices; nevertheless it aims at incorporating new systems to the current portfolio of supported systems. As an open-source platform in continuous development contributions are very welcome.
+
+Suggestions and comments are also appreciated!
+
+Contact: mhealthdroid@gmail.com
+
 
 Android target version: 4.2
 
@@ -61,28 +66,30 @@ Android minimum version: 2.3.3
 
 * Rapid development of medical, health and wellbeing applications.
 
-* Efficient and fast communication between portable biomedical devices and portable mobile devices to gather patient data like physiological or kinematic signals. Up to now, SHIMMER biomedical devices and mobile sensors can be used as portable biomedical devices.
+* Fast and efficient communication between portable biomedical devices and portable mobile devices to gather human-centered physiological and kinematic data. Up to now, SHIMMER biomedical devices and mobile sensors can be used as portable biomedical devices.
 
 * Development of applications capable of working with different portable health devices simultaneously.
 
 * Efficient data transfer across the framework managers.
 
-* Fast data storage either local or remote.
+* Fast data storage (either local or remote).
 
-* Visualization of any kind of data stream like patient's vital signs or kinematic data, either online or offine.
+* Visualization of any kind of data stream such as patient's vital signs or kinematic data (either online or offine).
 
-* Knowledge inference procured through machine learning and statistical model.
+* Knowledge inference by using machine learning and pattern recognition models.
 
-* Guidelines support through Audio, Video or YouTube playlists, as well as notifications procedures.
+* Multimedia guidelines and recommenders, supported through Audio, Video and YouTube playlists, as well as notification procedures.
 
-* Easy system control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, making phone calls or sending text messages.
+* System control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, make phone calls or send text messages.
 
-* User management through login functionality, also supporting security and privacy.
+* User data privacy and protection.
 
 
 ## Installation instructions
 
-Once mHealthDroid project is downloaded, it is necessary a few steps to get started.
+A few steps are required to get started:
+
+0. Download the project source files.
 
 1. Import the project to Eclipse or other IDE.    
 
