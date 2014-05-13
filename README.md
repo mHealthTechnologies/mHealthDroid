@@ -2,7 +2,7 @@
 
 ## What is mHealthDroid?  
 
-mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.
+mHealhDroid is an open-source mobile framework designed to facilitate the rapid and easy development of mhealth and biomedical applications. The framework is devised to leverage the potential of mobile devices such as smartphones or tablets, wearable sensors and portable biomedical devices which are used increasingly for the monitoring and delivery of personal health care and wellbeing. Likewise, mHealthDroid aims at bringing together heterogeneous platforms and multimodal sensors, including both research and commercial systems. The framework comprises an extensive set of modules and libraries for sensor data acquisition, data management, remote storage, signal processing, machine learning, intelligent recommendations and multimedia guidelines, as well as multidimensional data visualization among others features. The core of the framework is defined to operate on the Android OS; however, it has been implemented in a way that allows its use with any portable device. 
 
 This framework has been developed independently from the biomedical type device or communication protocol. Owing to that, it is necessary to create an intermediate driver for every portable biomedical device to be used which will work between the device and the framework. The drivers are included in the framework and remain unnoticed to the user. Thanks to this approach, an application can run simultaneously with different kinds of devices, providing a great flexibility.
 
