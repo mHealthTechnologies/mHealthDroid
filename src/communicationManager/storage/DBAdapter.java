@@ -52,7 +52,7 @@ public class DBAdapter {
 	public static final String QUARTENION1 = "Q1";
 	public static final String QUARTENION2 = "Q2";
 	public static final String QUARTENION3 = "Q3";
-	public static final String ORIENTATION_3D = "3DOrientation";
+	public static final String ORIENTATION_3D = "Orientation";
 	public static final String V_SENSE_REG = "VSReg";
 	public static final String V_SENSE_BATT = "VSBatt";
 	
@@ -404,7 +404,7 @@ public class DBAdapter {
 				+ EXP_BOARDA0 + ", " + EXP_BOARDA7 	+ ", " + V_SENSE_REG + ", " + V_SENSE_BATT
 				+ ", " + ANGLE_AXIS_A + ", " + ANGLE_AXIS_X + ", " + ANGLE_AXIS_Y
 				+ ", " + ANGLE_AXIS_Z + ", " + QUARTENION0 + ", " + QUARTENION1 
-				+ ", " + QUARTENION2 + ", " + QUARTENION3 + TIME_STAMP + ", "+ LABEL 
+				+ ", " + QUARTENION2 + ", " + QUARTENION3 + ", " + TIME_STAMP + ", "+ LABEL 
 				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		db.beginTransaction();
@@ -565,7 +565,7 @@ public class DBAdapter {
 				+ ", " + EXG2_CH1_16BIT + ", " + EXG2_CH2_16BIT
 				+ ", " + ANGLE_AXIS_A + ", " + ANGLE_AXIS_X + ", " + ANGLE_AXIS_Y
 				+ ", " + ANGLE_AXIS_Z + ", " + QUARTENION0 + ", " + QUARTENION1 
-				+ ", " + QUARTENION2 + ", " + QUARTENION3 + TIME_STAMP + ", "+ LABEL 
+				+ ", " + QUARTENION2 + ", " + QUARTENION3 + ", " + TIME_STAMP + ", "+ LABEL 
 				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
 				+ ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -787,7 +787,7 @@ public class DBAdapter {
 				+ ", " + EMG + ", " + STRAIN_GAUGE + ", " + HEART_RATE + ", "
 				+ EXP_BOARDA0 + ", " + EXP_BOARDA7 + ", " + V_SENSE_BATT
 				+ ", " + V_SENSE_REG + ", " + ORIENTATION_3D + ", " + TYPE_DEVICE
-				+ ", " + FORMAT + START + ", " + FINISH + ", " + FIRST_INDEX + ", "
+				+ ", " + FORMAT + ", " + START + ", " + FINISH + ", " + FIRST_INDEX + ", "
 				+ LAST_INDEX+ ", "+ RATE +") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		db.beginTransaction();

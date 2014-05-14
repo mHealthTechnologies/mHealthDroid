@@ -25,6 +25,11 @@ import com.shimmerresearch.android.Shimmer;
 import com.shimmerresearch.driver.FormatCluster;
 import com.shimmerresearch.driver.ObjectCluster;
 
+/**
+ * This driver supports the Shimmer Driver 2.3. It means that it can work with the Shimmer 2 and the Shimmer 3.
+ * @author Alex
+ *
+ */
 
 public class DeviceShimmer extends Activity implements Device {
 
@@ -82,6 +87,8 @@ public class DeviceShimmer extends Activity implements Device {
 	// Uncalibrated
 	public static final String[] UNITS_TIME = { "ms", "u16" };
 	public static final String[] UNITS_ACCEL = { "m/(sec^2)", "u12" };
+	public static final String[] UNITS_LNACCEL = { "m/(sec^2)", "i16" };
+	public static final String[] UNITS_WRACCEL = { "m/(sec^2)", "i16" };
 	public static final String[] UNITS_GYRO = { "deg/s", "u12" };
 	public static final String[] UNITS_MAG = { "local", "i16" };
 	public static final String[] UNITS_GSR = { "kohms", "u16" };
@@ -91,6 +98,13 @@ public class DeviceShimmer extends Activity implements Device {
 	public static final String[] UNITS_HEART = { "bmp", "" };
 	public static final String[] UNITS_EXP_A0 = { "mV", "u12" };
 	public static final String[] UNITS_EXP_A7 = { "mV", "u12" };
+	public static final String[] UNITS_VSENSE_REG = { "mV", "" };
+	public static final String[] UNITS_VSENSE_BATT = { "mV", "" };
+	public static final String[] UNITS_ORIENTATION = { "local", "" };
+	public static final String[] UNITS_EXTERNAL = { "mV", "u12" };
+	public static final String[] UNITS_INTTERNAL = { "mV", "u12" };
+	public static final String[] UNITS_BMP180 = { "kPa, C", "u24r, u16r" }; //the first one is the pressure, and the second one is the temperature
+	public static final String[] UNITS_EXG = { "mV", "" };
 	
 	//libraries that can be used to connect the device
 	//The purpose of having two libraries is because some Stock firmware do not implement the full Bluetooth Stack.
@@ -202,7 +216,10 @@ public class DeviceShimmer extends Activity implements Device {
 	public void startStreaming() {
 
 		cont = 0;
-		initBuffer();
+		if(myShimmerVersion==3 || myShimmerVersion==4)
+			initBufferShimmer3();
+		else
+			initBufferShimmer2();
 		firstSample = true;
 		myShimmerDevice.startStreaming();
 		isStreaming = true;
@@ -280,7 +297,6 @@ public class DeviceShimmer extends Activity implements Device {
 						Set<String> keys = objectCluster.mPropertyCluster.keySet();
 						if(myShimmerVersion == 4 || myShimmerVersion == 3){ // Shimmer 3 or Shimmer 3R
 							for (String k : keys) { // introduce the objectCluster into our data structure
-								//SIN TERMINAR
 								if (k.equals("Low Noise Accelerometer X"))
 									sensor = SensorType.LOW_NOISE_ACCELEROMETER_X;
 								else if (k.equals("Low Noise Accelerometer Y"))
@@ -666,7 +682,7 @@ public class DeviceShimmer extends Activity implements Device {
 	@Override
 	public void setMetadata() {
 
-		//SIN TERMINAR
+
 		int sensors = myShimmerDevice.getEnabledSensors();
 		metadata.format = format;
 
@@ -677,9 +693,21 @@ public class DeviceShimmer extends Activity implements Device {
 
 		if (((sensors & 0xFF) & SENSOR_ACCEL) > 0) {
 			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.ACCELEROMETER,	new Metadata(UNITS_ACCEL[0]));
+				if(myShimmerVersion==3 || myShimmerVersion==4)
+					metadata.hashMetadata.put(SensorType.LOW_NOISE_ACCELEROMETER, new Metadata(UNITS_LNACCEL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.ACCELEROMETER,	new Metadata(UNITS_ACCEL[0]));
 			else
-				metadata.hashMetadata.put(SensorType.ACCELEROMETER,	new Metadata(UNITS_ACCEL[1]));
+				if(myShimmerVersion==3 || myShimmerVersion==4)
+					metadata.hashMetadata.put(SensorType.LOW_NOISE_ACCELEROMETER, new Metadata(UNITS_LNACCEL[1]));
+				else
+					metadata.hashMetadata.put(SensorType.ACCELEROMETER,	new Metadata(UNITS_ACCEL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_DACCEL) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.WIDE_RANGE_ACCELEROMETER,	new Metadata(UNITS_WRACCEL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.WIDE_RANGE_ACCELEROMETER,	new Metadata(UNITS_WRACCEL[1]));
 		}
 		if (((sensors & 0xFF) & SENSOR_GYRO) > 0) {
 			if (format == FormatType.CALIBRATED)
@@ -734,6 +762,90 @@ public class DeviceShimmer extends Activity implements Device {
 			else
 				metadata.hashMetadata.put(SensorType.EXP_BOARDA7, new Metadata(UNITS_EXP_A7[1]));
 		}
+		if (((sensors & 0xFF) & SENSOR_EXT_ADC_A6) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A6, new Metadata(UNITS_EXTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A6, new Metadata(UNITS_EXTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_EXT_ADC_A7) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A7, new Metadata(UNITS_EXTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A7, new Metadata(UNITS_EXTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_EXT_ADC_A15) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A15, new Metadata(UNITS_EXTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A15, new Metadata(UNITS_EXTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_INT_ADC_A1) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A1, new Metadata(UNITS_INTTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A1, new Metadata(UNITS_INTTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_INT_ADC_A12) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A12, new Metadata(UNITS_INTTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A12, new Metadata(UNITS_INTTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_INT_ADC_A13) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A13, new Metadata(UNITS_INTTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A13, new Metadata(UNITS_INTTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_INT_ADC_A14) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A14, new Metadata(UNITS_INTTERNAL[0]));
+			else
+				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A14, new Metadata(UNITS_INTTERNAL[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_BATT) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[0]));
+			else
+				metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_ACCEL) > 0 && ((sensors & 0xFF) & SENSOR_GYRO) > 0 && ((sensors & 0xFF) & SENSOR_MAG) > 0 && is3DOrientationEnabled()) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[0]));
+			else
+				metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_BMP180) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.BMP180, new Metadata(UNITS_BMP180[0]));
+			else
+				metadata.hashMetadata.put(SensorType.BMP180, new Metadata(UNITS_BMP180[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_EXG1_24BIT) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXG1_24B, new Metadata(UNITS_EXG[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXG1_24B, new Metadata(UNITS_EXG[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_EXG2_24BIT) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXG2_24B, new Metadata(UNITS_EXG[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXG2_24B, new Metadata(UNITS_EXG[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_EXG1_16BIT) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXG1_16B, new Metadata(UNITS_EXG[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXG1_16B, new Metadata(UNITS_EXG[1]));
+		}
+		if (((sensors & 0xFF) & SENSOR_EXG2_16BIT) > 0) {
+			if (format == FormatType.CALIBRATED)
+				metadata.hashMetadata.put(SensorType.EXG2_16B, new Metadata(UNITS_EXG[0]));
+			else
+				metadata.hashMetadata.put(SensorType.EXG2_16B, new Metadata(UNITS_EXG[1]));
+		}
 		
 		metadata.rate = myShimmerDevice.getSamplingRate();
 
@@ -749,17 +861,6 @@ public class DeviceShimmer extends Activity implements Device {
 	}
 
 	/**
-	 * Transmits a command to the Shimmer device to enable the sensors. To
-	 * enable multiple sensors an or operator should be used (e.g.
-	 * writeEnabledSensors
-	 * (Shimmer.SENSOR_ACCEL|Shimmer.SENSOR_GYRO|Shimmer.SENSOR_MAG)). Command
-	 * should not be used consecutively.
-	 * 
-	 * @param enabledSensors
-	 *            e.g DeviceShimmer.SENSOR_ACCEL|DeviceShimmer.SENSOR_GYRO|
-	 *            DeviceShimmer.SENSOR_MAG
-	 * @param nameDevice
-	 *            is the device's name
 	 */
 	@Override
 	public void writeEnabledSensors(ArrayList<SensorType> enabledSensors) {
@@ -771,6 +872,12 @@ public class DeviceShimmer extends Activity implements Device {
 				switch (enabledSensors.get(i)) {
 				case ACCELEROMETER:
 					sensors = sensors | SENSOR_ACCEL;
+					break;
+				case LOW_NOISE_ACCELEROMETER:
+					sensors = sensors | SENSOR_ACCEL;
+					break;
+				case WIDE_RANGE_ACCELEROMETER:
+					sensors = sensors | SENSOR_DACCEL;
 					break;
 				case GYROSCOPE:
 					sensors = sensors | SENSOR_GYRO;
@@ -799,6 +906,51 @@ public class DeviceShimmer extends Activity implements Device {
 				case HEART_RATE:
 					sensors = sensors | SENSOR_HEART;
 					break;
+				case BMP180:
+					sensors = sensors | SENSOR_BMP180;
+					break;
+				case V_SENSE_BATT:
+					sensors = sensors | SENSOR_BATT;
+					break;
+				case ORIENTATION:
+					sensors = sensors | SENSOR_ACCEL;
+					sensors = sensors | SENSOR_MAG;
+					sensors = sensors | SENSOR_GYRO;
+					enable3DOrientation(true);
+					break;
+				case EXTERNAL_ADC_A6:
+					sensors = sensors | SENSOR_EXT_ADC_A6;
+					break;
+				case EXTERNAL_ADC_A7:
+					sensors = sensors | SENSOR_EXT_ADC_A7;
+					break;
+				case EXTERNAL_ADC_A15:
+					sensors = sensors | SENSOR_EXT_ADC_A15;
+					break;
+				case INTERNAL_ADC_A1:
+					sensors = sensors | SENSOR_INT_ADC_A1;
+					break;
+				case INTERNAL_ADC_A12:
+					sensors = sensors | SENSOR_INT_ADC_A12;
+					break;
+				case INTERNAL_ADC_A13:
+					sensors = sensors | SENSOR_INT_ADC_A13;
+					break;
+				case INTERNAL_ADC_A14:
+					sensors = sensors | SENSOR_INT_ADC_A14;
+					break;
+				case EXG1_24B:
+					sensors = sensors | SENSOR_EXG1_24BIT;
+					break;
+				case EXG2_24B:
+					sensors = sensors | SENSOR_EXG2_24BIT;
+					break;
+				case EXG1_16B:
+					sensors = sensors | SENSOR_EXG1_16BIT;
+					break;
+				case EXG2_16B:
+					sensors = sensors | SENSOR_EXG2_16BIT;
+					break;
 				}
 			}
 
@@ -811,7 +963,6 @@ public class DeviceShimmer extends Activity implements Device {
      */
 	private void initBufferShimmer2() {
 
-		//SIN TERMINAR
 		ArrayList<SensorType> s = getEnabledSensors();
 		ArrayList<SensorType> sensors = new ArrayList<SensorType>();
 		for (int j = 0; j < s.size(); j++) {
@@ -843,6 +994,7 @@ public class DeviceShimmer extends Activity implements Device {
 				break;
 			case EXP_BOARDA0:
 				sensors.add(SensorType.EXP_BOARDA0);
+				sensors.add(SensorType.V_SENSE_REG);
 				break;
 			case EXP_BOARDA7:
 				sensors.add(SensorType.EXP_BOARDA7);
@@ -853,6 +1005,20 @@ public class DeviceShimmer extends Activity implements Device {
 				break;
 			case HEART_RATE:
 				sensors.add(SensorType.HEART_RATE);
+				break;
+			case V_SENSE_BATT:
+				sensors.add(SensorType.V_SENSE_BATT);
+				sensors.add(SensorType.V_SENSE_REG);
+				break;
+			case ORIENTATION:
+				sensors.add(SensorType.ANGLE_AXIS_A);
+				sensors.add(SensorType.ANGLE_AXIS_X);
+				sensors.add(SensorType.ANGLE_AXIS_Y);
+				sensors.add(SensorType.ANGLE_AXIS_Z);
+				sensors.add(SensorType.QUARTENION0);
+				sensors.add(SensorType.QUARTENION1);
+				sensors.add(SensorType.QUARTENION2);
+				sensors.add(SensorType.QUARTENION3);
 				break;
 			}
 		}
@@ -867,15 +1033,19 @@ public class DeviceShimmer extends Activity implements Device {
 	
 	private void initBufferShimmer3() {
 
-		//SIN TERMINAR
 		ArrayList<SensorType> s = getEnabledSensors();
 		ArrayList<SensorType> sensors = new ArrayList<SensorType>();
 		for (int j = 0; j < s.size(); j++) {
 			switch (s.get(j)) {
-			case ACCELEROMETER:
-				sensors.add(SensorType.ACCELEROMETER_X);
-				sensors.add(SensorType.ACCELEROMETER_Y);
-				sensors.add(SensorType.ACCELEROMETER_Z);
+			case LOW_NOISE_ACCELEROMETER:
+				sensors.add(SensorType.LOW_NOISE_ACCELEROMETER_X);
+				sensors.add(SensorType.LOW_NOISE_ACCELEROMETER_Y);
+				sensors.add(SensorType.LOW_NOISE_ACCELEROMETER_Z);
+				break;
+			case WIDE_RANGE_ACCELEROMETER:
+				sensors.add(SensorType.WIDE_RANGE_ACCELEROMETER_X);
+				sensors.add(SensorType.WIDE_RANGE_ACCELEROMETER_Y);
+				sensors.add(SensorType.WIDE_RANGE_ACCELEROMETER_Z);
 				break;
 			case MAGNETOMETER:
 				sensors.add(SensorType.MAGNETOMETER_X);
@@ -887,28 +1057,78 @@ public class DeviceShimmer extends Activity implements Device {
 				sensors.add(SensorType.GYROSCOPE_Y);
 				sensors.add(SensorType.GYROSCOPE_Z);
 				break;
-			case ECG:
-				sensors.add(SensorType.ECG_LALL);
-				sensors.add(SensorType.ECG_RALL);
+			case V_SENSE_BATT:
+				sensors.add(SensorType.V_SENSE_BATT);
 				break;
-			case EMG:
-				sensors.add(SensorType.EMG);
+			case EXTERNAL_ADC_A6:
+				sensors.add(SensorType.EXTERNAL_ADC_A6);
+				break;
+			case EXTERNAL_ADC_A7:
+				sensors.add(SensorType.EXTERNAL_ADC_A7);
+				break;
+			case EXTERNAL_ADC_A15:
+				sensors.add(SensorType.EXTERNAL_ADC_A15);
+				break;
+			case INTERNAL_ADC_A1:
+				sensors.add(SensorType.INTERNAL_ADC_A1);
+				break;
+			case INTERNAL_ADC_A12:
+				sensors.add(SensorType.INTERNAL_ADC_A12);
+				break;
+			case INTERNAL_ADC_A13:
+				sensors.add(SensorType.INTERNAL_ADC_A13);
+				break;
+			case INTERNAL_ADC_A14:
+				sensors.add(SensorType.INTERNAL_ADC_A14);
+				break;
+			case ORIENTATION:
+				sensors.add(SensorType.ANGLE_AXIS_A);
+				sensors.add(SensorType.ANGLE_AXIS_X);
+				sensors.add(SensorType.ANGLE_AXIS_Y);
+				sensors.add(SensorType.ANGLE_AXIS_Z);
+				sensors.add(SensorType.QUARTENION0);
+				sensors.add(SensorType.QUARTENION1);
+				sensors.add(SensorType.QUARTENION2);
+				sensors.add(SensorType.QUARTENION3);
+				break;
+			case EXG1_24B:
+				sensors.add(SensorType.ECG_LLRA);
+				sensors.add(SensorType.ECG_LARA);
+				sensors.add(SensorType.EMG_CH1);
+				sensors.add(SensorType.EMG_CH2);
+				sensors.add(SensorType.EXG1_CH1);
+				sensors.add(SensorType.EXG1_CH2);
+				sensors.add(SensorType.EXG1_STATUS);
+				break;
+			case EXG2_24B:
+				sensors.add(SensorType.EXG2_CH1);
+				sensors.add(SensorType.ECG_VXRL);
+				sensors.add(SensorType.EXG2_CH2);
+				sensors.add(SensorType.EXG2_STATUS);
+				break;
+			case EXG1_16B:
+				sensors.add(SensorType.ECG_LLRA);
+				sensors.add(SensorType.ECG_LARA);
+				sensors.add(SensorType.EMG_CH1);
+				sensors.add(SensorType.EMG_CH2);
+				sensors.add(SensorType.EXG1_CH1_16B);
+				sensors.add(SensorType.EXG1_CH2_16B);
+				sensors.add(SensorType.EXG1_STATUS);
+				break;
+			case EXG2_16B:
+				sensors.add(SensorType.EXG2_CH1);
+				sensors.add(SensorType.ECG_VXRL);
+				sensors.add(SensorType.EXG2_CH2);
+				sensors.add(SensorType.EXG2_CH1_16B);
+				sensors.add(SensorType.EXG2_CH2_16B);
+				sensors.add(SensorType.EXG2_STATUS);
+				break;
+			case BMP180:
+				sensors.add(SensorType.TEMPERATURE);
+				sensors.add(SensorType.PRESSURE);
 				break;
 			case GSR:
 				sensors.add(SensorType.GSR);
-				break;
-			case EXP_BOARDA0:
-				sensors.add(SensorType.EXP_BOARDA0);
-				break;
-			case EXP_BOARDA7:
-				sensors.add(SensorType.EXP_BOARDA7);
-				break;
-			case STRAIN:
-				sensors.add(SensorType.STRAIN_GAUGE_HIGH);
-				sensors.add(SensorType.STRAIN_GAUGE_LOW);
-				break;
-			case HEART_RATE:
-				sensors.add(SensorType.HEART_RATE);
 				break;
 			}
 		}
