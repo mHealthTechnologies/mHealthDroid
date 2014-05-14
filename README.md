@@ -1007,7 +1007,7 @@ Alejandro Sáez Fernández
 * http://github.com/alsafer
 * Email: alejandrosaez3@gmail.com
 
-### Original Idea and Project Supervisor
+### Original Idea and Project Coordinator
 
 Oresti Baños Legrán
 
@@ -1025,12 +1025,11 @@ Juan Antonio Holgado Terriza
 
 You can get any help you need getting in contact with any of the authors. We are looking forward to help you!
 
-## Inspiration
+## Inspiration and motivation
 
-This project is an original idea. It began as the MsC thesis for Computer Engineering of both authors in the University of Granada (UGR). 
+This project is an original idea. The project was initiated and developed as part of the MsC thesis (Computer Science) of the authors at University of Granada (UGR) . 
 
-After a research, we got the conclusion that there exist many wearable health devices, a lot biomedical applications and even a
-wide variety of biomedical frameworks and mobile frameworks, but in terms of biomedical mobile frameworks there is only a few and most of them are focused in the acquisition of data, patient monitoring and data broadcasting. We consider quality trustworthy health applications should incorporate these functionalities plus many others such as data visualization, local and remote storage, guidelines, notifications or knowledge inference and should not be limited to a particular biomedical device. For all these reasons the idea of mHealthDroid was born.
+After evaluation of the state-of-the-art in mobile health we ended up with the conclusion that there exist multiple wearable health devices (most of which are becoming commercial), biomedical apps and also biomedical and mobile frameworks. However, no biomedical mobile framework exists in a broad sense to the best of our knowledge. Although there are some frameworks devised for particular clinical problems, they mainly support data acquisition, visualization and broadcasting. Powerful health applications should incorporate these features plus many others such as local and remote storage, guidelines, recommenders notifications or knowledge inference among others, and not be limited to a particular biomedical device.
 
 ## Copyright and license
 
