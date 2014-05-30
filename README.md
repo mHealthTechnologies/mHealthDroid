@@ -4,11 +4,15 @@
 
 mHealhDroid is an open-source mobile framework designed to facilitate the rapid and easy development of mhealth and biomedical applications. The framework is devised to leverage the potential of mobile devices such as smartphones or tablets, wearable sensors and portable biomedical devices which are used increasingly for the monitoring and delivery of personal health care and wellbeing. Likewise, mHealthDroid aims at bringing together heterogeneous platforms and multimodal sensors, including both research and commercial systems. 
 
-The framework comprises an extensive set of modules and libraries for sensor data acquisition, data management, remote storage, signal processing, machine learning, multidimensional data visualization, as well as intelligent recommendations and multimedia guidelines among others features. The core of the framework is defined to operate on the Android operating system; however, it has been implemented in a way that allows its use with any portable device. In fact, the core modules and components are defined to be completely independent of the underlying sensing and communication technology. To utilize a new device (commercial or not) it is only required to include the corresponding drivers that allow the communication between the mHealthDroid modules and the specific device (anyway transparent to the end user). The mHealthDroid initiative already includes drivers for a wide sort of portable devices; nevertheless it aims at incorporating new systems to the current portfolio of supported systems. 
+The framework comprises an extensive set of modules and libraries for sensor data acquisition, data management, remote storage, signal processing, machine learning, multidimensional data visualization, as well as intelligent recommendations and multimedia guidelines among others features. The core of the framework is defined to operate on the Android operating system; however, it has been implemented in a way that allows its use with any portable device. In fact, the core modules and components are defined to be completely independent of the underlying sensing and communication technology. To utilize a new device (commercial or not) it is only required to include the corresponding drivers that allow the communication between the mHealthDroid modules and the specific device (transparent to the user anyhow). The mHealthDroid initiative already includes drivers for a wide sort of portable devices; nevertheless it aims at incorporating new systems to the current portfolio of supported devices. 
 
 This active platform is in continuous development, thereby contributions are very welcome. Suggestions and comments are also appreciated!
 
-Contact: mhealthdroid@gmail.com
+Contact (general info): mhealthdroid@gmail.com
+
+Contact (R&D enquiries): oresti.bl@gmail.com [Oresti Baños]
+
+Contact (implementation enquiries): rafagarfer@gmail.com [Rafael García], alejandrosaez3@gmail.com [Alejandro Sáez] 
 
 Android target version: 4.2
 
@@ -31,7 +35,7 @@ Android minimum version: 2.3.3
 		- [Notifications](#notifications)
 		- [YouTube Guidelines](#youtube-guidelines)
 		- [Remote Storage](#remote-storage) 
-- [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
+- [How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
 	- [Communication Manager](#communication-manager)
 	- [Remote Storage Manager](#remote-storage-manager)
 	- [Visualization Manager](#visualization-manager)
@@ -69,20 +73,19 @@ Android minimum version: 2.3.3
 
 * Development of applications capable of working with different portable health devices simultaneously.
 
-* Efficient data transfer across the framework managers.
+* Efficient data transfer across the framework's managers.
 
 * Fast data storage (either local or remote).
 
-* Visualization of any kind of data stream such as patient's vital signs or kinematic data (either online or offine).
+* Visualization of any multimodal data streams such as patient's vital signs or kinematic data (either online or offine).
 
 * Knowledge inference by using machine learning and pattern recognition models.
 
-* Multimedia guidelines and recommenders, supported through Audio, Video and YouTube playlists, as well as notification procedures.
+* Multimedia guidelines and recommenders, supported through audio, video and YouTube playlists, as well as notification procedures.
 
-* System control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, make phone calls or send text messages.
+* System control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, phone calls or text messages.
 
-* User data privacy and protection.
-
+* User logging and data privacy mechanisms
 
 ## Installation instructions
 
@@ -102,11 +105,11 @@ A few steps are required to get started:
 
 3. Select mHealthDroid as library project.
 
-4. Creates your new project and select mHealthDroid as library. 
+4. Create your new project and select mHealthDroid as library. 
 
 5. Coding time!
 
-All the libraries can be downloaded from our following repository: 
+All the libraries can be downloaded from the following repository: 
 
 https://github.com/mHealthDroid/libraries
 
@@ -114,57 +117,57 @@ https://github.com/mHealthDroid/libraries
 
 <img src=http://apuestasrafag.files.wordpress.com/2014/03/frameworkdiagram.png?w=800 />
 
-In the figure is shown the framework structure, with all the existing managers and how they interact with each other. All these managers are Singleton, which means that only exist one unique instance of each and this instance is available from every point of the framework. In short, is described each manager aim. More details of every manager and its development in our website soon.
+The figure above depicts the structure of the framework, including all the existing managers and how they interact with each other. All these managers are of "singleton" kind, which means that only one unique instance can exist for each class and this instance is available from every component of the framework. In the following we provide a brief description of each manager. 
 
-- **Communication Manager**: heart of mHealthDroid. It is responsible for, among other things, the communication management with the biomedical devices, the data streaming, the local data storage and the broadcast of the received data to the rest of the framework.
-- **Remote Storage Manager**: is aim is to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, it has also been offered a possible implementation to be used on the remote storage side to manage the received data from apps developed with _mHealthDroid_.
-- **Visualization Manager**: allow either online or offline visualization. It has been developed using the GraphView library (http://android-graphview.org/). The source code of the compatible version for this library can be found in the following repository https://github.com/mHealthDroid/myGraphView
-- **Data Processing Manager**: a really powerful manager, responsible for processing data and applying knowledge inference, either orline or offline.
-- **System Manager**: miscellaneous manager which offers easy management of instrinsic aspect of Android devices; guidelines functionalities specially useful for health applications; and send alerts.
+- **Communication Manager**: it is responsible for the connection of mobile devices (smartphone, tablet) and biomedical devices, vital data gathering, local data storage and serve the collected data to the rest of the framework components.
+- **Remote Storage Manager**: it is devised to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, we provide along with the framework a possible implementation for the server side.
+- **Visualization Manager**: it supports both online and offline visualization. It builds on an original extension of the GraphView library (http://android-graphview.org/). The source code of the new version developed as part of the _mHealthDroid_ project can be found at https://github.com/mHealthDroid/myGraphView.
+- **Data Processing Manager**: it is in charge of supervising and coordinating all the processes related to the inference of knowledge. This manager provides signal processing, data mining and machine learning techniques to extract knowledge from the biomedical data.
+- **System Manager**: this is a miscellaneous manager which allows for the configuration and monitoring of instrinsic aspects of the mobile and external devices. More importantly, it comprises a set of tools to support guidelines, recommendations or alerts of worth in health applications.
 
 ## Full documentation
 
-The full documentation of mHealthDroid can be found in both authors master thesis, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In these document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.
+The mHealthDroid full documentation can be found in <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">Rafael's</a> and <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">Alejandro's</a>  Master Thesis.
 
 ## mHealthDroid APP
 
-This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It is important to point out that there was no effort to implement its functionalities thanks to mHealthDroid simplicity (we spent the most of the developing time in the app visual appearance). It can be found in Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&hl=es_419">here</a>.
+This exemplary APP is intended to show the usefulness and potential of mHealthDroid. We wish to point out that this app was developed in a very short time and almost efortless thanks to the abstraction level that brings the mHealthDroid API. As a matter of fact, most of the development time was invested on the graphical interface). The app can be found on Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&hl=es_419">here</a>.
 
 ### Main Features
 
-- The app allows to collect data from Shimmer devices in order to obtain physiological and kinematic data, although existing sensors in the mobile device may be also used for monitoring. 
-- Visualization of any of the received data streams from the portable biomedical devices.
+- Management of human health data (physiologic and kinematic) recorded through portable biomedical devices (concretely Shimmer Sensors are used here) or the sensors embedded into the mobile device (inertial sensors). 
+- Online visualization of the data collected through the portable biomedical devices and the mobile device.
 - Local and remote storage of the collected data. 
-- Activity Recognition of the physical activity that an app user is performing thanks to an expert system built as part of the app.
-- To help the user to keep healthy habits, guidelines are supported through online video broadcasting and schedulable notifications.
+- Online human activity tracking and detection through the use of an expert system built as part of the app.
+- Guidelines to help the user to keep healthy habits, supported through online video broadcasting and schedulable notifications.
 
 ### Demostration Video
 
-In the following video the mHealthDroid APP and all its functionalities are shown: 
+In the following video the mHealthDroid APP and its main functionalities are presented: 
 
 [<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](https://www.youtube.com/watch?v=AMdxw4osjCU)
 
 ### APP Usage
 
-It is possible to navigate around the app making use of the available tabs in the top of the screen. Each tab offers a functionality for the following: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.
+It is possible to navigate around the app making use of the available tabs on top of the screen. Each tab provides access to a specific functionality, namely: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.
 
 #### Connectivity
 
-This tab offers to the user all the connectivity features and the devices configuration. The tab has a Button to add the new devices, and a ListView to visualize them.
+This tab provides the user with all the connectivity features and devices configuration. The tab has a Button to add  new devices, and a ListView to visualize them.
 
-In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. The message also have two buttons in order to select the kind of device. It can be either *Mobile* or *Shimmer*.
+In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. This pop-up contains two buttons to select the kind of device. It can be either *Mobile* (i.e., the smartphone or tablet) or *Shimmer* (i.e., the portable biomedical device used here).
 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/connectivity1.png?w=253" height=300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/addingdevice1.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/scanning.png?w=253" height = 300>
 
-Once the device is added, it will be displayed in the ListView. It is showed three fields for each device: The first one is the device's name, the second one is the device's type, and the third one is its state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming.
+Once the device is added, it will be displayed on the ListView. Three tags are shown for each device: The first one is the device's name, the second one is the device's type, and the third one corresponds to its actual state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming any data.
 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion11.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion21.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesstatus1.png?w=253" height = 300>
 
-When a device is pressed, a menu with several options is displayed. These options will depend on the device's type and its status. The possible options are the following ones:
+After selecting a particular device from the list, a menu with several options is displayed. The options vary depending on the device's type and its status. The possible options are listed below:
 
 - *Connect/Disconnect*. With this option, the device is either connected (if it was disconnected) or disconnected (if it was connected). Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.
 - *Start/Stop streaming*. With this option, the device either starts or stops streaming.
@@ -995,13 +998,13 @@ How can you keep track of the development and news of mHealthDroid? Coming soon 
 
 ### Authors
 
-Rafael García Fernández
+Rafael García
 
 * _University of Granada (UGR)_
 * http://github.com/rafagf
-* Email: rafagarfer@gmail.com
+* Email: rafagarfer@gmail.com 
 
-Alejandro Sáez Fernández
+Alejandro Sáez
 
 * _University of Granada (UGR)_
 * http://github.com/alsafer
@@ -1009,14 +1012,14 @@ Alejandro Sáez Fernández
 
 ### Original Idea and Project Coordinator
 
-Oresti Baños Legrán
+Dr. Oresti Baños
 
 * _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
 * Email: oresti.bl@gmail.com
 
 ### Collaborators
 
-Juan Antonio Holgado Terriza
+Prof. Juan Antonio Holgado
 
 * _University of Granada (UGR)_
 * Email: jholgado@ugr.es
