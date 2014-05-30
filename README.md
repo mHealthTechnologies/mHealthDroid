@@ -10,7 +10,7 @@ This active platform is in continuous development, thereby contributions are ver
 
 Contact (general info): mhealthdroid@gmail.com
 
-Contact (R&D enquiries): oresti.bl@gmail.com [Oresti Baños]
+Contact (R&D enquiries): oresti.bl@gmail.com [<a href="http://www.ugr.es/~oresti/">Oresti Baños</a>]
 
 Contact (implementation enquiries): rafagarfer@gmail.com [Rafael García], alejandrosaez3@gmail.com [Alejandro Sáez] 
 
@@ -169,9 +169,9 @@ Once the device is added, it will be displayed on the ListView. Three tags are s
 
 After selecting a particular device from the list, a menu with several options is displayed. The options vary depending on the device's type and its status. The possible options are listed below:
 
-- *Connect/Disconnect*. With this option, the device is either connected (if it was disconnected) or disconnected (if it was connected). Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.
-- *Start/Stop streaming*. With this option, the device either starts or stops streaming.
-- *Sensors*. This option throws a window to set the enabled sensors. The sensors available can be different for each kind of device. It is only showed when the device is not streaming.
+- *Connect/Disconnect*. It allows to connect or disconnect the device. Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.
+- *Start/Stop streaming*. It permits to init or finalize the streaming process.
+- *Sensors*. This option opens a window to set the enabled sensors. The available sensors can be different for each kind of device. This option is only showed when the device is not streaming.
 - *Configuration*. This option opens a window to set the device configuration. Here, it is also set whether the data must be stored into the database. The device configuration can be different for each kind of device. It is only showed when the device is not streaming.
 - *Remove*. This option removes a device from the devices list.
 
@@ -188,20 +188,20 @@ After selecting a particular device from the list, a menu with several options i
 
 #### Visualization
 
-This tab permits to visualize the signals recorded through the sensors. The tab is composed by a graph and two buttons: the *Configuration* button and the *Start* button.
+This tab permits to visualize the signals recorded through the enabled sensors. The tab is composed by a graph and two buttons: the *Configuration* button and the *Start* button.
 
-When the *Configuration* button is pressed, a menu is open in order to set the graph configurations. The options are initially disabled (the graph has a configuration by default). These have to be enabled in order to use them. The configuration menu is not available during the visualization, so the graph must be set before starting. The configuration options are the following ones:
+When the *Configuration* button is pressed, a menu is shown in order to set the graph configurations. The options are initially disabled (default configuration). The configuration menu is not available during the visualization, so the graph features must be set before. The configuration options are:
 
 - *View Port*. This option sets the graph view port. That is, the number of samples to be shown in the graph. 
 - *Y coordinates*. This option sets the maximum and minimum values for the Y axis. 
-- *Legend*. This option shows the legend of the graph series. It can be aligned in three different positions. On the top of the graph, in the middle, or at the bottom.
+- *Legend*. This option permits to show a legend of the graph series. It can be aligned in three different positions. On top of the graph, in the middle, or at the bottom.
 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/visualization.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationinit.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration1.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration2.png?w=253" height = 300>
 
-When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.
+Once the *Start* button is pressed, a list of devices currently streaming is showed. From this list the user can select sensor data streams to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the available sensors. The visualization starts after selecting the sensors and pressing the OK button.
 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesvisualization1.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors1.png?w=253" height = 300>
@@ -210,15 +210,17 @@ When the Start button is pressed, a list of devices streaming is showed in order
 
 #### Activity Recognition
 
-This tab uses inference knowledge module to perform activity recognition of a set of activities.  
+This tab uses inference of knowledge capabilities to perform human activity recognition tasks.  
 
-The activities are the following: standing still, sitting and relaxing, lying down, walking, climbing stairs, waist bends forward, frontal (vertical) up/down, knees bended, cycling, jogging, running, jump forward and back.
+The activities particularly considered are the following: standing still, sitting and relaxing, lying down, walking, climbing stairs, waist bends forward, frontal (vertical) up/down, knees bended, cycling, jogging, running, jump forward and back.
 
-In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:
+In order to perform the activity recognition some wearable devices must be placed on the user body as shown below:
 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/subjectsensors.png?w=601" height = 375>
 
-To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.
+These sensors are capable of capturing the dynamics of the user's body. In order to train the recognizer (see "Full documentation" for more details) we performed a research study to define a suitable and accurate sensor deployment. Some of the scientific background used for the experiments is available <a href="http://www.ugr.es/~oresti/publications.htm">here</a>. 
+
+To start the activity recognition process it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition process. On the top of the screen there will appear an image and text representing the activity performed by the user. In case there are no streaming devices an error message will be showed.
 
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/activitystart1.png?w=253" height = 300>
