@@ -681,9 +681,21 @@ To build the YouTube module has been necessary the YouTube Android Player API. T
 
 An example of how to use the YouTube Guideline module is shown next:
 
+At least the following fields need to be declared as class fields.
+
+``` java
+YouTubePlayerView youTubePlayerView; 
+YouTubePlayer player;
+ListView videosListView;
+Youtube youtube;
+```
+
+Declaration and initialization:
+
 ``` java
 setContentView(R.layout.youtube_layout);
-YouTubePlayerView youtubeView =
+player = null;
+YouTubePlayerView youtubePlayerView =
 (YouTubePlayerView)findViewById(R.id.youtube_view);
 youtubePlayerView.initialize(KEY_DEVELOPER, this);
 sm = SystemManager.getInstance();
@@ -707,9 +719,9 @@ ListView videosListView = (ListView) findViewById(R.id.listListView);
 youtube.reproducePlaylistMode(videosListView, R.layout.entry, R.id.textViewSuperior, 
 R.id.textViewInferior, R.id.imageViewImage, playlistID);
 ```
-The parameter _entry_ is a layout with every entry format of the _listview_. TextViewSuperior, TextViewInferior and imageViewImage are fields with the title, description and thumbnail of a YouTube video. PlaylistID is the ID of a list of YouTube videos. 
+The parameter _entry_ is a layout with every entry format of the _listview_. _TextViewSuperior_, _TextViewInferior_ and _imageViewImage_ are fields with the title, description and thumbnail of a YouTube video. _PlaylistID_ is the ID of a list of YouTube videos. 
 
-It is also neccessary to implement two abstract methods belonging to _YouTubePlayer.OnInitializedListener_.
+It is also necessary to implement two abstract methods belonging to _YouTubePlayer.OnInitializedListener_.
 
 ``` java
 @Override
