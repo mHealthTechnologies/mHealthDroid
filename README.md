@@ -677,14 +677,17 @@ just use its functions.
 
 ##### YouTube
 
-To build the YouTube module has been necessary the YouTube Android Player API. To employ this API is compulsory to provide at least a _YoutubePlayerView_. An
-example of how to use the YouTube Guideline module is shown next:
+To build the YouTube module has been necessary the YouTube Android Player API. To employ this API is compulsory to provide at least a _YoutubePlayerView_. The class where this functionality is developed must extends the _YouTubeBaseActivity_ and implements _YouTubePlayer.OnInitializedListener_.
+
+An example of how to use the YouTube Guideline module is shown next:
 
 ``` java
 setContentView(R.layout.youtube_layout);
-YouTubePlayerViewyoutubeView =
+YouTubePlayerView youtubeView =
 (YouTubePlayerView)findViewById(R.id.youtube_view);
-youtube = sm.getYoutubePlayer(getApplicationContext(), youtubeView, DEVELOPER_KEY);
+youtubePlayerView.initialize(KEY_DEVELOPER, this);
+sm = SystemManager.getInstance();
+youtube = sm.getYoutubePlayer(getApplicationContext(), youtubePlayerView);
 ```
 
 The developer key is a variable that identifies the YouTube developer submitting
@@ -700,10 +703,30 @@ It is also possible to reproduce YouTube playlist videos, selecting the video to
 reproduced using a _listView_ view. In order to do this, it is necessary to have in the
 current layout a _listView_ view.
 ``` java
-ListViewvideosListView = (ListView)findViewById(R.id.listListView);
-youtube.reproducePlaylistMode(videosListView, R.layout.entry, PLAYLIST_URL);
+ListView videosListView = (ListView) findViewById(R.id.listListView);
+youtube.reproducePlaylistMode(videosListView, R.layout.entry, R.id.textViewSuperior, 
+R.id.textViewInferior, R.id.imageViewImage, playlistID);
 ```
-The parameter _entry_ is a layout with every entry format of the _listview_.
+The parameter _entry_ is a layout with every entry format of the _listview_. TextViewSuperior, TextViewInferior and imageViewImage are fields with the title, description and thumbnail of a YouTube video. PlaylistID is the ID of a list of YouTube videos. 
+
+It is also neccessary to implement two abstract methods belonging to _YouTubePlayer.OnInitializedListener_.
+
+``` java
+@Override
+public void onInitializationFailure(Provider arg0, YouTubeInitializationResult arg1) {
+
+	Toast.makeText(this, "Oh dear, something terrible happened, sorry!", Toast.LENGTH_SHORT).show();		
+}
+
+@Override
+public void onInitializationSuccess(Provider provider, YouTubePlayer playa, boolean wasRestored) {
+		
+	this.player = playa;
+	this.player.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);		
+	//Now that the player is initialized, we need to set it on our Youtube class
+	youtube.setPlayer(player);
+}
+```
 
 ##### Audio
 
