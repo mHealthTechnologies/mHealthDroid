@@ -33,13 +33,21 @@
 <h2>
 <a name="what-is-mhealthdroid" class="anchor" href="#what-is-mhealthdroid"><span class="octicon octicon-link"></span></a>What is mHealthDroid?</h2>
 
-<p>mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.</p>
+<p>mHealhDroid is an open-source mobile framework designed to facilitate the rapid and easy development of mHealth and biomedical applications. The framework is devised to leverage the potential of mobile devices such as smartphones or tablets, wearable sensors and portable biomedical devices. These systems are used increasingly for the monitoring and delivery of personal health care and wellbeing. Likewise, mHealthDroid aims at bringing together heterogeneous multimodal sensors including both research and commercial systems. </p>
 
-<p>This framework has been developed independently from the biomedical type device or communication protocol. Owing to that, it is necessary to create an intermediate driver for every portable biomedical device to be used which will work between the device and the framework. The drivers are included in the framework and remain unnoticed to the user. Thanks to this approach, an application can run simultaneously with different kinds of devices, providing a great flexibility.</p>
+<p>The framework comprises an extensive set of modules for sensor data acquisition, data management, remote storage, signal processing, machine learning, multidimensional data visualization, as well as intelligent recommendations and multimedia guidelines among others features. The core of the framework is defined to operate on the Android operating system; however, it has been implemented in a way that allows its use with any portable device. In fact, the core modules and components are defined to be completely independent of the underlying sensing and communication technology. To utilize a new device (commercial or not) it is only required to include the corresponding drivers that allow the communication between the mHealthDroid modules and the specific device (transparent to the user anyhow). The mHealthDroid initiative already includes drivers for a wide sort of portable devices; nevertheless it aims at incorporating new systems to the current portfolio of supported devices. </p>
+
+<p>This active platform is in continuous development, thereby contributions are very welcome. Suggestions and comments are also appreciated!</p>
+
+<p>Contact (general info): <a href="mailto:mhealthdroid@gmail.com">mhealthdroid@gmail.com</a></p>
+
+<p>Contact (R&amp;D enquiries): <a href="mailto:oresti.bl@gmail.com">oresti.bl@gmail.com</a> [<a href="http://www.ugr.es/~oresti/">Oresti Baños</a>]</p>
+
+<p>Contact (implementation enquiries): <a href="mailto:rafagarfer@gmail.com">rafagarfer@gmail.com</a> [Rafael García], <a href="mailto:alejandrosaez3@gmail.com">alejandrosaez3@gmail.com</a> [Alejandro Sáez] </p>
 
 <p>Android target version: 4.2</p>
 
-<p>Android minimum version: 2.3.3</p>
+<p>Android minimum version: 2.3.3 </p>
 
 <p><strong>Table of Contents</strong></p>
 
@@ -61,16 +69,18 @@
 <ul>
 <li><a href="#connectivity">Connectivity</a></li>
 <li><a href="#visualization">Visualization</a></li>
-<li><a href="#activity-recognition">Activity Recognition</a></li>
+<li>
+<a href="#activity-recognition">Activity Recognition</a> </li>
 <li><a href="#notifications">Notifications</a></li>
 <li><a href="#youtube-guidelines">YouTube Guidelines</a></li>
-<li><a href="#remote-storage">Remote Storage</a></li>
+<li>
+<a href="#remote-storage">Remote Storage</a> </li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<a href="#examples-how-to-use-mhealthdroid">Examples. How to use mHealthDroid</a>
+<a href="#examples-how-to-use-mhealthdroid">How to use mHealthDroid</a>
 
 <ul>
 <li><a href="#communication-manager">Communication Manager</a></li>
@@ -138,21 +148,22 @@
 
 <ul>
 <li><p>Rapid development of medical, health and wellbeing applications.</p></li>
-<li><p>Efficient and fast communication between portable biomedical devices and portable mobile devices to gather patient data like physiological or kinematic signals. Up to now, SHIMMER biomedical devices and mobile sensors can be used as portable biomedical devices.</p></li>
+<li><p>Fast and efficient communication between portable biomedical devices and portable mobile devices to gather human-centered physiological and kinematic data. Up to now, SHIMMER biomedical devices and mobile sensors can be used as portable biomedical devices.</p></li>
 <li><p>Development of applications capable of working with different portable health devices simultaneously.</p></li>
-<li><p>Efficient data transfer across the framework managers.</p></li>
-<li><p>Fast data storage either local or remote.</p></li>
-<li><p>Visualization of any kind of data stream like patient's vital signs or kinematic data, either online or offine.</p></li>
-<li><p>Knowledge inference procured through machine learning and statistical model.</p></li>
-<li><p>Guidelines support through Audio, Video or YouTube playlists, as well as notifications procedures.</p></li>
-<li><p>Easy system control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, making phone calls or sending text messages.</p></li>
-<li><p>User management through login functionality, also supporting security and privacy.</p></li>
+<li><p>Efficient data transfer across the framework's managers.</p></li>
+<li><p>Fast data storage (either local or remote).</p></li>
+<li><p>Visualization of any multimodal data streams such as patient's vital signs or kinematic data (either online or offine).</p></li>
+<li><p>Knowledge inference by using machine learning and pattern recognition models.</p></li>
+<li><p>Multimedia guidelines and recommenders, supported through audio, video and YouTube playlists, as well as notification procedures.</p></li>
+<li><p>System control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, phone calls or text messages.</p></li>
+<li><p>User logging and data privacy mechanisms</p></li>
 </ul><h2>
 <a name="installation-instructions" class="anchor" href="#installation-instructions"><span class="octicon octicon-link"></span></a>Installation instructions</h2>
 
-<p>Once mHealthDroid project is downloaded, it is necessary a few steps to get started.</p>
+<p>A few steps are required to get started:</p>
 
 <ol>
+<li><p>Download the project source files.</p></li>
 <li><p>Import the project to Eclipse or other IDE.    </p></li>
 <li>
 <p>Add the following libraries:</p>
@@ -167,9 +178,9 @@
 </li>
 </ol><ol>
 <li><p>Select mHealthDroid as library project.</p></li>
-<li><p>Creates your new project and select mHealthDroid as library. </p></li>
+<li><p>Create your new project and select mHealthDroid as library. </p></li>
 <li><p>Coding time!</p></li>
-</ol><p>All the libraries can be downloaded from our following repository: </p>
+</ol><p>All the libraries can be downloaded from the following repository: </p>
 
 <p><a href="https://github.com/mHealthDroid/libraries">https://github.com/mHealthDroid/libraries</a></p>
 
@@ -178,73 +189,72 @@
 
 <p><img src="http://apuestasrafag.files.wordpress.com/2014/03/frameworkdiagram.png?w=800"></p>
 
-<p>In the figure is shown the framework structure, with all the existing managers and how they interact with each other. All these managers are Singleton, which means that only exist one unique instance of each and this instance is available from every point of the framework. In short, is described each manager aim. More details of every manager and its development in our website soon.</p>
+<p>The figure above depicts the structure of the framework, including all the existing managers and how they interact with each other. All these managers are of "singleton" kind, which means that only one unique instance can exist for each class and this instance is available from every component of the framework. In the following we provide a brief description of each manager. </p>
 
 <ul>
 <li>
-<strong>Communication Manager</strong>: heart of mHealthDroid. It is responsible for, among other things, the communication management with the biomedical devices, the data streaming, the local data storage and the broadcast of the received data to the rest of the framework.</li>
+<strong>Communication Manager</strong>: it is responsible for the connection of mobile devices (smartphone, tablet) and biomedical devices, vital data gathering, local data storage and serve the collected data to the rest of the framework components.</li>
 <li>
-<strong>Remote Storage Manager</strong>: is aim is to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, it has also been offered a possible implementation to be used on the remote storage side to manage the received data from apps developed with <em>mHealthDroid</em>.</li>
+<strong>Remote Storage Manager</strong>: it is devised to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, we provide along with the framework a possible implementation for the server side.</li>
 <li>
-<strong>Visualization Manager</strong>: allow either online or offline visualization. It has been developed using the GraphView library (<a href="http://android-graphview.org/">http://android-graphview.org/</a>). The source code of the compatible version for this library can be found in the following repository <a href="https://github.com/mHealthDroid/myGraphView">https://github.com/mHealthDroid/myGraphView</a>
-</li>
+<strong>Visualization Manager</strong>: it supports both online and offline visualization. It builds on an original extension of the GraphView library (<a href="http://android-graphview.org/">http://android-graphview.org/</a>). The source code of the new version developed as part of the <em>mHealthDroid</em> project can be found at <a href="https://github.com/mHealthDroid/myGraphView">https://github.com/mHealthDroid/myGraphView</a>.</li>
 <li>
-<strong>Data Processing Manager</strong>: a really powerful manager, responsible for processing data and applying knowledge inference, either orline or offline.</li>
+<strong>Data Processing Manager</strong>: it is in charge of supervising and coordinating all the processes related to the inference of knowledge. This manager provides signal processing, data mining and machine learning techniques to extract knowledge from the biomedical data.</li>
 <li>
-<strong>System Manager</strong>: miscellaneous manager which offers easy management of instrinsic aspect of Android devices; guidelines functionalities specially useful for health applications; and send alerts.</li>
+<strong>System Manager</strong>: this is a miscellaneous manager which allows for the configuration and monitoring of instrinsic aspects of the mobile and external devices. More importantly, it comprises a set of tools to support guidelines, recommendations or alerts of worth in health applications.</li>
 </ul><h2>
 <a name="full-documentation" class="anchor" href="#full-documentation"><span class="octicon octicon-link"></span></a>Full documentation</h2>
 
-<p>The full documentation of mHealthDroid can be found in both authors master thesis, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In these document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.</p>
+<p>The mHealthDroid full documentation can be found in <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">Rafael's</a> and <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">Alejandro's</a>  Master Thesis.</p>
 
 <h2>
 <a name="mhealthdroid-app" class="anchor" href="#mhealthdroid-app"><span class="octicon octicon-link"></span></a>mHealthDroid APP</h2>
 
-<p>This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It is important to point out that there was no effort to implement its functionalities thanks to mHealthDroid simplicity (we spent the most of the developing time in the app visual appearance). It can be found in Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&amp;hl=es_419">here</a>.</p>
+<p>This exemplary APP is intended to show the usefulness and potential of mHealthDroid. We wish to point out that this app was developed in a very short time and almost efortless thanks to the abstraction level that brings the mHealthDroid API. As a matter of fact, most of the development time was invested on the graphical interface). The app can be found on Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&amp;hl=es_419">here</a>.</p>
 
 <h3>
 <a name="main-features" class="anchor" href="#main-features"><span class="octicon octicon-link"></span></a>Main Features</h3>
 
 <ul>
-<li>The app allows to collect data from Shimmer devices in order to obtain physiological and kinematic data, although existing sensors in the mobile device may be also used for monitoring. </li>
-<li>Visualization of any of the received data streams from the portable biomedical devices.</li>
+<li>Management of human health data (physiologic and kinematic) recorded through portable biomedical devices (concretely Shimmer Sensors are used here) or the sensors embedded into the mobile device (inertial sensors). </li>
+<li>Online visualization of the data collected through the portable biomedical devices and the mobile device.</li>
 <li>Local and remote storage of the collected data. </li>
-<li>Activity Recognition of the physical activity that an app user is performing thanks to an expert system built as part of the app.</li>
-<li>To help the user to keep healthy habits, guidelines are supported through online video broadcasting and schedulable notifications.</li>
+<li>Online human activity tracking and detection through the use of an expert system built as part of the app.</li>
+<li>Guidelines to help the user to keep healthy habits, supported through online video broadcasting and schedulable notifications.</li>
 </ul><h3>
 <a name="demostration-video" class="anchor" href="#demostration-video"><span class="octicon octicon-link"></span></a>Demostration Video</h3>
 
-<p>In the following video the mHealthDroid APP and all its functionalities are shown: </p>
+<p>In the following video the mHealthDroid APP and its main functionalities are presented: </p>
 
 <p><a href="https://www.youtube.com/watch?v=AMdxw4osjCU"><img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height="300"></a></p>
 
 <h3>
 <a name="app-usage" class="anchor" href="#app-usage"><span class="octicon octicon-link"></span></a>APP Usage</h3>
 
-<p>It is possible to navigate around the app making use of the available tabs in the top of the screen. Each tab offers a functionality for the following: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.</p>
+<p>It is possible to navigate around the app making use of the available tabs on top of the screen. Each tab provides access to a specific functionality, namely: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.</p>
 
 <h4>
 <a name="connectivity" class="anchor" href="#connectivity"><span class="octicon octicon-link"></span></a>Connectivity</h4>
 
-<p>This tab offers to the user all the connectivity features and the devices configuration. The tab has a Button to add the new devices, and a ListView to visualize them.</p>
+<p>This tab provides the user with all the connectivity features and devices configuration. The tab has a Button to add  new devices, and a ListView to visualize them.</p>
 
-<p>In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. The message also have two buttons in order to select the kind of device. It can be either <em>Mobile</em> or <em>Shimmer</em>.</p>
+<p>In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. This pop-up contains two buttons to select the kind of device. It can be either <em>Mobile</em> (i.e., the smartphone or tablet) or <em>Shimmer</em> (i.e., the portable biomedical device used here).</p>
 
 <p><img src="http://apuestasrafag.files.wordpress.com/2014/03/connectivity1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/addingdevice1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/scanning.png?w=253" height="300"></p>
 
-<p>Once the device is added, it will be displayed in the ListView. It is showed three fields for each device: The first one is the device's name, the second one is the device's type, and the third one is its state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming.</p>
+<p>Once the device is added, it will be displayed on the ListView. Three tags are shown for each device: The first one is the device's name, the second one is the device's type, and the third one corresponds to its actual state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming any data.</p>
 
 <p><img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion11.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion21.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesstatus1.png?w=253" height="300"></p>
 
-<p>When a device is pressed, a menu with several options is displayed. These options will depend on the device's type and its status. The possible options are the following ones:</p>
+<p>After selecting a particular device from the list, a menu with several options is displayed. The options vary depending on the device's type and its status. The possible options are listed below:</p>
 
 <ul>
 <li>
-<em>Connect/Disconnect</em>. With this option, the device is either connected (if it was disconnected) or disconnected (if it was connected). Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.</li>
+<em>Connect/Disconnect</em>. It allows to connect or disconnect the device. Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.</li>
 <li>
-<em>Start/Stop streaming</em>. With this option, the device either starts or stops streaming.</li>
+<em>Start/Stop streaming</em>. It permits to init or finalize the streaming process.</li>
 <li>
-<em>Sensors</em>. This option throws a window to set the enabled sensors. The sensors available can be different for each kind of device. It is only showed when the device is not streaming.</li>
+<em>Sensors</em>. This option opens a window to set the enabled sensors. The available sensors can be different for each kind of device. This option is only showed when the device is not streaming.</li>
 <li>
 <em>Configuration</em>. This option opens a window to set the device configuration. Here, it is also set whether the data must be stored into the database. The device configuration can be different for each kind of device. It is only showed when the device is not streaming.</li>
 <li>
@@ -256,9 +266,9 @@
 <h4>
 <a name="visualization" class="anchor" href="#visualization"><span class="octicon octicon-link"></span></a>Visualization</h4>
 
-<p>This tab permits to visualize the signals recorded through the sensors. The tab is composed by a graph and two buttons: the <em>Configuration</em> button and the <em>Start</em> button.</p>
+<p>This tab permits to visualize the signals recorded through the enabled sensors. The tab is composed by a graph and two buttons: the <em>Configuration</em> button and the <em>Start</em> button.</p>
 
-<p>When the <em>Configuration</em> button is pressed, a menu is open in order to set the graph configurations. The options are initially disabled (the graph has a configuration by default). These have to be enabled in order to use them. The configuration menu is not available during the visualization, so the graph must be set before starting. The configuration options are the following ones:</p>
+<p>When the <em>Configuration</em> button is pressed, a menu is shown in order to set the graph configurations. The options are initially disabled (default configuration). The configuration menu is not available during the visualization, so the graph features must be set before. The configuration options are:</p>
 
 <ul>
 <li>
@@ -266,25 +276,27 @@
 <li>
 <em>Y coordinates</em>. This option sets the maximum and minimum values for the Y axis. </li>
 <li>
-<em>Legend</em>. This option shows the legend of the graph series. It can be aligned in three different positions. On the top of the graph, in the middle, or at the bottom.</li>
+<em>Legend</em>. This option permits to show a legend of the graph series. It can be aligned in three different positions. On top of the graph, in the middle, or at the bottom.</li>
 </ul><p><img src="http://apuestasrafag.files.wordpress.com/2014/03/visualization.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationinit.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration2.png?w=253" height="300"></p>
 
-<p>When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.</p>
+<p>Once the <em>Start</em> button is pressed, a list of devices currently streaming is showed. From this list the user can select sensor data streams to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the available sensors. The visualization starts after selecting the sensors and pressing the OK button.</p>
 
 <p><img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesvisualization1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors21.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/errorvisualization1.png?w=253" height="300"></p>
 
 <h4>
 <a name="activity-recognition" class="anchor" href="#activity-recognition"><span class="octicon octicon-link"></span></a>Activity Recognition</h4>
 
-<p>This tab uses inference knowledge module to perform activity recognition of a set of activities.  </p>
+<p>This tab uses inference of knowledge capabilities to perform human activity recognition tasks.  </p>
 
-<p>The activities are the following: standing still, sitting and relaxing, lying down, walking, climbing stairs, waist bends forward, frontal (vertical) up/down, knees bended, cycling, jogging, running, jump forward and back.</p>
+<p>The activities particularly considered are the following: standing still, sitting and relaxing, lying down, walking, climbing stairs, waist bends forward, frontal (vertical) up/down, knees bended, cycling, jogging, running, jump forward and back.</p>
 
-<p>In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:</p>
+<p>In order to perform the activity recognition some wearable devices must be placed on the user body as shown below:</p>
 
 <p><img src="http://apuestasrafag.files.wordpress.com/2014/03/subjectsensors.png?w=601" height="375"></p>
 
-<p>To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.</p>
+<p>These sensors are capable of capturing the dynamics of the user's body. In order to train the recognizer (see "Full documentation" for more details) we performed a research study to define a suitable and accurate sensor deployment. Some of the scientific background used for the experiments is available <a href="http://www.ugr.es/~oresti/publications.htm">here</a>. </p>
+
+<p>To start the activity recognition process it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition process. On the top of the screen there will appear an image and text representing the activity performed by the user. In case there are no streaming devices an error message will be showed.</p>
 
 <p><img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/activitystart1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/erroractivity1.png?w=253" height="300"><img src="http://apuestasrafag.files.wordpress.com/2014/03/activityrecognition1.png?w=253" height="300"></p>
 
@@ -488,9 +500,9 @@ defined as follows:</p>
 <p>To know when the data are upload, it is needed to run within a thread the function
 isProcessFinished(). An example of how to do this follows:</p>
 
-<div class="highlight highlight-java"><pre><span class="n">Handler</span> <span class="n">mHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">();</span>
+<div class="highlight highlight-java"><pre><span class="n">Handler</span> <span class="n">mHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Handler</span><span class="o">();</span>
 <span class="n">mHandler</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">isFinished</span><span class="o">);</span>
-<span class="n">Runnable</span> <span class="n">isFinished</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span>
+<span class="n">Runnable</span> <span class="n">isFinished</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Runnable</span><span class="o">(){</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">rsm</span><span class="o">.</span><span class="na">isProcessFinished</span><span class="o">()){</span>
@@ -740,13 +752,27 @@ just use its functions.</p>
 <h5>
 <a name="youtube" class="anchor" href="#youtube"><span class="octicon octicon-link"></span></a>YouTube</h5>
 
-<p>To build the YouTube module has been necessary the YouTube Android Player API. To employ this API is compulsory to provide at least a <em>YoutubePlayerView</em>. An
-example of how to use the YouTube Guideline module is shown next:</p>
+<p>To build the YouTube module has been necessary the YouTube Android Player API. To employ this API is compulsory to provide at least a <em>YoutubePlayerView</em>. The class where this functionality is developed must extends the <em>YouTubeBaseActivity</em> and implements <em>YouTubePlayer.OnInitializedListener</em>.</p>
+
+<p>An example of how to use the YouTube Guideline module is shown next:</p>
+
+<p>At least the following fields need to be declared as class fields.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">YouTubePlayerView</span> <span class="n">youTubePlayerView</span><span class="o">;</span> 
+<span class="n">YouTubePlayer</span> <span class="n">player</span><span class="o">;</span>
+<span class="n">ListView</span> <span class="n">videosListView</span><span class="o">;</span>
+<span class="n">Youtube</span> <span class="n">youtube</span><span class="o">;</span>
+</pre></div>
+
+<p>Declaration and initialization:</p>
 
 <div class="highlight highlight-java"><pre><span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">youtube_layout</span><span class="o">);</span>
-<span class="n">YouTubePlayerViewyoutubeView</span> <span class="o">=</span>
+<span class="n">player</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="n">YouTubePlayerView</span> <span class="n">youtubePlayerView</span> <span class="o">=</span>
 <span class="o">(</span><span class="n">YouTubePlayerView</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">youtube_view</span><span class="o">);</span>
-<span class="n">youtube</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="na">getYoutubePlayer</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">youtubeView</span><span class="o">,</span> <span class="n">DEVELOPER_KEY</span><span class="o">);</span>
+<span class="n">youtubePlayerView</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">KEY_DEVELOPER</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+<span class="n">sm</span> <span class="o">=</span> <span class="n">SystemManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+<span class="n">youtube</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="na">getYoutubePlayer</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">youtubePlayerView</span><span class="o">);</span>
 </pre></div>
 
 <p>The developer key is a variable that identifies the YouTube developer submitting
@@ -763,11 +789,30 @@ the last part of the video link.</p>
 reproduced using a <em>listView</em> view. In order to do this, it is necessary to have in the
 current layout a <em>listView</em> view.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">ListViewvideosListView</span> <span class="o">=</span> <span class="o">(</span><span class="n">ListView</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">listListView</span><span class="o">);</span>
-<span class="n">youtube</span><span class="o">.</span><span class="na">reproducePlaylistMode</span><span class="o">(</span><span class="n">videosListView</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">entry</span><span class="o">,</span> <span class="n">PLAYLIST_URL</span><span class="o">);</span>
+<div class="highlight highlight-java"><pre><span class="n">ListView</span> <span class="n">videosListView</span> <span class="o">=</span> <span class="o">(</span><span class="n">ListView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">listListView</span><span class="o">);</span>
+<span class="n">youtube</span><span class="o">.</span><span class="na">reproducePlaylistMode</span><span class="o">(</span><span class="n">videosListView</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">entry</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textViewSuperior</span><span class="o">,</span> 
+<span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textViewInferior</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageViewImage</span><span class="o">,</span> <span class="n">playlistID</span><span class="o">);</span>
 </pre></div>
 
-<p>The parameter <em>entry</em> is a layout with every entry format of the <em>listview</em>.</p>
+<p>The parameter <em>entry</em> is a layout with every entry format of the <em>listview</em>. <em>TextViewSuperior</em>, <em>TextViewInferior</em> and <em>imageViewImage</em> are fields with the title, description and thumbnail of a YouTube video. <em>PlaylistID</em> is the ID of a list of YouTube videos. </p>
+
+<p>It is also necessary to implement two abstract methods belonging to <em>YouTubePlayer.OnInitializedListener</em>.</p>
+
+<div class="highlight highlight-java"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInitializationFailure</span><span class="o">(</span><span class="n">Provider</span> <span class="n">arg0</span><span class="o">,</span> <span class="n">YouTubeInitializationResult</span> <span class="n">arg1</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"Oh dear, something terrible happened, sorry!"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>        
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInitializationSuccess</span><span class="o">(</span><span class="n">Provider</span> <span class="n">provider</span><span class="o">,</span> <span class="n">YouTubePlayer</span> <span class="n">playa</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">wasRestored</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">this</span><span class="o">.</span><span class="na">player</span> <span class="o">=</span> <span class="n">playa</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">player</span><span class="o">.</span><span class="na">setPlayerStyle</span><span class="o">(</span><span class="n">YouTubePlayer</span><span class="o">.</span><span class="na">PlayerStyle</span><span class="o">.</span><span class="na">MINIMAL</span><span class="o">);</span>      
+    <span class="c1">//Now that the player is initialized, we need to set it on our Youtube class</span>
+    <span class="n">youtube</span><span class="o">.</span><span class="na">setPlayer</span><span class="o">(</span><span class="n">player</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
 
 <h5>
 <a name="audio" class="anchor" href="#audio"><span class="octicon octicon-link"></span></a>Audio</h5>
@@ -850,8 +895,8 @@ humidity and timestamp of a portable mobile device called "Mobile Device".</p>
 <span class="n">sensors2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">SensorType</span><span class="o">.</span><span class="na">TIMESTAMP</span><span class="o">);</span>
 <span class="n">String</span> <span class="n">nameDevice1</span> <span class="o">=</span> <span class="s">"Shimmer CHEST"</span><span class="o">;</span>
 <span class="n">String</span> <span class="n">nameDevice2</span> <span class="o">=</span> <span class="s">"Mobile Device"</span><span class="o">;</span>
-<span class="n">Pair</span><span class="o">&lt;</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SensorType</span><span class="o">&gt;,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">pair1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pair</span><span class="o">(</span><span class="n">sensors1</span><span class="o">,</span> <span class="n">nameDevice1</span><span class="o">);</span>
-<span class="n">Pair</span><span class="o">&lt;</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SensorType</span><span class="o">&gt;,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">pair2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pair</span><span class="o">(</span><span class="n">sensors2</span><span class="o">,</span> <span class="n">nameDevice2</span><span class="o">);</span>
+<span class="n">Pair</span><span class="o">&lt;</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SensorType</span><span class="o">&gt;,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">pair1</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Pair</span><span class="o">(</span><span class="n">sensors1</span><span class="o">,</span> <span class="n">nameDevice1</span><span class="o">);</span>
+<span class="n">Pair</span><span class="o">&lt;</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SensorType</span><span class="o">&gt;,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">pair2</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Pair</span><span class="o">(</span><span class="n">sensors2</span><span class="o">,</span> <span class="n">nameDevice2</span><span class="o">);</span>
 <span class="n">sensorsAndDevices</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pair1</span><span class="o">);</span>
 <span class="n">sensorsAndDevices</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pair2</span><span class="o">);</span>
 </pre></div>
@@ -882,14 +927,14 @@ all the data streamed from the day 24th January 2014 at 22:00:00 hour to the day
 January 2014 at 16:00:00 follows. It is important to keep in mind that month value
 goes in the interval [0-11]</p>
 
-<div class="highlight highlight-java"><pre><span class="n">Time</span> <span class="n">start</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Time</span><span class="o">();</span>
+<div class="highlight highlight-java"><pre><span class="n">Time</span> <span class="n">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Time</span><span class="o">();</span>
 <span class="n">start</span><span class="o">.</span><span class="na">hour</span> <span class="o">=</span> <span class="mi">22</span><span class="o">;</span>
 <span class="n">start</span><span class="o">.</span><span class="na">minute</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 <span class="n">start</span><span class="o">.</span><span class="na">second</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 <span class="n">start</span><span class="o">.</span><span class="na">year</span> <span class="o">=</span> <span class="mi">2014</span><span class="o">;</span>
 <span class="n">start</span><span class="o">.</span><span class="na">month</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 <span class="n">start</span><span class="o">.</span><span class="na">monthDay</span> <span class="o">=</span> <span class="mi">24</span><span class="o">;</span>
-<span class="n">Time</span> <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Time</span><span class="o">();</span>
+<span class="n">Time</span> <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Time</span><span class="o">();</span>
 <span class="n">end</span><span class="o">.</span><span class="na">hour</span> <span class="o">=</span> <span class="mi">16</span><span class="o">;</span>
 <span class="n">end</span><span class="o">.</span><span class="na">minute</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 <span class="n">end</span><span class="o">.</span><span class="na">second</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -1088,14 +1133,13 @@ will be a String and will be stored in the <em>stringClassified variable</em> (w
 <h3>
 <a name="authors" class="anchor" href="#authors"><span class="octicon octicon-link"></span></a>Authors</h3>
 
-<p>Rafael García Fernández</p>
+<p>Rafael García</p>
 
 <ul>
 <li><em>University of Granada (UGR)</em></li>
 <li><a href="http://github.com/rafagf">http://github.com/rafagf</a></li>
-<li>Email: <a href="mailto:rafagarfer@gmail.com">rafagarfer@gmail.com</a>
-</li>
-</ul><p>Alejandro Sáez Fernández</p>
+<li>Email: <a href="mailto:rafagarfer@gmail.com">rafagarfer@gmail.com</a> </li>
+</ul><p>Alejandro Sáez</p>
 
 <ul>
 <li><em>University of Granada (UGR)</em></li>
@@ -1103,9 +1147,9 @@ will be a String and will be stored in the <em>stringClassified variable</em> (w
 <li>Email: <a href="mailto:alejandrosaez3@gmail.com">alejandrosaez3@gmail.com</a>
 </li>
 </ul><h3>
-<a name="original-idea-and-project-supervisor" class="anchor" href="#original-idea-and-project-supervisor"><span class="octicon octicon-link"></span></a>Original Idea and Project Supervisor</h3>
+<a name="original-idea-and-project-coordinator" class="anchor" href="#original-idea-and-project-coordinator"><span class="octicon octicon-link"></span></a>Original Idea and Project Coordinator</h3>
 
-<p>Oresti Baños Legrán</p>
+<p>Dr. Oresti Baños</p>
 
 <ul>
 <li><em>Research Center for Information and Communication Technology University of Granada (CITIC-UGR)</em></li>
@@ -1114,7 +1158,7 @@ will be a String and will be stored in the <em>stringClassified variable</em> (w
 </ul><h3>
 <a name="collaborators" class="anchor" href="#collaborators"><span class="octicon octicon-link"></span></a>Collaborators</h3>
 
-<p>Juan Antonio Holgado Terriza</p>
+<p>Prof. Juan Antonio Holgado</p>
 
 <ul>
 <li><em>University of Granada (UGR)</em></li>
@@ -1126,12 +1170,11 @@ will be a String and will be stored in the <em>stringClassified variable</em> (w
 <p>You can get any help you need getting in contact with any of the authors. We are looking forward to help you!</p>
 
 <h2>
-<a name="inspiration" class="anchor" href="#inspiration"><span class="octicon octicon-link"></span></a>Inspiration</h2>
+<a name="inspiration-and-motivation" class="anchor" href="#inspiration-and-motivation"><span class="octicon octicon-link"></span></a>Inspiration and motivation</h2>
 
-<p>This project is an original idea. It began as the MsC thesis for Computer Engineering of both authors in the University of Granada (UGR). </p>
+<p>This project is an original idea. The project was initiated and developed as part of the MsC thesis (Computer Science) of the authors at University of Granada (UGR) . </p>
 
-<p>After a research, we got the conclusion that there exist many wearable health devices, a lot biomedical applications and even a
-wide variety of biomedical frameworks and mobile frameworks, but in terms of biomedical mobile frameworks there is only a few and most of them are focused in the acquisition of data, patient monitoring and data broadcasting. We consider quality trustworthy health applications should incorporate these functionalities plus many others such as data visualization, local and remote storage, guidelines, notifications or knowledge inference and should not be limited to a particular biomedical device. For all these reasons the idea of mHealthDroid was born.</p>
+<p>After evaluation of the state-of-the-art in mobile health we ended up with the conclusion that there exist multiple wearable health devices (most of which are becoming commercial), biomedical apps and also biomedical and mobile frameworks. However, no biomedical mobile framework exists in a broad sense to the best of our knowledge. Although there are some frameworks devised for particular clinical problems, they mainly support data acquisition, visualization and broadcasting. Powerful health applications should incorporate these features plus many others such as local and remote storage, guidelines, recommenders notifications or knowledge inference among others, and not be limited to a particular biomedical device.</p>
 
 <h2>
 <a name="copyright-and-license" class="anchor" href="#copyright-and-license"><span class="octicon octicon-link"></span></a>Copyright and license</h2>
