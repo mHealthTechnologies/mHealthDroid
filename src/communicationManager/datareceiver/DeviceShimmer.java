@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import com.shimmerresearch.android.Shimmer;
+import com.shimmerresearch.driver.FormatCluster;
+import com.shimmerresearch.driver.ObjectCluster;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -21,9 +25,6 @@ import communicationManager.dataStructure.ObjectData;
 import communicationManager.dataStructure.ObjectData.SensorType;
 import communicationManager.dataStructure.ObjectMetadata;
 
-import com.shimmerresearch.android.Shimmer;
-import com.shimmerresearch.driver.FormatCluster;
-import com.shimmerresearch.driver.ObjectCluster;
 
 /**
  * This driver supports the Shimmer Driver 2.3. It means that it can work with the Shimmer 2 and the Shimmer 3.
