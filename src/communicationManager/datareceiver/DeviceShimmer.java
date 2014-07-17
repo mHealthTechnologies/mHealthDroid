@@ -197,7 +197,7 @@ public class DeviceShimmer extends Activity implements Device {
 			return false;
 		}
 
-		myShimmerVersion = myShimmerDevice.getShimmerVersion();
+//		myShimmerVersion = myShimmerDevice.getShimmerVersion();
 		
 		return true;
 	}
@@ -255,9 +255,8 @@ public class DeviceShimmer extends Activity implements Device {
 				break;
 				case Shimmer.MESSAGE_STATE_CHANGE:
 					switch (msg.arg1) {
-						case Shimmer.STATE_CONNECTED:
-							if(CommunicationManager.mHandlerApp!=null)
-								CommunicationManager.mHandlerApp.obtainMessage(CommunicationManager.STATUS_CONNECTED, myName).sendToTarget();
+						case Shimmer.STATE_CONNECTED: // this is depracated in the shimmer driver
+							
 						break;
 						case Shimmer.STATE_CONNECTING:
 							if(CommunicationManager.mHandlerApp!=null)
@@ -275,6 +274,11 @@ public class DeviceShimmer extends Activity implements Device {
 								CommunicationManager.mHandlerApp.obtainMessage(CommunicationManager.STATUS_DISCONNECTED, myName).sendToTarget();
 							
 							break;
+						case Shimmer.MSG_STATE_FULLY_INITIALIZED: //this is the new msg sent by the shimmer driver when the device is fully connected
+							myShimmerVersion = myShimmerDevice.getShimmerVersion();
+							if(CommunicationManager.mHandlerApp!=null)
+								CommunicationManager.mHandlerApp.obtainMessage(CommunicationManager.STATUS_CONNECTED, myName).sendToTarget();
+						break;
 					}
 					break;
 				case Shimmer.MESSAGE_WRITE:
