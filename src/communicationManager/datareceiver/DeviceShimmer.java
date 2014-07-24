@@ -69,7 +69,7 @@ public class DeviceShimmer extends Activity implements Device {
 	public static final int SHIMMER3_SENSOR_ECG = Shimmer.SHIMMER3_SENSOR_ECG;
 	public static final int SHIMMER3_SENSOR_EMG	= Shimmer.SHIMMER3_SENSOR_EMG;
 	public static final int SENSOR_EXP_BOARD = Shimmer.SENSOR_EXP_BOARD;
-	public static final int SENSOR_BATT = Shimmer.SENSOR_BATT;
+	public static final int SENSOR_BATT = Shimmer.SENSOR_BATT; 
 	public static final int SENSOR_EXT_ADC_A7 = Shimmer.SENSOR_EXT_ADC_A7; //only Applicable for Shimmer3
 	public static final int SENSOR_EXT_ADC_A6 = Shimmer.SENSOR_EXT_ADC_A6; //only Applicable for Shimmer3
 	public static final int SENSOR_EXT_ADC_A15 = Shimmer.SENSOR_EXT_ADC_A15;
@@ -593,86 +593,186 @@ public class DeviceShimmer extends Activity implements Device {
 	public ArrayList<SensorType> getEnabledSensors() {
 
 		ArrayList<SensorType> sensors = new ArrayList<SensorType>();
-		int s = myShimmerDevice.getEnabledSensors();
+		int enabledSensors = myShimmerDevice.getEnabledSensors();
 
-		if (((s & 0xFF) & SENSOR_ACCEL) > 0) {
-			if(myShimmerVersion == 3 || myShimmerVersion == 4)
-				sensors.add(SensorType.LOW_NOISE_ACCELEROMETER);
-			else
+		if(myShimmerVersion!=3 && myShimmerVersion!=4){
+			if (((enabledSensors & 0xFF)& SENSOR_ACCEL) > 0){
 				sensors.add(SensorType.ACCELEROMETER);
+			}
+			if (((enabledSensors & 0xFF)& SENSOR_GYRO) > 0) {
+				sensors.add(SensorType.GYROSCOPE);
+			}
+			if (((enabledSensors & 0xFF)& SENSOR_MAG) > 0) {
+				sensors.add(SensorType.MAGNETOMETER);
+			}
+			if (((enabledSensors & 0xFF) & SENSOR_GSR) > 0) {
+				sensors.add(SensorType.GSR);
+			}
+			if (((enabledSensors & 0xFF) & SENSOR_ECG) > 0) {
+				sensors.add(SensorType.ECG);
+			}
+			if (((enabledSensors & 0xFF) & SENSOR_EMG) > 0){
+				sensors.add(SensorType.EMG);
+			}
+			if (((enabledSensors & 0xFF00) & SENSOR_STRAIN) > 0) {
+				sensors.add(SensorType.STRAIN);
+			}
+			if (((enabledSensors & 0xFF00) & SENSOR_HEART) > 0) {
+				sensors.add(SensorType.HEART_RATE);
+			}
+			if ((((enabledSensors & 0xFF) & SENSOR_EXP_BOARD_A0) > 0) && myShimmerDevice.getPMux() == 0) {
+				sensors.add(SensorType.EXP_BOARDA0);
+			}
+			if ((((enabledSensors & 0xFF) & SENSOR_EXP_BOARD_A7) > 0 && myShimmerDevice.getPMux() == 0)) {
+				sensors.add(SensorType.EXP_BOARDA7);
+			}
+			if (((enabledSensors & 0xFFFF) & SENSOR_BATT) > 0) {
+				sensors.add(SensorType.V_SENSE_BATT);
+			}
+			if (((enabledSensors & 0xFF)& SENSOR_ACCEL) > 0 && ((enabledSensors & 0xFF)& SENSOR_GYRO) > 0 && ((enabledSensors & 0xFF)& SENSOR_MAG) > 0 && myShimmerDevice.is3DOrientatioEnabled()){
+				sensors.add(SensorType.ORIENTATION);
+			}			
+				
 		}
-		if (((s & 0xFF) & SENSOR_DACCEL) > 0) {
-			sensors.add(SensorType.WIDE_RANGE_ACCELEROMETER);
+		else{
+			if (((enabledSensors & 0xFF)&  SENSOR_ACCEL) >0){
+				sensors.add(SensorType.LOW_NOISE_ACCELEROMETER);
+			}
+			if (((enabledSensors & 0xFF)& SENSOR_DACCEL) >0){
+				sensors.add(SensorType.WIDE_RANGE_ACCELEROMETER);
+			}
+			if (((enabledSensors & 0xFF)& SENSOR_GYRO) > 0) {
+				sensors.add(SensorType.GYROSCOPE);
+			}
+			if (((enabledSensors & 0xFF)& SENSOR_MAG) > 0) {
+				sensors.add(SensorType.MAGNETOMETER);
+			}
+			if (((enabledSensors & 0xFFFF) & SENSOR_BATT) > 0) {
+				sensors.add(SensorType.V_SENSE_BATT);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_EXT_ADC_A15) > 0) {
+				sensors.add(SensorType.EXTERNAL_ADC_A15);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_EXT_ADC_A7) > 0) {
+				sensors.add(SensorType.EXTERNAL_ADC_A7);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_EXT_ADC_A6) > 0) {
+				sensors.add(SensorType.EXTERNAL_ADC_A6);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_INT_ADC_A1) > 0) {
+				sensors.add(SensorType.INTERNAL_ADC_A1);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_INT_ADC_A12) > 0) {
+				sensors.add(SensorType.INTERNAL_ADC_A12);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_INT_ADC_A13) > 0) {
+				sensors.add(SensorType.INTERNAL_ADC_A13);
+			}
+			if (((enabledSensors & 0xFFFFFF)& SENSOR_INT_ADC_A14) > 0) {
+				sensors.add(SensorType.INTERNAL_ADC_A14);
+			}
+			if ((((enabledSensors & 0xFF)& SENSOR_ACCEL) > 0 || ((enabledSensors & 0xFFFF)& SENSOR_DACCEL) > 0)&& ((enabledSensors & 0xFF)& SENSOR_GYRO) > 0 && ((enabledSensors & 0xFF)& SENSOR_MAG) > 0 && myShimmerDevice.is3DOrientatioEnabled()){
+				sensors.add(SensorType.ORIENTATION);
+			}
+			if ((enabledSensors & SENSOR_BMP180)>0){
+				sensors.add(SensorType.BMP180);
+			}
+			if ((enabledSensors & SENSOR_GSR)>0){
+				sensors.add(SensorType.GSR);
+			}
+			if ((enabledSensors & SENSOR_EXG1_24BIT)>0){
+				sensors.add(SensorType.EXG1_24B);
+			}
+			if ((enabledSensors & SENSOR_EXG2_24BIT)>0){
+				sensors.add(SensorType.EXG2_24B);
+			}
+			if ((enabledSensors & SENSOR_EXG1_16BIT)>0){
+				sensors.add(SensorType.EXG1_16B);
+			}
+			if ((enabledSensors & SENSOR_EXG2_16BIT)>0){
+				sensors.add(SensorType.EXG2_16B);
+			}
 		}
-		if (((s & 0xFF) & SENSOR_GYRO) > 0) {
-			sensors.add(SensorType.GYROSCOPE);
-		}
-		if (((s & 0xFF) & SENSOR_MAG) > 0) {
-			sensors.add(SensorType.MAGNETOMETER);
-		}
-		if (((s & 0xFF) & SENSOR_GSR) > 0) {
-			sensors.add(SensorType.GSR);
-		}
-		if (((s & 0xFF) & SENSOR_ECG) > 0) {
-			sensors.add(SensorType.ECG);
-		}
-		if (((s & 0xFF) & SENSOR_EMG) > 0) {
-			sensors.add(SensorType.EMG);
-		}
-		if (((s & 0xFF) & SENSOR_STRAIN) > 0) {
-			sensors.add(SensorType.STRAIN);
-		}
-		if (((s & 0xFF) & SENSOR_HEART) > 0) {
-			sensors.add(SensorType.HEART_RATE);
-		}
-		if (((s & 0xFF) & SENSOR_EXP_BOARD_A0) > 0) {
-			sensors.add(SensorType.EXP_BOARDA0);
-		}
-		if (((s & 0xFF) & SENSOR_EXP_BOARD_A7) > 0) {
-			sensors.add(SensorType.EXP_BOARDA7);
-		}
-		if (((s & 0xFF) & SENSOR_BATT) > 0) {
-			sensors.add(SensorType.V_SENSE_BATT);
-		}
-		if (((s & 0xFF) & SENSOR_EXT_ADC_A6) > 0) {
-			sensors.add(SensorType.EXTERNAL_ADC_A6);
-		}
-		if (((s & 0xFF) & SENSOR_EXT_ADC_A7) > 0) {
-			sensors.add(SensorType.EXTERNAL_ADC_A7);
-		}
-		if (((s & 0xFF) & SENSOR_EXT_ADC_A15) > 0) {
-			sensors.add(SensorType.EXTERNAL_ADC_A15);
-		}
-		if (((s & 0xFF) & SENSOR_INT_ADC_A1) > 0) {
-			sensors.add(SensorType.INTERNAL_ADC_A1);
-		}
-		if (((s & 0xFF) & SENSOR_INT_ADC_A12) > 0) {
-			sensors.add(SensorType.INTERNAL_ADC_A12);
-		}
-		if (((s & 0xFF) & SENSOR_INT_ADC_A13) > 0) {
-			sensors.add(SensorType.INTERNAL_ADC_A13);
-		}
-		if (((s & 0xFF) & SENSOR_INT_ADC_A14) > 0) {
-			sensors.add(SensorType.INTERNAL_ADC_A14);
-		}
-		if (((s & 0xFF) & SENSOR_ACCEL) > 0 && ((s & 0xFF) & SENSOR_MAG) > 0 && ((s & 0xFF) & SENSOR_GYRO) > 0 && myShimmerDevice.is3DOrientatioEnabled()) {
-			sensors.add(SensorType.ORIENTATION);
-		}
-		if (((s & 0xFF) & SENSOR_EXG1_24BIT) > 0) {
-			sensors.add(SensorType.EXG1_24B);
-		}
-		if (((s & 0xFF) & SENSOR_EXG2_24BIT) > 0) {
-			sensors.add(SensorType.EXG2_24B);
-		}
-		if (((s & 0xFF) & SENSOR_EXG1_16BIT) > 0) {
-			sensors.add(SensorType.EXG1_16B);
-		}
-		if (((s & 0xFF) & SENSOR_EXG2_16BIT) > 0) {
-			sensors.add(SensorType.EXG2_16B);
-		}
-		if (((s & 0xFF) & SENSOR_BMP180) > 0) {
-			sensors.add(SensorType.BMP180);
-		}
+		
+		
+//		if (((s & 0xFF) & SENSOR_ACCEL) > 0) {
+//			if(myShimmerVersion == 3 || myShimmerVersion == 4)
+//				sensors.add(SensorType.LOW_NOISE_ACCELEROMETER);
+//			else
+//				sensors.add(SensorType.ACCELEROMETER);
+//		}
+//		if (((s & 0xFF) & SENSOR_DACCEL) > 0) {
+//			sensors.add(SensorType.WIDE_RANGE_ACCELEROMETER);
+//		}
+//		if (((s & 0xFF) & SENSOR_GYRO) > 0) {
+//			sensors.add(SensorType.GYROSCOPE);
+//		}
+//		if (((s & 0xFF) & SENSOR_MAG) > 0) {
+//			sensors.add(SensorType.MAGNETOMETER);
+//		}
+//		if (((s & 0xFF) & SENSOR_GSR) > 0) {
+//			sensors.add(SensorType.GSR);
+//		}
+//		if (((s & 0xFF) & SENSOR_ECG) > 0) {
+//			sensors.add(SensorType.ECG);
+//		}
+//		if (((s & 0xFF) & SENSOR_EMG) > 0) {
+//			sensors.add(SensorType.EMG);
+//		}
+//		if (((s & 0xFF) & SENSOR_STRAIN) > 0) {
+//			sensors.add(SensorType.STRAIN);
+//		}
+//		if (((s & 0xFF) & SENSOR_HEART) > 0) {
+//			sensors.add(SensorType.HEART_RATE);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXP_BOARD_A0) > 0) {
+//			sensors.add(SensorType.EXP_BOARDA0);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXP_BOARD_A7) > 0) {
+//			sensors.add(SensorType.EXP_BOARDA7);
+//		}
+//		if (((s & 0xFF) & SENSOR_BATT) > 0) {
+//			sensors.add(SensorType.V_SENSE_BATT);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXT_ADC_A6) > 0) {
+//			sensors.add(SensorType.EXTERNAL_ADC_A6);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXT_ADC_A7) > 0) {
+//			sensors.add(SensorType.EXTERNAL_ADC_A7);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXT_ADC_A15) > 0) {
+//			sensors.add(SensorType.EXTERNAL_ADC_A15);
+//		}
+//		if (((s & 0xFF) & SENSOR_INT_ADC_A1) > 0) {
+//			sensors.add(SensorType.INTERNAL_ADC_A1);
+//		}
+//		if (((s & 0xFF) & SENSOR_INT_ADC_A12) > 0) {
+//			sensors.add(SensorType.INTERNAL_ADC_A12);
+//		}
+//		if (((s & 0xFF) & SENSOR_INT_ADC_A13) > 0) {
+//			sensors.add(SensorType.INTERNAL_ADC_A13);
+//		}
+//		if (((s & 0xFF) & SENSOR_INT_ADC_A14) > 0) {
+//			sensors.add(SensorType.INTERNAL_ADC_A14);
+//		}
+//		if (((s & 0xFF) & SENSOR_ACCEL) > 0 && ((s & 0xFF) & SENSOR_MAG) > 0 && ((s & 0xFF) & SENSOR_GYRO) > 0 && myShimmerDevice.is3DOrientatioEnabled()) {
+//			sensors.add(SensorType.ORIENTATION);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXG1_24BIT) > 0) {
+//			sensors.add(SensorType.EXG1_24B);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXG2_24BIT) > 0) {
+//			sensors.add(SensorType.EXG2_24B);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXG1_16BIT) > 0) {
+//			sensors.add(SensorType.EXG1_16B);
+//		}
+//		if (((s & 0xFF) & SENSOR_EXG2_16BIT) > 0) {
+//			sensors.add(SensorType.EXG2_16B);
+//		}
+//		if (((s & 0xFF) & SENSOR_BMP180) > 0) {
+//			sensors.add(SensorType.BMP180);
+//		}
 
 		return sensors;
 	}
@@ -694,161 +794,196 @@ public class DeviceShimmer extends Activity implements Device {
 			metadata.hashMetadata.put(SensorType.TIME_STAMP, new Metadata(UNITS_TIME[0]));
 		else
 			metadata.hashMetadata.put(SensorType.TIME_STAMP, new Metadata(UNITS_TIME[1]));
-
-		if (((sensors & 0xFF) & SENSOR_ACCEL) > 0) {
-			if (format == FormatType.CALIBRATED)
-				if(myShimmerVersion==3 || myShimmerVersion==4)
-					metadata.hashMetadata.put(SensorType.LOW_NOISE_ACCELEROMETER, new Metadata(UNITS_LNACCEL[0]));
-				else
+		
+		if(myShimmerVersion!=3 && myShimmerVersion!=4){
+			if (((sensors & 0xFF) & SENSOR_ACCEL) > 0) {
+				if (format == FormatType.CALIBRATED)
 					metadata.hashMetadata.put(SensorType.ACCELEROMETER,	new Metadata(UNITS_ACCEL[0]));
-			else
-				if(myShimmerVersion==3 || myShimmerVersion==4)
-					metadata.hashMetadata.put(SensorType.LOW_NOISE_ACCELEROMETER, new Metadata(UNITS_LNACCEL[1]));
 				else
 					metadata.hashMetadata.put(SensorType.ACCELEROMETER,	new Metadata(UNITS_ACCEL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_DACCEL) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.WIDE_RANGE_ACCELEROMETER,	new Metadata(UNITS_WRACCEL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.WIDE_RANGE_ACCELEROMETER,	new Metadata(UNITS_WRACCEL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_GYRO) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.GYROSCOPE, new Metadata(UNITS_GYRO[0]));
-			else
-				metadata.hashMetadata.put(SensorType.GYROSCOPE, new Metadata(UNITS_GYRO[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_MAG) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.MAGNETOMETER,new Metadata(UNITS_MAG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.MAGNETOMETER,new Metadata(UNITS_MAG[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_GSR) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.GSR, new Metadata(UNITS_GSR[0]));
-			else
-				metadata.hashMetadata.put(SensorType.GSR, new Metadata(UNITS_GSR[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_ECG) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.ECG, new Metadata(UNITS_ECG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.ECG, new Metadata(UNITS_ECG[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EMG) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EMG, new Metadata(UNITS_EMG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EMG, new Metadata(UNITS_EMG[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_STRAIN) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.STRAIN, new Metadata(UNITS_STRAIN[0]));
-			else
-				metadata.hashMetadata.put(SensorType.STRAIN, new Metadata(UNITS_STRAIN[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_HEART) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.HEART_RATE, new Metadata(UNITS_HEART[0]));
+			}
+			if (((sensors & 0xFF) & SENSOR_GYRO) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.GYROSCOPE, new Metadata(UNITS_GYRO[0]));
+				else
+					metadata.hashMetadata.put(SensorType.GYROSCOPE, new Metadata(UNITS_GYRO[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_MAG) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.MAGNETOMETER,new Metadata(UNITS_MAG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.MAGNETOMETER,new Metadata(UNITS_MAG[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_GSR) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.GSR, new Metadata(UNITS_GSR[0]));
+				else
+					metadata.hashMetadata.put(SensorType.GSR, new Metadata(UNITS_GSR[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_ECG) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.ECG, new Metadata(UNITS_ECG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.ECG, new Metadata(UNITS_ECG[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_EMG) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EMG, new Metadata(UNITS_EMG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EMG, new Metadata(UNITS_EMG[1]));
+			}
+			if (((sensors & 0xFF00) & SENSOR_STRAIN) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.STRAIN, new Metadata(UNITS_STRAIN[0]));
+				else
+					metadata.hashMetadata.put(SensorType.STRAIN, new Metadata(UNITS_STRAIN[1]));
+			}
+			if (((sensors & 0xFF00) & SENSOR_HEART) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.HEART_RATE, new Metadata(UNITS_HEART[0]));
 
+			}
+			if ((((sensors & 0xFF) & SENSOR_EXP_BOARD_A0) > 0) && myShimmerDevice.getPMux() == 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXP_BOARDA0, new Metadata(UNITS_EXP_A0[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXP_BOARDA0, new Metadata(UNITS_EXP_A0[1]));
+			}
+			if ((((sensors & 0xFF) & SENSOR_EXP_BOARD_A7) > 0) && myShimmerDevice.getPMux() == 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXP_BOARDA7, new Metadata(UNITS_EXP_A7[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXP_BOARDA7, new Metadata(UNITS_EXP_A7[1]));
+			}
+			if (((sensors & 0xFFFF) & SENSOR_BATT) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[0]));
+				else
+					metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_ACCEL) > 0 && ((sensors & 0xFF) & SENSOR_GYRO) > 0 && ((sensors & 0xFF) & SENSOR_MAG) > 0 && is3DOrientationEnabled()) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[0]));
+				else
+					metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[1]));
+			}
 		}
-		if (((sensors & 0xFF) & SENSOR_EXP_BOARD_A0) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXP_BOARDA0, new Metadata(UNITS_EXP_A0[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXP_BOARDA0, new Metadata(UNITS_EXP_A0[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXP_BOARD_A7) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXP_BOARDA7, new Metadata(UNITS_EXP_A7[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXP_BOARDA7, new Metadata(UNITS_EXP_A7[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXT_ADC_A6) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A6, new Metadata(UNITS_EXTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A6, new Metadata(UNITS_EXTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXT_ADC_A7) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A7, new Metadata(UNITS_EXTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A7, new Metadata(UNITS_EXTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXT_ADC_A15) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A15, new Metadata(UNITS_EXTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A15, new Metadata(UNITS_EXTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_INT_ADC_A1) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A1, new Metadata(UNITS_INTTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A1, new Metadata(UNITS_INTTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_INT_ADC_A12) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A12, new Metadata(UNITS_INTTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A12, new Metadata(UNITS_INTTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_INT_ADC_A13) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A13, new Metadata(UNITS_INTTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A13, new Metadata(UNITS_INTTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_INT_ADC_A14) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A14, new Metadata(UNITS_INTTERNAL[0]));
-			else
-				metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A14, new Metadata(UNITS_INTTERNAL[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_BATT) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[0]));
-			else
-				metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_ACCEL) > 0 && ((sensors & 0xFF) & SENSOR_GYRO) > 0 && ((sensors & 0xFF) & SENSOR_MAG) > 0 && is3DOrientationEnabled()) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[0]));
-			else
-				metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_BMP180) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.BMP180, new Metadata(UNITS_BMP180[0]));
-			else
-				metadata.hashMetadata.put(SensorType.BMP180, new Metadata(UNITS_BMP180[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXG1_24BIT) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXG1_24B, new Metadata(UNITS_EXG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXG1_24B, new Metadata(UNITS_EXG[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXG2_24BIT) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXG2_24B, new Metadata(UNITS_EXG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXG2_24B, new Metadata(UNITS_EXG[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXG1_16BIT) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXG1_16B, new Metadata(UNITS_EXG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXG1_16B, new Metadata(UNITS_EXG[1]));
-		}
-		if (((sensors & 0xFF) & SENSOR_EXG2_16BIT) > 0) {
-			if (format == FormatType.CALIBRATED)
-				metadata.hashMetadata.put(SensorType.EXG2_16B, new Metadata(UNITS_EXG[0]));
-			else
-				metadata.hashMetadata.put(SensorType.EXG2_16B, new Metadata(UNITS_EXG[1]));
+		else{ //Shimmer 3
+			if (((sensors & 0xFF) & SENSOR_ACCEL) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.LOW_NOISE_ACCELEROMETER, new Metadata(UNITS_LNACCEL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.LOW_NOISE_ACCELEROMETER, new Metadata(UNITS_LNACCEL[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_DACCEL) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.WIDE_RANGE_ACCELEROMETER,	new Metadata(UNITS_WRACCEL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.WIDE_RANGE_ACCELEROMETER,	new Metadata(UNITS_WRACCEL[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_GYRO) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.GYROSCOPE, new Metadata(UNITS_GYRO[0]));
+				else
+					metadata.hashMetadata.put(SensorType.GYROSCOPE, new Metadata(UNITS_GYRO[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_MAG) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.MAGNETOMETER,new Metadata(UNITS_MAG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.MAGNETOMETER,new Metadata(UNITS_MAG[1]));
+			}
+			if (((sensors & 0xFFFF) & SENSOR_BATT) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[0]));
+				else
+					metadata.hashMetadata.put(SensorType.V_SENSE_BATT, new Metadata(UNITS_VSENSE_BATT[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_EXT_ADC_A6) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A6, new Metadata(UNITS_EXTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A6, new Metadata(UNITS_EXTERNAL[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_EXT_ADC_A7) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A7, new Metadata(UNITS_EXTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A7, new Metadata(UNITS_EXTERNAL[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_EXT_ADC_A15) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A15, new Metadata(UNITS_EXTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXTERNAL_ADC_A15, new Metadata(UNITS_EXTERNAL[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_INT_ADC_A1) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A1, new Metadata(UNITS_INTTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A1, new Metadata(UNITS_INTTERNAL[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_INT_ADC_A12) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A12, new Metadata(UNITS_INTTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A12, new Metadata(UNITS_INTTERNAL[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_INT_ADC_A13) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A13, new Metadata(UNITS_INTTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A13, new Metadata(UNITS_INTTERNAL[1]));
+			}
+			if (((sensors & 0xFFFFFF) & SENSOR_INT_ADC_A14) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A14, new Metadata(UNITS_INTTERNAL[0]));
+				else
+					metadata.hashMetadata.put(SensorType.INTERNAL_ADC_A14, new Metadata(UNITS_INTTERNAL[1]));
+			}
+			if (((sensors & 0xFF) & SENSOR_ACCEL) > 0 && ((sensors & 0xFF) & SENSOR_GYRO) > 0 && ((sensors & 0xFF) & SENSOR_MAG) > 0 && is3DOrientationEnabled()) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[0]));
+				else
+					metadata.hashMetadata.put(SensorType.ORIENTATION, new Metadata(UNITS_ORIENTATION[1]));
+			}
+			if ((sensors & SENSOR_GSR)>0){
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.GSR, new Metadata(UNITS_GSR[0]));
+				else
+					metadata.hashMetadata.put(SensorType.GSR, new Metadata(UNITS_GSR[1]));
+			}
+			if ((sensors & SENSOR_BMP180) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.BMP180, new Metadata(UNITS_BMP180[0]));
+				else
+					metadata.hashMetadata.put(SensorType.BMP180, new Metadata(UNITS_BMP180[1]));
+			}
+			if ((sensors & SENSOR_EXG1_24BIT) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXG1_24B, new Metadata(UNITS_EXG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXG1_24B, new Metadata(UNITS_EXG[1]));
+			}
+			if ((sensors & SENSOR_EXG2_24BIT) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXG2_24B, new Metadata(UNITS_EXG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXG2_24B, new Metadata(UNITS_EXG[1]));
+			}
+			if ((sensors & SENSOR_EXG1_16BIT) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXG1_16B, new Metadata(UNITS_EXG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXG1_16B, new Metadata(UNITS_EXG[1]));
+			}
+			if ((sensors & SENSOR_EXG2_16BIT) > 0) {
+				if (format == FormatType.CALIBRATED)
+					metadata.hashMetadata.put(SensorType.EXG2_16B, new Metadata(UNITS_EXG[0]));
+				else
+					metadata.hashMetadata.put(SensorType.EXG2_16B, new Metadata(UNITS_EXG[1]));
+			}
+			
 		}
 		
 		metadata.rate = myShimmerDevice.getSamplingRate();

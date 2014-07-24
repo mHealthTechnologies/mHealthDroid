@@ -75,20 +75,20 @@ public class DBAdapter {
 	public static final String EMG_CH1 = "EmgCh1";
 	public static final String EMG_CH2 = "EmgCh2";
 	public static final String EXG1_CH1 = "EXg1Ch1";
-	public static final String EXG1_CH2 = "EXg1Ch2";
-	public static final String EXG1_CH1_16BIT = "EXg1Ch1.16Bit";
-	public static final String EXG1_CH2_16BIT = "EXg1Ch2.16Bit";
-	public static final String EXG2_CH1 = "EXg2Ch1";
-	public static final String EXG2_CH2 = "EXg2Ch2";
+	public static final String EXG1_CH2 = "Exg1Ch2";
+	public static final String EXG1_CH1_16BIT = "Exg1Ch1_16Bit";
+	public static final String EXG1_CH2_16BIT = "Exg1Ch2_16Bit";
+	public static final String EXG2_CH1 = "Exg2Ch1";
+	public static final String EXG2_CH2 = "Exg2Ch2";
 	public static final String ECG_VxRL = "EcgVxRL";
-	public static final String EXG2_CH1_16BIT = "EXg2Ch1.16Bit";
-	public static final String EXG2_CH2_16BIT = "EXg2Ch2.16Bit";
-	public static final String EXG1_STATUS = "EXg1Status";
-	public static final String EXG2_STATUS = "EXg2Status";
-	public static final String EXG1_24BIT = "EXg1.24Bit";
-	public static final String EXG2_24BIT = "EXg2.24Bit";
-	public static final String EXG1_16BIT = "EXg1.16Bit";
-	public static final String EXG2_16BIT = "EXg2.16Bit";
+	public static final String EXG2_CH1_16BIT = "Exg2Ch1_16Bit";
+	public static final String EXG2_CH2_16BIT = "Exg2Ch2_16Bit";
+	public static final String EXG1_STATUS = "Exg1Status";
+	public static final String EXG2_STATUS = "Exg2Status";
+	public static final String EXG1_24BIT = "Exg1_24Bit";
+	public static final String EXG2_24BIT = "Exg2_24Bit";
+	public static final String EXG1_16BIT = "Exg1_16Bit";
+	public static final String EXG2_16BIT = "Exg2_16Bit";
 	public static final String BMP180 = "BMP180"; // this is the sensor for the pressure and the temperature
 	
 	public static final String TIME_STAMP = "TimeStamp";
@@ -840,7 +840,7 @@ public class DBAdapter {
 				+ ", " + INTERNAL_ADC_A1 + ", " + INTERNAL_ADC_A12
 				+ ", " + INTERNAL_ADC_A13 + ", " + INTERNAL_ADC_A14
 				+ ", " + ORIENTATION_3D + ", " + TYPE_DEVICE
-				+ ", " + FORMAT + START + ", " + FINISH + ", " + FIRST_INDEX + ", "
+				+ ", " + FORMAT + ", " + START + ", " + FINISH + ", " + FIRST_INDEX + ", "
 				+ LAST_INDEX+ ", "+ RATE +") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		db.beginTransaction();
