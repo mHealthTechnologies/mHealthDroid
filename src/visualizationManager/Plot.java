@@ -25,6 +25,7 @@ public class Plot {
 	public Hashtable<String, Integer> hashCont; // set of counters of the series that represents the coordinate X of the serie
 	public int numMax; //maximum number of the data to be visualized in the graph
 	
+	
 	public enum GraphType {
 		LINE, BAR;
 	}

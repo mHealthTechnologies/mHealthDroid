@@ -8,6 +8,7 @@ public class ObjectData {
 	public String name;
 	public Hashtable<SensorType, Data> hashData;
 
+	
 	public enum SensorType {
 
 		ACCELEROMETER_X("AccX"),

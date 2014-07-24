@@ -44,6 +44,7 @@ public class Storage {
 		dbadapter.close();
 	}
 
+	
 
 	/**
 	 * Method to insert signal rows from the device shimmer 2

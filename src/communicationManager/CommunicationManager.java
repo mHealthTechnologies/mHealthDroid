@@ -36,6 +36,7 @@ public class CommunicationManager extends Service {
 	public static final int DEVICE_SHIMMER2 = 2;
 	public static final int DEVICE_SHIMMER3 = 3;
 	
+	
 	public static final int STATUS_NONE = 0;
 	public static final int STATUS_CONNECTING = 1;
 	public static final int STATUS_CONNECTED = 2;

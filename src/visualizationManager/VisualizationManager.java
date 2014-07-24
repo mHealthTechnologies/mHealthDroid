@@ -34,6 +34,7 @@ public class VisualizationManager extends Activity {
 			Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.GRAY, Color.LTGRAY };
 
 	
+	
 	class ObjectVisualization {
 
 		Plot graph;
