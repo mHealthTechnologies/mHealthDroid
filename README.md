@@ -96,7 +96,7 @@ A few steps are required to get started:
 
 6. Coding time!
 
-All the libraries can be downloaded in mHealthDroid´s releases.
+All the libraries can be downloaded from mHealthDroid´s releases.
 
 https://github.com/mHealthDroid/libraries
 
