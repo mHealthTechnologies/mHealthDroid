@@ -118,7 +118,7 @@ The mHealthDroid full documentation can be found in <a href="http://apuestasrafa
 
 ## APP examples
 
-- mHealthAPP: exemplary APP intended to show the usefulness and potential of mHealthDroid. More information in <a href="https://github.com/mHealthDroid/mHealthAPP">mHealthAPP´s repository</a>
+- mHealthAPP: exemplary APP intended to show the usefulness and potential of mHealthDroid. More information in <a href="https://github.com/mHealthDroid/mHealthAPP">mHealthAPP </a>repository
 
 [<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](https://www.youtube.com/watch?v=AMdxw4osjCU)
 
