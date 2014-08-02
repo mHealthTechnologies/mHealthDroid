@@ -874,13 +874,11 @@ How can you keep track of the development and news of mHealthDroid? Follow us in
 
 Rafael García
 
-* _University of Granada (UGR)_
 * http://github.com/rafagf
 * Email: rafagarfer@gmail.com 
 
 Alejandro Sáez
 
-* _University of Granada (UGR)_
 * http://github.com/alsafer
 * Email: alejandrosaez3@gmail.com
 
