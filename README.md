@@ -14,10 +14,6 @@ Contact (R&D enquiries): oresti.bl@gmail.com [<a href="http://www.ugr.es/~oresti
 
 Contact (implementation enquiries): rafagarfer@gmail.com [Rafael García], alejandrosaez3@gmail.com [Alejandro Sáez] 
 
-Android target version: 4.2
-
-Android minimum version: 2.3.3 
-
 **Table of Contents**
 
 - [What is mHealthDroid?](#what-is-mhealthdroid)
