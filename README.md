@@ -125,7 +125,7 @@ The mHealthDroid full documentation can be found in <a href="http://apuestasrafa
 
 ## Examples. How to use mHealthDroid
 
-The aim of this section is to show basic examples of how to use each manager. More detailed information will be coming soon.
+The aim of this section is to show basic examples of how to use each manager.
 
 ### Communication Manager
 
