@@ -86,7 +86,7 @@ The figure above depicts the structure of the framework, including all the exist
 
 - **Communication Manager**: it is responsible for the connection of mobile devices (smartphone, tablet) and biomedical devices, vital data gathering, local data storage and serve the collected data to the rest of the framework components.
 - **Remote Storage Manager**: it is devised to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, we provide along with the framework a possible implementation for the server side.
-- **Visualization Manager**: it supports both online and offline visualization. It has been built using GraphView library (http://android-graphview.org/).
+- **Visualization Manager**: it supports both online and offline visualization. It builds on an original extension of the GraphView library (http://android-graphview.org/). The source code of the new version developed as part of the _mHealthDroid_ project can be found at https://github.com/mHealthDroid/myGraphView.
 - **Data Processing Manager**: it is in charge of supervising and coordinating all the processes related to the inference of knowledge. This manager provides signal processing, data mining and machine learning techniques to extract knowledge from the biomedical data.
 - **System Manager**: this is a miscellaneous manager which allows for the configuration and monitoring of instrinsic aspects of the mobile and external devices. More importantly, it comprises a set of tools to support guidelines, recommendations or alerts of worth in health applications.
 
