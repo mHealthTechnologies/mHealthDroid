@@ -78,11 +78,11 @@ Contact (implementation enquiries): rafagarfer@gmail.com [Rafael García], aleja
 
 A few steps are required to get started:
 
-0. Download the project source files.
+1. Download the project source files.
 
-1. Import the project to Eclipse or other IDE.    
+2. Import the project to Eclipse or other IDE.    
 
-2. Add the following libraries:
+3. Add the following libraries:
 
     - GraphView 3.0.jar
     - Guava 14.0.jar
@@ -90,11 +90,11 @@ A few steps are required to get started:
     - WekaSTRIPPED.jar
     - YouTubeAndroidPlayerApi.jar
 
-3. Select mHealthDroid as library project.
+4. Select mHealthDroid as library project.
 
-4. Create your new project and select mHealthDroid as library. 
+5. Create your new project and select mHealthDroid as library. 
 
-5. Coding time!
+6. Coding time!
 
 All the libraries can be downloaded from the following repository: 
 
