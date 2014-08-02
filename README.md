@@ -98,7 +98,7 @@ A few steps are required to get started:
 
 All the libraries can be downloaded from mHealthDroid´s releases.
 
-https://github.com/mHealthDroid/libraries
+https://github.com/mHealthDroid/mHealthDroid/releases
 
 ## mHealthDroid structure
 
