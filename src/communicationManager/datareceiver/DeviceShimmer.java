@@ -32,31 +32,22 @@ import communicationManager.dataStructure.ObjectMetadata;
 
 
 /**
- * This driver supports the Shimmer Driver 2.3. It means that it can work with the Shimmer 2 and the Shimmer 3.
+ * This driver supports the Shimmer Driver 2.6.
+ *  It means that it can work with the Shimmer 2 and the Shimmer 3.
  * @author Alex
  *
  */
 
-public class DeviceShimmer extends Activity implements Device {
+public class DeviceShimmer extends Device {
 
 	private Shimmer myShimmerDevice = null;
-	private BluetoothAdapter myBluetoothAdapter = null;
 	private String bluetoothAddress;
-	private Context myContext;
-	private String myName;
-	private Handler myHandlerManager;
 	private FormatType format;
 	private int myShimmerVersion;
-	public ObjectMetadata metadata;
-	private boolean isStreaming;
-	public ArrayList<ObjectData> buffer;
-	public int cont;
 	public long offsetSessionTimeStamp;
 	public long offsetShimmerTimeStamp;
 	public boolean firstSample;
 	
-	public int NUM_SAMPLE = 200; // size of the block of sample to work with
-	public int MAX_SIZE = 4 * NUM_SAMPLE; //size of the buffer
 
 	// Sensors available in a Shimmer device
 	public static final int SENSOR_ACCEL = Shimmer.SENSOR_ACCEL;
@@ -68,7 +59,7 @@ public class DeviceShimmer extends Activity implements Device {
 	public static final int SENSOR_GSR = Shimmer.SENSOR_GSR;
 	public static final int SENSOR_EXP_BOARD_A7 = Shimmer.SENSOR_EXP_BOARD_A7;
 	public static final int SENSOR_EXP_BOARD_A0 = Shimmer.SENSOR_EXP_BOARD_A0;
-	public static final int SENSOR_STRAIN = Shimmer.SENSOR_STRAIN;
+	public static final int SENSOR_STRAIN = Shimmer.SENSOR_BRIDGE_AMP;
 	public static final int SENSOR_HEART = Shimmer.SENSOR_HEART;
 	public static final int SENSOR_EXG1_24BIT = Shimmer.SENSOR_EXG1_24BIT; //only applicable for Shimmer3
 	public static final int SENSOR_EXG2_24BIT = Shimmer.SENSOR_EXG2_24BIT; //only applicable for Shimmer3
@@ -127,18 +118,18 @@ public class DeviceShimmer extends Activity implements Device {
      * Constructor. Create a new DeviceShimmer object.
      * @param context  The UI Activity Context
      * @param name  To allow the user to set a unique identifier for each Shimmer device
-     * @param countiousSync A boolean value defining whether received packets should be checked continuously for the correct start and end of packet.
+     * @param countiousSync A boolean value defining whether received packets should be checked contBufferinuously for the correct start and end of packet.
      */
 	public DeviceShimmer(Context context, String name, boolean continuosSync) {
 		super();
-		myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//		myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		myShimmerDevice = new Shimmer(context, mHandler, name, continuosSync);
 		myContext = context;
 		myName = name;
 		format = FormatType.CALIBRATED;
 		metadata = new ObjectMetadata();
 		isStreaming = false;
-		cont = 0;
+		contBuffer = 0;
 		buffer = new ArrayList<ObjectData>();
 		firstSample = true;
 
@@ -159,14 +150,14 @@ public class DeviceShimmer extends Activity implements Device {
 	 * @param countiousSync A boolean value defining whether received packets should be checked continuously for the correct start and end of packet.
 	 */
 	public DeviceShimmer(Context context, Handler handler, String name, double samplingRate, int accelRange, int gsrRange, int setEnabledSensors, boolean continousSync){
-		myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//		myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		myShimmerDevice = new Shimmer(context, mHandler, name, samplingRate, accelRange, gsrRange, setEnabledSensors, continousSync);
 		myContext = context;
 		myName = name;
 		format = FormatType.CALIBRATED;
 		metadata = new ObjectMetadata();
 		isStreaming = false;
-		cont = 0;
+		contBuffer = 0;
 		buffer = new ArrayList<ObjectData>();
 		firstSample = true;
 		
@@ -178,15 +169,15 @@ public class DeviceShimmer extends Activity implements Device {
 	@Override
 	public boolean connect(String adress) {
 		// TODO Auto-generated method stub
-		if (myBluetoothAdapter == null) {
-			Toast.makeText(myContext,"Device does not support Bluetooth\nExiting...",Toast.LENGTH_LONG).show();
-			return false;
-		}
-
-		if (!myBluetoothAdapter.isEnabled()) {
-			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-		}
+//		if (myBluetoothAdapter == null) {
+//			Toast.makeText(myContext,"Device does not support Bluetooth\nExiting...",Toast.LENGTH_LONG).show();
+//			return false;
+//		}
+//
+//		if (!myBluetoothAdapter.isEnabled()) {
+//			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+//		}
 
 		bluetoothAddress = adress;
 		if(libraryToUse==1)
@@ -221,7 +212,7 @@ public class DeviceShimmer extends Activity implements Device {
 	@Override
 	public void startStreaming() {
 
-		cont = 0;
+		contBuffer = 0;
 		if(myShimmerVersion==3 || myShimmerVersion==4)
 			initBufferShimmer3();
 		else
@@ -406,9 +397,9 @@ public class DeviceShimmer extends Activity implements Device {
 									Collection<FormatCluster> formatCluster = objectCluster.mPropertyCluster.get(k);
 									for (FormatCluster f : formatCluster) {
 										if (f.mFormat.equals("CAL") && (format == FormatType.CALIBRATED))
-											buffer.get(cont).hashData.get(sensor).data = (float) f.mData;
+											buffer.get(contBuffer).hashData.get(sensor).data = (float) f.mData;
 										if (f.mFormat.equals("RAW") && (format == FormatType.UNCALIBRATED))
-											buffer.get(cont).hashData.get(sensor).data = (float) f.mData;
+											buffer.get(contBuffer).hashData.get(sensor).data = (float) f.mData;
 									}
 								}
 		
@@ -480,10 +471,10 @@ public class DeviceShimmer extends Activity implements Device {
 									Collection<FormatCluster> formatCluster = objectCluster.mPropertyCluster.get(k);
 									for (FormatCluster f : formatCluster) {
 										if (f.mFormat.equals("CAL") && (format == FormatType.CALIBRATED))
-											buffer.get(cont).hashData.get(sensor).data = (float) f.mData;
+											buffer.get(contBuffer).hashData.get(sensor).data = (float) f.mData;
 										
 										if (f.mFormat.equals("RAW") && (format == FormatType.UNCALIBRATED))
-											buffer.get(cont).hashData.get(sensor).data = (float) f.mData;
+											buffer.get(contBuffer).hashData.get(sensor).data = (float) f.mData;
 									}
 								}
 							}
@@ -493,14 +484,14 @@ public class DeviceShimmer extends Activity implements Device {
 						long shimmerTime = (long) (ObjectCluster.returnFormatCluster(objectCluster.mPropertyCluster.get("Timestamp"), "CAL").mData);	
 						long timeToStore = offsetSessionTimeStamp + (shimmerTime - offsetShimmerTimeStamp);					
 
-						buffer.get(cont).hashData.get(SensorType.TIME_STAMP).data = timeToStore;
+						buffer.get(contBuffer).hashData.get(SensorType.TIME_STAMP).data = timeToStore;
 						// send our data structure with the information to the manager
 						if(myShimmerVersion == 4 || myShimmerVersion == 3)
-							myHandlerManager.obtainMessage(CommunicationManager.DEVICE_SHIMMER3, cont, 0, buffer.get(cont)).sendToTarget();
+							myHandlerManager.obtainMessage(CommunicationManager.DEVICE_SHIMMER3, contBuffer, 0, buffer.get(contBuffer)).sendToTarget();
 						else
-							myHandlerManager.obtainMessage(CommunicationManager.DEVICE_SHIMMER2, cont, 0, buffer.get(cont)).sendToTarget();
+							myHandlerManager.obtainMessage(CommunicationManager.DEVICE_SHIMMER2, contBuffer, 0, buffer.get(contBuffer)).sendToTarget();
 
-						cont = (cont + 1) % MAX_SIZE;
+						contBuffer = (contBuffer + 1) % MAX_SIZE;
 					}
 				break;
 				case Shimmer.MESSAGE_TOAST:
@@ -535,14 +526,6 @@ public class DeviceShimmer extends Activity implements Device {
 	}
 
 
-	/**
-     * Set the communication manager's handler contained in the ObjectCommunication
-     * @param handler The handler contained in the ObjectCommunication
-     */
-	public void setHandlerManager(Handler handler) {
-
-		this.myHandlerManager = handler;
-	}
 
 	/**
      * Sets the format of the data. It can be "calibrated" or "uncalibrated"
@@ -587,12 +570,6 @@ public class DeviceShimmer extends Activity implements Device {
 			return true;
 		else
 			return false;
-	}
-	
-	@Override
-	public boolean isStreaming() {
-
-		return this.isStreaming;
 	}
 
 	@Override
@@ -1286,27 +1263,6 @@ public class DeviceShimmer extends Activity implements Device {
 		}
 	}
 
-
-	@Override
-	public void setNumberOfSampleToStorage(int samples) {
-		// TODO Auto-generated method stub
-		this.NUM_SAMPLE = samples;
-		this.MAX_SIZE = 4*NUM_SAMPLE;
-	}
-
-
-	@Override
-	public int getNumberOfSamples() {
-		// TODO Auto-generated method stub
-		return this.NUM_SAMPLE;
-	}
-
-
-	@Override
-	public int getBufferSize() {
-		// TODO Auto-generated method stub
-		return this.MAX_SIZE;
-	}
 	
 	/** This function change the default library to be used when a device is connected. For further information refer to the
 	 * connect function of the driver offered by Shimmer. (The class Shimmer.java)
@@ -1332,5 +1288,16 @@ public class DeviceShimmer extends Activity implements Device {
 	
 	public boolean is3DOrientationEnabled(){
 		return myShimmerDevice.is3DOrientatioEnabled();
+	}
+	
+	/**
+	 * Get the shimmer driver.
+	 *  Since the framework only offer a bacis functionality, the instance of the Shimmer Driver can be got
+	 *  in order to use all the features containing.
+	 * @return The instance of the Shimmer Driver
+	 */
+	public Shimmer getShimmerDriver(){
+		
+		return myShimmerDevice;
 	}
 }

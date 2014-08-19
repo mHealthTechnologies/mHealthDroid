@@ -514,7 +514,7 @@ public class CommunicationManager extends Service {
 			int numSamples = oc.device.getNumberOfSamples();
 			String nameTable = oc.device.getTableName();
 			if (oc.device.getClass() == DeviceShimmer.class) {
-				int cont = ((DeviceShimmer) oc.device).cont + 1;
+				int cont = ((DeviceShimmer) oc.device).contBuffer + 1;
 				DeviceShimmer ds = (DeviceShimmer) (devices.get(deviceName)).device;
 				if(ds.getShimmerVersion() == 4 || ds.getShimmerVersion() == 3){ // 3 = Shimmer 3, 4 = Shimmer 3R
 					if (cont % numSamples == 0) // we check if the buffer is filled
@@ -531,7 +531,7 @@ public class CommunicationManager extends Service {
 			}
 
 			if (oc.device.getClass() == DeviceMobile.class) {
-				int cont = ((DeviceMobile) oc.device).cont + 1;
+				int cont = ((DeviceMobile) oc.device).contBuffer + 1;
 				if (cont % numSamples == 0) // checking if the buffer is filled
 					// without cont-1 it inserts an empty row
 					storage.insertMobile(((DeviceMobile) oc.device).buffer, label, oc.device.getTableName(), cont - 1, true, numSamples);
