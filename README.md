@@ -1,14 +1,18 @@
 <img src="http://apuestasrafag.files.wordpress.com/2014/03/fotologo2.png?w=712" height=225>
 
-## What is mHealthDroid? 
+## What is mHealthDroid?  
 
-mHealhDroid is a framework designed to develop biomedical applications in an easy and rapid way, under the Android operating system and to be used along with portable biomedical devices or just every Android phone with built-in sensors.
+mHealhDroid is an open-source mobile framework designed to facilitate the rapid and easy development of mHealth and biomedical applications. The framework is devised to leverage the potential of mobile devices such as smartphones or tablets, wearable sensors and portable biomedical devices. These systems are used increasingly for the monitoring and delivery of personal health care and wellbeing. Likewise, mHealthDroid aims at bringing together heterogeneous multimodal sensors including both research and commercial systems. 
 
-This framework has been developed independently from the biomedical type device or communication protocol. Owing to that, it is necessary to create an intermediate driver for every portable biomedical device to be used which will work between the device and the framework. The drivers are included in the framework and remain unnoticed to the user. Thanks to this approach, an application can run simultaneously with different kinds of devices, providing a great flexibility.
+The framework comprises an extensive set of modules for sensor data acquisition, data management, remote storage, signal processing, machine learning, multidimensional data visualization, as well as intelligent recommendations and multimedia guidelines among others features. The core of the framework is defined to operate on the Android operating system; however, it has been implemented in a way that allows its use with any portable device. In fact, the core modules and components are defined to be completely independent of the underlying sensing and communication technology. To utilize a new device (commercial or not) it is only required to include the corresponding drivers that allow the communication between the mHealthDroid modules and the specific device (transparent to the user anyhow). The mHealthDroid initiative already includes drivers for a wide sort of portable devices; nevertheless it aims at incorporating new systems to the current portfolio of supported devices. 
 
-Android target version: 4.2
+This active platform is in continuous development, thereby contributions are very welcome. Suggestions and comments are also appreciated!
 
-Android minimum version: 2.3.3
+Contact (general info): mhealthdroid@gmail.com
+
+Contact (R&D enquiries): oresti.bl@gmail.com [<a href="http://www.ugr.es/~oresti/">Oresti Baños</a>]
+
+Contact (implementation enquiries): rafagarfer@gmail.com [Rafael García], alejandrosaez3@gmail.com [Alejandro Sáez] 
 
 **Table of Contents**
 
@@ -17,42 +21,11 @@ Android minimum version: 2.3.3
 - [Installation instructions](#installation-instructions)
 - [mHealthDroid structure](#mhealthdroid-structure)
 - [Full documentation](#full-documentation)
-- [mHealthDroid APP](#mhealthdroid-app)
-	- [Main Features](#main-features)
-	- [Demostration Video](#demostration-video)
-	- [APP Usage](#app-usage)
-		- [Connectivity](#connectivity)
-		- [Visualization](#visualization)
-		- [Activity Recognition](#activity-recognition)
-		- [Notifications](#notifications)
-		- [YouTube Guidelines](#youtube-guidelines)
-		- [Remote Storage](#remote-storage)
-- [Examples. How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
-	- [Communication Manager](#communication-manager)
-	- [Remote Storage Manager](#remote-storage-manager)
-	- [Visualization Manager](#visualization-manager)
-	- [System Manager](#system-manager)
-		- [Services and Setup](#services-and-setup)
-		- [Guidelines](#guidelines)
-			- [YouTube](#youtube)
-			- [Audio](#audio)
-			- [Video](#video)
-	- [Data Processing Manager](#data-processing-manager)
-		- [Offline](#offline)
-			- [Acquisition](#acquisition)
-			- [Pre-Processing](#pre-processing)
-			- [Segmentation](#segmentation)
-			- [Features Extraction](#features-extraction)
-			- [Classification](#classification)
-		- [Online](#online)
-			- [Acquisition and Segmentation](#acquisition-and-segmentation)
-			- [Pre-Processing, Feature Extraction, and Classification](#pre-processing-feature-extraction-and-classification)
+- [APP examples](#app-examples)
+- [How to use mHealthDroid](#examples-how-to-use-mhealthdroid)
 - [Contribution guidelines](#contribution-guidelines)
 - [Community](#community)
 - [Team Members](#team-members)
-	- [Authors](#authors)
-	- [Original Idea and Project Supervisor](#original-idea-and-project-supervisor)
-	- [Collaborators](#collaborators)
 - [Where can I get help?](#where-can-i-get-help)
 - [Inspiration](#inspiration)
 - [Copyright and license](#copyright-and-license)
@@ -61,32 +34,33 @@ Android minimum version: 2.3.3
 
 * Rapid development of medical, health and wellbeing applications.
 
-* Efficient and fast communication between portable biomedical devices and portable mobile devices to gather patient data like physiological or kinematic signals. Up to now, SHIMMER biomedical devices and mobile sensors can be used as portable biomedical devices.
+* Fast and efficient communication between portable biomedical devices and portable mobile devices to gather human-centered physiological and kinematic data. Up to now, SHIMMER biomedical devices and mobile sensors can be used as portable biomedical devices.
 
 * Development of applications capable of working with different portable health devices simultaneously.
 
-* Efficient data transfer across the framework managers.
+* Efficient data transfer across the framework's managers.
 
-* Fast data storage either local or remote.
+* Fast data storage (either local or remote).
 
-* Visualization of any kind of data stream like patient's vital signs or kinematic data, either online or offine.
+* Visualization of any multimodal data streams such as patient's vital signs or kinematic data (either online or offine).
 
-* Knowledge inference procured through machine learning and statistical model.
+* Knowledge inference by using machine learning and pattern recognition models.
 
-* Guidelines support through Audio, Video or YouTube playlists, as well as notifications procedures.
+* Multimedia guidelines and recommenders, supported through audio, video and YouTube playlists, as well as notification procedures.
 
-* Easy system control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, making phone calls or sending text messages.
+* System control and configuration tools to manage WiFi, 3G, Bluetooth, screen brightness, phone calls or text messages.
 
-* User management through login functionality, also supporting security and privacy.
-
+* User logging and data privacy mechanisms
 
 ## Installation instructions
 
-Once mHealthDroid project is downloaded, it is necessary a few steps to get started.
+A few steps are required to get started:
 
-1. Import the project to Eclipse or other IDE.    
+1. Download the project source files.
 
-2. Add the following libraries:
+2. Import the project to Eclipse or other IDE.    
+
+3. Add the following libraries:
 
     - GraphView 3.0.jar
     - Guava 14.0.jar
@@ -94,190 +68,42 @@ Once mHealthDroid project is downloaded, it is necessary a few steps to get star
     - WekaSTRIPPED.jar
     - YouTubeAndroidPlayerApi.jar
 
-3. Select mHealthDroid as library project.
+4. Select mHealthDroid as library project.
 
-4. Creates your new project and select mHealthDroid as library. 
+5. Create your new project and select mHealthDroid as library. 
 
-5. Coding time!
+6. Coding time!
 
-All the libraries can be downloaded from our following repository: 
+All the libraries can be downloaded from mHealthDroid´s releases.
 
-https://github.com/mHealthDroid/libraries
+https://github.com/mHealthDroid/mHealthDroid/releases
 
 ## mHealthDroid structure
 
 <img src=http://apuestasrafag.files.wordpress.com/2014/03/frameworkdiagram.png?w=800 />
 
-In the figure is shown the framework structure, with all the existing managers and how they interact with each other. All these managers are Singleton, which means that only exist one unique instance of each and this instance is available from every point of the framework. In short, is described each manager aim. More details of every manager and its development in our website soon.
+The figure above depicts the structure of the framework, including all the existing managers and how they interact with each other. All these managers are of "singleton" kind, which means that only one unique instance can exist for each class and this instance is available from every component of the framework. In the following we provide a brief description of each manager. 
 
-- **Communication Manager**: heart of mHealthDroid. It is responsible for, among other things, the communication management with the biomedical devices, the data streaming, the local data storage and the broadcast of the received data to the rest of the framework.
-- **Remote Storage Manager**: is aim is to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, it has also been offered a possible implementation to be used on the remote storage side to manage the received data from apps developed with _mHealthDroid_.
-- **Visualization Manager**: allow either online or offline visualization. It has been developed using the GraphView library (http://android-graphview.org/). The source code of the compatible version for this library can be found in the following repository https://github.com/mHealthDroid/myGraphView
-- **Data Processing Manager**: a really powerful manager, responsible for processing data and applying knowledge inference, either orline or offline.
-- **System Manager**: miscellaneous manager which offers easy management of instrinsic aspect of Android devices; guidelines functionalities specially useful for health applications; and send alerts.
+- **Communication Manager**: it is responsible for the connection of mobile devices (smartphone, tablet) and biomedical devices, vital data gathering, local data storage and serve the collected data to the rest of the framework components.
+- **Remote Storage Manager**: it is devised to upload the data avalaible in the local database to a remote storage. Although the framework only comprises the client side of the communication, we provide along with the framework a possible implementation for the server side.
+- **Visualization Manager**: it supports both online and offline visualization. It builds on an original extension of the GraphView library (http://android-graphview.org/). The source code of the new version developed as part of the _mHealthDroid_ project can be found at https://github.com/mHealthDroid/myGraphView.
+- **Data Processing Manager**: it is in charge of supervising and coordinating all the processes related to the inference of knowledge. This manager provides signal processing, data mining and machine learning techniques to extract knowledge from the biomedical data.
+- **System Manager**: this is a miscellaneous manager which allows for the configuration and monitoring of instrinsic aspects of the mobile and external devices. More importantly, it comprises a set of tools to support guidelines, recommendations or alerts of worth in health applications.
 
 ## Full documentation
 
-The full documentation of mHealthDroid can be found in both authors master thesis, either <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">here</a> (Rafael Garcia) or <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">here</a> (Alejandro Saez). Both documents are the same apart from Chapter 1 (Introduction), Chapter 2 (State of the Art) and Chapter 5 (Conclusions). In these document, mHealthDroid development is fully explained. The managers chapters are comprised of the following sections: <em>Description</em>, where every manager, its functionalities and its development is fully described; <em> How to use it </em>, which aim is to show basic examples of how to use each manager and its content is the same than the following section in this readme; and <em> Difficulties and solutions applied </em>, which explains some problems we bumped into during the mHealthDroid development and how we solve them.
+The mHealthDroid full documentation can be found in <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">Rafael's</a> and <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">Alejandro's</a>  Master Thesis.
 
-## mHealthDroid APP
+## APP examples
 
-This exemplary APP demonstrates the usefulness and potential of mHealthDroid. It is important to point out that there was no effort to implement its functionalities thanks to mHealthDroid simplicity (we spent the most of the developing time in the app visual appearance). It can be found in Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&hl=es_419">here</a>.
-
-### Main Features
-
-- The app allows to collect data from Shimmer devices in order to obtain physiological and kinematic data, although existing sensors in the mobile device may be also used for monitoring. 
-- Visualization of any of the received data streams from the portable biomedical devices.
-- Local and remote storage of the collected data. 
-- Activity Recognition of the physical activity that an app user is performing thanks to an expert system built as part of the app.
-- To help the user to keep healthy habits, guidelines are supported through online video broadcasting and schedulable notifications.
-
-### Demostration Video
-
-In the following video the mHealthDroid APP and all its functionalities are shown: 
+- mHealthAPP: exemplary APP intended to show the usefulness and potential of mHealthDroid. More information in <a href="https://github.com/mHealthDroid/mHealthAPP">mHealthAPP </a>repository
 
 [<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](https://www.youtube.com/watch?v=AMdxw4osjCU)
 
-### APP Usage
-
-It is possible to navigate around the app making use of the available tabs in the top of the screen. Each tab offers a functionality for the following: Connectivity, Visualization, Activity Recognition, Remote Storage, Notifications Manager and YouTube Guidelines.
-
-#### Connectivity
-
-This tab offers to the user all the connectivity features and the devices configuration. The tab has a Button to add the new devices, and a ListView to visualize them.
-
-In order to add a new device, the "Plus" Button must be pressed. Then, a message will be thrown asking for the device name. The message also have two buttons in order to select the kind of device. It can be either *Mobile* or *Shimmer*.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/connectivity1.png?w=253" height=300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/addingdevice1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/scanning.png?w=253" height = 300>
-
-Once the device is added, it will be displayed in the ListView. It is showed three fields for each device: The first one is the device's name, the second one is the device's type, and the third one is its state. The state is represented by a coloured circle. It will be red when the device is disconnected, orange when the device is streaming, or green when the device is connected but not streaming.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion11.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorinsertion21.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesstatus1.png?w=253" height = 300>
-
-When a device is pressed, a menu with several options is displayed. These options will depend on the device's type and its status. The possible options are the following ones:
-
-- *Connect/Disconnect*. With this option, the device is either connected (if it was disconnected) or disconnected (if it was connected). Since the mobile device does not need to be connected or disconnected, this function is only available for Shimmer devices.
-- *Start/Stop streaming*. With this option, the device either starts or stops streaming.
-- *Sensors*. This option throws a window to set the enabled sensors. The sensors available can be different for each kind of device. It is only showed when the device is not streaming.
-- *Configuration*. This option opens a window to set the device configuration. Here, it is also set whether the data must be stored into the database. The device configuration can be different for each kind of device. It is only showed when the device is not streaming.
-- *Remove*. This option removes a device from the devices list.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/menumobile1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/menumobilestreaming1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/menushimmerconnected1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/menushimmerstreaming.png?w=253" height = 300>
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/sensorsmobile.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/shimmersensors.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/mobileconfiguration.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/shimmerconfiguration.png?w=253" height = 300>
-
-
-#### Visualization
-
-This tab permits to visualize the signals recorded through the sensors. The tab is composed by a graph and two buttons: the *Configuration* button and the *Start* button.
-
-When the *Configuration* button is pressed, a menu is open in order to set the graph configurations. The options are initially disabled (the graph has a configuration by default). These have to be enabled in order to use them. The configuration menu is not available during the visualization, so the graph must be set before starting. The configuration options are the following ones:
-
-- *View Port*. This option sets the graph view port. That is, the number of samples to be shown in the graph. 
-- *Y coordinates*. This option sets the maximum and minimum values for the Y axis. 
-- *Legend*. This option shows the legend of the graph series. It can be aligned in three different positions. On the top of the graph, in the middle, or at the bottom.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualization.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationinit.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/visualizationconfiguration2.png?w=253" height = 300>
-
-When the Start button is pressed, a list of devices streaming is showed in order to select the device to be visualized. In case there are no devices streaming, an error message will be showed. When a device is selected, it is displayed a list with the device enabled sensors. When the device sensors to visualize are selected, and the OK button is pressed, the visualization starts.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/devicesvisualization1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/deviceandsensors21.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/errorvisualization1.png?w=253" height = 300>
-
-#### Activity Recognition
-
-This tab uses inference knowledge module to perform activity recognition of a set of activities.  
-
-The activities are the following: standing still, sitting and relaxing, lying down, walking, climbing stairs, waist bends forward, frontal (vertical) up/down, knees bended, cycling, jogging, running, jump forward and back.
-
-In order to perform the activity recognition, some wearable devices must be placed around our body, as it shown in the next figure:
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/subjectsensors.png?w=601" height = 375>
-
-To start the activity recognition, it is necessary to set each connected device to its position in the body (chest, right wrist or left ankle). For this purpose there are three spinners on the screen, one for each position. Once this is done, the button start is used to begin the activity recognition. On the top of the screen there will appear an image and text representing the activity which the app user is performing. In case there are no devices streaming, an error message will be showed.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityspinner1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activitystart1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/erroractivity1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/activityrecognition1.png?w=253" height = 300>
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/running-activity.png?w=346" height = 280>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/jogging-activity.png?w=337" height = 280>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/cycling-activity.png?w=346" height = 280>
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/walking-activity.png?w=337" height = 280>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/up-down-activity.png?w=338" height = 280>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/waist-bends-activity.png?w=337" height = 280>
-
-
-#### Notifications
-
-This tab permits to create different kind of notifications. When the tab is selected, it appears a form that it must be filled in order to create the notification. This field is composed:
-
-- *Title*. Title of the notification.
-- *Description*. Full description text of the notification.
-- *Sound*. A field where three different sounds may be selected to be reproduced when the notification is launched: Alarm, Ringtone and Notification sounds. There is also the possibility of set this sound to "None".    
-- *Launch Recommendations*. It is a checkbox that in the case of being checked, when the notification is clicked the YouTube guidelines is launched.
-- *Schedule Notification*. It allows for the scheduling the notification to a specified date and time.
-
-As an example, it can be used an app user with back problems that needs to be reminded about his daily exercises. Thus, for this purpose, the user can create a notification and customize it by putting the notification title and description, as well as setting the hour of its appearance. Moreover, if the user wants to visualize some recommended exercises he can mark the *Launch Recommendations* option that after clicking on the notification will automatically open the YouTube Guidelines tab.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications2.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications3.png?w=253" height = 300>
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications4.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications5.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/notifications6.png?w=253" height = 300>
-
-#### YouTube Guidelines
-
-This tab allows the app user the visualization of videos in order to keep healthy habits or learn new exercises with physical therapy purposes. There are five different playlists that can be selected by the user using the button *Playlists*:
-
-- General Health: playlist about how to keep healthy daily habits and how to maintain a healthy diet.
-- Knee: playlist with videos of knee rehabilitation, orientate to user with knee problems.
-- Back: playlist with videos of back rehabilitation, orientate to user with back problems.
-- Ankle: playlist with videos of ankle rehabilitation, orientate to user with ankle problems.
-- Neck: playlist with videos of neck rehabilitation, orientate to user with neck problems.	
-    
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube1.png?w=253" height = 350>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube2.png?w=253" height = 350>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube3.png?w=253" height = 350>
-
-Once that a playlist has been selected, a scrollable list of videos will appear on the screen. This list can be extended pressing on the *Extend List* button and collapse by pressing on it again. When the user selects a video to be reproduced, this appears on the player and can be reproduced when the start icon is clicked. The player may also be extended using the button *Extend Player* or collapse clicking on it again.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube4.png?w=253" height = 350>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/youtube5.png?w=253" height = 350>
-
-#### Remote Storage
-
-This tab allows the user app to upload to a remote storage the collected data from the portable biomedical devices. It is composed of a list with every of the available devices in the app and a button to set the WiFi connection (for the sake of simplicity, since 3G connection can be used as well).
-
-When a device of the list is pressed on, it appears a dialog asking the app user to define which tables must be uploaded. There are three options: Units, Metadata and Signals. After pressing the OK button the uploading of the selected data starts. A message will appear in the screen to notify the end of the uploading process.
-
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote1.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote2.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote3.png?w=253" height = 300>
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/remote4.png?w=253" height = 300>
 
 ## Examples. How to use mHealthDroid
 
-The aim of this section is to show basic examples of how to use each manager. More detailed information will be coming soon.
+The aim of this section is to show basic examples of how to use each manager.
 
 ### Communication Manager
 
@@ -666,14 +492,29 @@ just use its functions.
 
 ##### YouTube
 
-To build the YouTube module has been necessary the YouTube Android Player API. To employ this API is compulsory to provide at least a _YoutubePlayerView_. An
-example of how to use the YouTube Guideline module is shown next:
+To build the YouTube module has been necessary the YouTube Android Player API. To employ this API is compulsory to provide at least a _YoutubePlayerView_. The class where this functionality is developed must extends the _YouTubeBaseActivity_ and implements _YouTubePlayer.OnInitializedListener_.
+
+An example of how to use the YouTube Guideline module is shown next:
+
+At least the following fields need to be declared as class fields.
+
+``` java
+YouTubePlayerView youTubePlayerView; 
+YouTubePlayer player;
+ListView videosListView;
+Youtube youtube;
+```
+
+Declaration and initialization:
 
 ``` java
 setContentView(R.layout.youtube_layout);
-YouTubePlayerViewyoutubeView =
+player = null;
+YouTubePlayerView youtubePlayerView =
 (YouTubePlayerView)findViewById(R.id.youtube_view);
-youtube = sm.getYoutubePlayer(getApplicationContext(), youtubeView, DEVELOPER_KEY);
+youtubePlayerView.initialize(KEY_DEVELOPER, this);
+sm = SystemManager.getInstance();
+youtube = sm.getYoutubePlayer(getApplicationContext(), youtubePlayerView);
 ```
 
 The developer key is a variable that identifies the YouTube developer submitting
@@ -689,10 +530,30 @@ It is also possible to reproduce YouTube playlist videos, selecting the video to
 reproduced using a _listView_ view. In order to do this, it is necessary to have in the
 current layout a _listView_ view.
 ``` java
-ListViewvideosListView = (ListView)findViewById(R.id.listListView);
-youtube.reproducePlaylistMode(videosListView, R.layout.entry, PLAYLIST_URL);
+ListView videosListView = (ListView) findViewById(R.id.listListView);
+youtube.reproducePlaylistMode(videosListView, R.layout.entry, R.id.textViewSuperior, 
+R.id.textViewInferior, R.id.imageViewImage, playlistID);
 ```
-The parameter _entry_ is a layout with every entry format of the _listview_.
+The parameter _entry_ is a layout with every entry format of the _listview_. _TextViewSuperior_, _TextViewInferior_ and _imageViewImage_ are fields with the title, description and thumbnail of a YouTube video. _PlaylistID_ is the ID of a list of YouTube videos. 
+
+It is also necessary to implement two abstract methods belonging to _YouTubePlayer.OnInitializedListener_.
+
+``` java
+@Override
+public void onInitializationFailure(Provider arg0, YouTubeInitializationResult arg1) {
+
+	Toast.makeText(this, "Oh dear, something terrible happened, sorry!", Toast.LENGTH_SHORT).show();		
+}
+
+@Override
+public void onInitializationSuccess(Provider provider, YouTubePlayer playa, boolean wasRestored) {
+		
+	this.player = playa;
+	this.player.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);		
+	//Now that the player is initialized, we need to set it on our Youtube class
+	youtube.setPlayer(player);
+}
+```
 
 ##### Audio
 
@@ -983,34 +844,32 @@ More contribution ideas will be added soon.
 
 ## Community
 
-How can you keep track of the development and news of mHealthDroid? Coming soon in our twitter and webpage.
+How can you keep track of the development and news of mHealthDroid? Follow us in our <a href="https://twitter.com/mhealthdroid">twitter</a>
 
 ## Team Members
 
 ### Authors
 
-Rafael García Fernández
+Rafael García
 
-* _University of Granada (UGR)_
 * http://github.com/rafagf
-* Email: rafagarfer@gmail.com
+* Email: rafagarfer@gmail.com 
 
-Alejandro Sáez Fernández
+Alejandro Sáez
 
-* _University of Granada (UGR)_
 * http://github.com/alsafer
 * Email: alejandrosaez3@gmail.com
 
-### Original Idea and Project Supervisor
+### Original Idea and Project Coordinator
 
-Oresti Baños Legrán
+Dr. Oresti Baños
 
 * _Research Center for Information and Communication Technology University of Granada (CITIC-UGR)_
 * Email: oresti.bl@gmail.com
 
 ### Collaborators
 
-Juan Antonio Holgado Terriza
+Prof. Juan Antonio Holgado
 
 * _University of Granada (UGR)_
 * Email: jholgado@ugr.es
@@ -1019,12 +878,11 @@ Juan Antonio Holgado Terriza
 
 You can get any help you need getting in contact with any of the authors. We are looking forward to help you!
 
-## Inspiration
+## Inspiration and motivation
 
-This project is an original idea. It began as the MsC thesis for Computer Engineering of both authors in the University of Granada (UGR). 
+This project is an original idea. The project was initiated and developed as part of the MsC thesis (Computer Science) of the authors at University of Granada (UGR) . 
 
-After a research, we got the conclusion that there exist many wearable health devices, a lot biomedical applications and even a
-wide variety of biomedical frameworks and mobile frameworks, but in terms of biomedical mobile frameworks there is only a few and most of them are focused in the acquisition of data, patient monitoring and data broadcasting. We consider quality trustworthy health applications should incorporate these functionalities plus many others such as data visualization, local and remote storage, guidelines, notifications or knowledge inference and should not be limited to a particular biomedical device. For all these reasons the idea of mHealthDroid was born.
+After evaluation of the state-of-the-art in mobile health we ended up with the conclusion that there exist multiple wearable health devices (most of which are becoming commercial), biomedical apps and also biomedical and mobile frameworks. However, no biomedical mobile framework exists in a broad sense to the best of our knowledge. Although there are some frameworks devised for particular clinical problems, they mainly support data acquisition, visualization and broadcasting. Powerful health applications should incorporate these features plus many others such as local and remote storage, guidelines, recommenders notifications or knowledge inference among others, and not be limited to a particular biomedical device.
 
 ## Copyright and license
 
