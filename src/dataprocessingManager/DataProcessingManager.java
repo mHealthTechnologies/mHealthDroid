@@ -154,8 +154,13 @@ public class DataProcessingManager extends Service {
 						index = index + op.maxSize;
 						threshold = op.maxSize;
 					}
-					for (int j = index; j < threshold; j++) // build the array with the data of a specific sensor and device
+					for (int j = index; j < threshold; j++){ // build the array with the data of a specific sensor and device
+						ObjectData odtemp = op.buffer.get(j);
+						SensorType stTemp = op.sensors.get(i);
+						double dataTemp = odtemp.hashData.get(stTemp).data;
 						aux.add(op.buffer.get(j).hashData.get(op.sensors.get(i)).data);
+						
+					}
 					
 					op.hashOnline.put(op.sensors.get(i), aux); // de aqui pa bajo va fuera del for
 				}

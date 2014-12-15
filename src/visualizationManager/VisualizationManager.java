@@ -34,6 +34,7 @@ public class VisualizationManager extends Activity {
 			Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.GRAY, Color.LTGRAY };
 
 	
+	
 	class ObjectVisualization {
 
 		Plot graph;
@@ -184,6 +185,7 @@ public class VisualizationManager extends Activity {
 	 * @param nameGraph Is the graph's name
 	 * @param nameDevice Is the device's name which will send the data
 	 * @param sensors A list with the sensors to be visualized
+	 * @param numMax Is the maximum number of data to be visualized
 	 */
 	public void visualizationOnline(String nameGraph, String nameDevice, ArrayList<SensorType> sensors, int numMax) {
 
@@ -216,6 +218,7 @@ public class VisualizationManager extends Activity {
 	 * @param sensors A list with the sensors to be visualized
 	 * @param colors A list of colors. Each series will be painted with these colors
 	 * @param thickness A list of thickness. Each series will have its thickness
+	 * @param numMax Is the maximum number of data to be visualized
 	 */
 	public void visualizationOnline(String nameGraph, final String nameDevice,
 			ArrayList<SensorType> sensors, int[] colors, int[] thickness, int numMax) {

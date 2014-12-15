@@ -23,7 +23,8 @@ public class Plot {
 	public GraphView myGraphView; //Object of the library used to draw graphs
 	public Hashtable<String, GraphViewSeries> hashSeries; // set of the series in the graph
 	public Hashtable<String, Integer> hashCont; // set of counters of the series that represents the coordinate X of the serie
-	public int numMax; //maxium number of the data to be visualized in the graph
+	public int numMax; //maximum number of the data to be visualized in the graph
+	
 	
 	public enum GraphType {
 		LINE, BAR;

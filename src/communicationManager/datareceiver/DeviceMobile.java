@@ -21,23 +21,16 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 
-public class DeviceMobile implements Device, SensorEventListener {
+public class DeviceMobile extends Device implements SensorEventListener {
 
 	private final SensorManager mSensorManager;
-	private String myName;
 	private ArrayList<Sensor> mobileSensors = new ArrayList<Sensor>();
-	private Context myContext;
-	private boolean streaming;
 	private Handler myHandlerManager;
-	public ObjectMetadata metadata;
 	ArrayList<ObjectData> bufferSignals = new ArrayList<ObjectData>();
 	int sensorDelay;
 	public ArrayList<ObjectData> buffer;
-	public int cont;
 	String macAddress;
 
-	public int NUM_SAMPLE = 200; // size of the block of sample to work with
-	public int MAX_SIZE = 4 * NUM_SAMPLE; //size of the buffer
 	
 	// Available Sensors in a mobile device (until Android 4.0)
 	public static final int SENSOR_ACCEL = Sensor.TYPE_ACCELEROMETER;
@@ -82,7 +75,7 @@ public class DeviceMobile implements Device, SensorEventListener {
 		super();
 		myContext = context;
 		myName = name;
-		streaming = false;
+		isStreaming = false;
 		mSensorManager = (SensorManager) myContext
 				.getSystemService(Context.SENSOR_SERVICE);
 		metadata = new ObjectMetadata();
@@ -90,7 +83,7 @@ public class DeviceMobile implements Device, SensorEventListener {
 		sensorDelay = DELAY_NORMAL;
 		// Creation of every sensor existing on the mobile
 		List<Sensor> listaAux = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-		cont = 0;
+		contBuffer = 0;
 		setMacAddress();
 		buffer = new ArrayList<ObjectData>();
 
@@ -121,7 +114,7 @@ public class DeviceMobile implements Device, SensorEventListener {
 	public void startStreaming() {
 
 		initBuffer();
-		cont = 0;
+		contBuffer = 0;
 
 		// Every sensor available on the device starts streaming
 		for (int i = 0; i < mobileSensors.size(); i++) {
@@ -129,7 +122,7 @@ public class DeviceMobile implements Device, SensorEventListener {
 			mSensorManager.registerListener(this, sensorAux, sensorDelay);
 		}
 
-		streaming = true;
+		isStreaming = true;
 		metadata.start.setToNow();
 		metadata.rate = getRate();
 		setMetadata();
@@ -142,17 +135,11 @@ public class DeviceMobile implements Device, SensorEventListener {
 
 		metadata.finish.setToNow();
 		mSensorManager.unregisterListener(this);
-		streaming = false;
+		isStreaming = false;
 		if(CommunicationManager.mHandlerApp!=null)
 			CommunicationManager.mHandlerApp.obtainMessage(CommunicationManager.STATUS_CONNECTED, myName).sendToTarget();
 	}
 
-	@Override
-	public void setHandlerManager(Handler handler) {
-
-		this.myHandlerManager = handler;
-
-	}
 
 	/**
 	 *  This function sets the sample rate of the external device
@@ -353,25 +340,18 @@ public class DeviceMobile implements Device, SensorEventListener {
 				bufferSignals.get(0).hashData.get(SensorType.TIME_STAMP).data = System.currentTimeMillis();
 
 				// Adding the objectData to the main buffer, which feed storage
-				buffer.set(cont, bufferSignals.get(0));
+				buffer.set(contBuffer, bufferSignals.get(0));
 
 				// Updating the auxiliar circular buffer
 				bufferSignals.remove(0);
 				bufferSignals.add(myData);
 
 				// Remittance of the message to the communicationManager
-				myHandlerManager.obtainMessage(CommunicationManager.DEVICE_MOBILE, cont, 0, buffer.get(cont)).sendToTarget();
-				cont = (cont + 1) % MAX_SIZE;
+				myHandlerManager.obtainMessage(CommunicationManager.DEVICE_MOBILE, contBuffer, 0, buffer.get(contBuffer)).sendToTarget();
+				contBuffer = (contBuffer + 1) % MAX_SIZE;
 
 			}
 		}
-	}
-
-	@Override
-	public boolean isStreaming() {
-
-		return streaming;
-
 	}
 
 	@Override
@@ -698,22 +678,4 @@ public class DeviceMobile implements Device, SensorEventListener {
 		}
 	}
 
-	@Override
-	public void setNumberOfSampleToStorage(int samples) {
-		// TODO Auto-generated method stub
-		this.NUM_SAMPLE = samples;
-		this.MAX_SIZE = 4*NUM_SAMPLE;
-	}
-
-	@Override
-	public int getNumberOfSamples() {
-		// TODO Auto-generated method stub
-		return this.NUM_SAMPLE;
-	}
-
-	@Override
-	public int getBufferSize() {
-		// TODO Auto-generated method stub
-		return this.MAX_SIZE;
-	}
 }

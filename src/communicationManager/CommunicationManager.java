@@ -33,7 +33,9 @@ public class CommunicationManager extends Service {
 	public static Handler mHandlerApp; //handler defined in the app. it receives the device's status changes from this manager
 	
 	public static final int DEVICE_MOBILE = 1;
-	public static final int DEVICE_SHIMMER = 2;
+	public static final int DEVICE_SHIMMER2 = 2;
+	public static final int DEVICE_SHIMMER3 = 3;
+	
 	
 	public static final int STATUS_NONE = 0;
 	public static final int STATUS_CONNECTING = 1;
@@ -196,10 +198,18 @@ public class CommunicationManager extends Service {
 									if (!isStoring())
 										storage.close();
 								break;
-								case DEVICE_SHIMMER:
+								case DEVICE_SHIMMER2:
 									storage.open();
 									oc.isStoring = true;
-									storage.insertShimmer(((DeviceShimmer) oc.device).buffer, label, oc.device.getTableName(), cont, true, numSamples);
+									storage.insertShimmer2(((DeviceShimmer) oc.device).buffer, label, oc.device.getTableName(), cont, true, numSamples);
+									oc.isStoring = false;
+									if (!isStoring())
+										storage.close();
+								break;
+								case DEVICE_SHIMMER3:
+									storage.open();
+									oc.isStoring = true;
+									storage.insertShimmer3(((DeviceShimmer) oc.device).buffer, label, oc.device.getTableName(), cont, true, numSamples);
 									oc.isStoring = false;
 									if (!isStoring())
 										storage.close();
@@ -321,8 +331,16 @@ public class CommunicationManager extends Service {
 			String nameTable = devices.get(deviceName).device.getTableName();
 			String nameMetadataTable = devices.get(deviceName).device.getMetadataTableName();
 			if (devices.get(deviceName).device.getClass() == DeviceShimmer.class) {
-				storage.createShimmerTable(nameTable);
-				storage.createShimmerTableMetadata(nameMetadataTable);
+				DeviceShimmer ds = (DeviceShimmer) (devices.get(deviceName)).device;
+				if(ds.getShimmerVersion() == 4 || ds.getShimmerVersion() == 3){ // 3 = Shimmer 3, 4 = Shimmer 3R
+					storage.createShimmer3Table(nameTable);
+					storage.createShimmer3TableMetadata(nameMetadataTable);
+				}
+				else{
+					storage.createShimmer2Table(nameTable);
+					storage.createShimmer2TableMetadata(nameMetadataTable);
+				}
+				
 				storage.createShimmerTableUnits();
 				if (storage.isEmptyTableShimmerUnits())
 					storage.fillShimmerTableUnits();
@@ -408,7 +426,11 @@ public class CommunicationManager extends Service {
 			// stop, when will be updated
 			mt.lastIndex = 0;
 			mt.finish = new Time();
-			storage.insertShimmerMetadata(mt, devices.get(deviceName).device.getMetadataTableName());
+			DeviceShimmer ds = (DeviceShimmer) (devices.get(deviceName)).device;
+			if(ds.getShimmerVersion() == 4 || ds.getShimmerVersion() == 3) // 3 = Shimmer 3, 4 = Shimmer 3R
+				storage.insertShimmer3Metadata(mt, devices.get(deviceName).device.getMetadataTableName());
+			else
+				storage.insertShimmer2Metadata(mt, devices.get(deviceName).device.getMetadataTableName());
 		}
 		if (devices.get(deviceName).device.getClass() == DeviceMobile.class) {
 			ObjectMetadata mt = ((DeviceMobile) devices.get(deviceName).device).metadata;
@@ -492,15 +514,24 @@ public class CommunicationManager extends Service {
 			int numSamples = oc.device.getNumberOfSamples();
 			String nameTable = oc.device.getTableName();
 			if (oc.device.getClass() == DeviceShimmer.class) {
-				int cont = ((DeviceShimmer) oc.device).cont + 1;
-				if (cont % numSamples == 0) // we check if the buffer is filled
-					storage.insertShimmer(((DeviceShimmer) oc.device).buffer, label, nameTable, cont, true, numSamples);
-				else
-					storage.insertShimmer(((DeviceShimmer) oc.device).buffer, label, nameTable, cont, false, numSamples);
+				int cont = ((DeviceShimmer) oc.device).contBuffer + 1;
+				DeviceShimmer ds = (DeviceShimmer) (devices.get(deviceName)).device;
+				if(ds.getShimmerVersion() == 4 || ds.getShimmerVersion() == 3){ // 3 = Shimmer 3, 4 = Shimmer 3R
+					if (cont % numSamples == 0) // we check if the buffer is filled
+						storage.insertShimmer3(((DeviceShimmer) oc.device).buffer, label, nameTable, cont, true, numSamples);
+					else
+						storage.insertShimmer3(((DeviceShimmer) oc.device).buffer, label, nameTable, cont, false, numSamples);
+				}
+				else{
+					if (cont % numSamples == 0) // we check if the buffer is filled
+						storage.insertShimmer2(((DeviceShimmer) oc.device).buffer, label, nameTable, cont, true, numSamples);
+					else
+						storage.insertShimmer2(((DeviceShimmer) oc.device).buffer, label, nameTable, cont, false, numSamples);
+				}
 			}
 
 			if (oc.device.getClass() == DeviceMobile.class) {
-				int cont = ((DeviceMobile) oc.device).cont + 1;
+				int cont = ((DeviceMobile) oc.device).contBuffer + 1;
 				if (cont % numSamples == 0) // checking if the buffer is filled
 					// without cont-1 it inserts an empty row
 					storage.insertMobile(((DeviceMobile) oc.device).buffer, label, oc.device.getTableName(), cont - 1, true, numSamples);

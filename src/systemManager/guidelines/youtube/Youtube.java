@@ -33,6 +33,7 @@ public class Youtube {
 	int videoThumbnail;
 	Context context;
 	String IDVideo;
+	ImageDownloader imageDownloader;
 
 	/**
 	 * Constructor. Create a new Youtube object
@@ -45,6 +46,7 @@ public class Youtube {
 		this.context = context;
 		this.youtubeView = youtubeView;
 		player = null;
+		imageDownloader = new ImageDownloader();
 	}
 
 	/**
@@ -103,11 +105,11 @@ public class Youtube {
 					ImageView thumb = (ImageView) view
 							.findViewById(videoThumbnail);
 
-					String aux = ((Video) entry).getThumbUrl();
+					String url = ((Video) entry).getThumbUrl();
 
-					// Gets the thumbnail image
-					ImageDownloader downloader = new ImageDownloader();
-					downloader.download(aux, thumb);
+					//To avoid crazy listviews we set the url as tag of the imageView
+					thumb.setTag(url);
+					imageDownloader.download(url, thumb);
 				}
 			}
 		});
