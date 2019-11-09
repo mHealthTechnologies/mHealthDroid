@@ -1,4 +1,4 @@
-<img src="http://apuestasrafag.files.wordpress.com/2014/03/fotologo2.png?w=712" height=225>
+<img src="https://user-images.githubusercontent.com/6362660/68529077-95fdc980-02f2-11ea-87fd-ad41222fa123.png?w=712" height=225>
 
 ## What is mHealthDroid?  
 
@@ -6,9 +6,7 @@ mHealhDroid is an open-source mobile framework designed to facilitate the rapid 
 
 The framework comprises an extensive set of modules for sensor data acquisition, data management, remote storage, signal processing, machine learning, multidimensional data visualization, as well as intelligent recommendations and multimedia guidelines among others features. The core of the framework is defined to operate on the Android operating system; however, it has been implemented in a way that allows its use with any portable device. In fact, the core modules and components are defined to be completely independent of the underlying sensing and communication technology. To utilize a new device (commercial or not) it is only required to include the corresponding drivers that allow the communication between the mHealthDroid modules and the specific device (transparent to the user anyhow). The mHealthDroid initiative already includes drivers for a wide sort of portable devices; nevertheless it aims at incorporating new systems to the current portfolio of supported devices. 
 
-This active platform is in continuous development, thereby contributions are very welcome. Suggestions and comments are also appreciated!
-
-Contact (general info): mhealthdroid@gmail.com
+This active platform is not in development anymore, but contributions are very welcome and will be reviewed. Suggestions and comments are also appreciated!
 
 Contact (R&D enquiries): oresti.bl@gmail.com [<a href="http://www.ugr.es/~oresti/">Oresti Baños</a>]
 
@@ -80,7 +78,7 @@ https://github.com/mHealthDroid/mHealthDroid/releases
 
 ## mHealthDroid structure
 
-<img src=http://apuestasrafag.files.wordpress.com/2014/03/frameworkdiagram.png?w=800 />
+<img src="https://user-images.githubusercontent.com/6362660/68529076-94cc9c80-02f2-11ea-8ef3-ebfaee5934ed.png?w=800" />
 
 The figure above depicts the structure of the framework, including all the existing managers and how they interact with each other. All these managers are of "singleton" kind, which means that only one unique instance can exist for each class and this instance is available from every component of the framework. In the following we provide a brief description of each manager. 
 
@@ -92,13 +90,13 @@ The figure above depicts the structure of the framework, including all the exist
 
 ## Full documentation
 
-The mHealthDroid full documentation can be found in <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-rafael-garcia.pdf">Rafael's</a> and <a href="http://apuestasrafag.files.wordpress.com/2014/02/full-documentation-thesis-alejandro-saez.pdf">Alejandro's</a>  Master Thesis.
+The mHealthDroid full documentation can be found in <a href="https://github.com/mHealthTechnologies/mHealthDroid/files/3827316/full-documentation-thesis-rafael-garcia.pdf">Rafael's</a> and <a href="https://github.com/mHealthTechnologies/mHealthDroid/files/3827320/full-documentation-thesis-alejandro-saez.pdf">Alejandro's</a>  Master Thesis.
 
 ## APP examples
 
 - mHealthAPP: exemplary APP intended to show the usefulness and potential of mHealthDroid. More information in <a href="https://github.com/mHealthDroid/mHealthAPP">mHealthAPP </a>repository
 
-[<img src="http://apuestasrafag.files.wordpress.com/2014/03/thumbnailvideo.png?w=673" height=300>](https://www.youtube.com/watch?v=AMdxw4osjCU)
+[<img src="https://user-images.githubusercontent.com/6362660/68529115-f8ef6080-02f2-11ea-97de-b58021f53248.png?w=673" height=300>](https://www.youtube.com/watch?v=AMdxw4osjCU)
 
 
 ## Examples. How to use mHealthDroid
@@ -115,15 +113,15 @@ CommunicationManager cm = CommunicationManager.getInstance();
 Then, if one wants to storage data into the database, the variable storage must be initialized this way:
 
 ``` java
-cm.CreateStorage(getApplicationContext());
+cm.createStorage(getApplicationContext());
 
 ```
 
 To add devices to the manager, one just needs to call the appropriate functions:
 
 ``` java
-cm.AddDeviceShimmer(getApplicationContext(), "Device Shimmer", true);
-cm.AddDeviceMobile(getApplicationContext(), "Mobile Device");
+cm.addDeviceShimmer(getApplicationContext(), "Device Shimmer", true);
+cm.addDeviceMobile(getApplicationContext(), "Mobile Device");
 ```
 
 Since the mobile device uses the device's sensor, it is not necessary to connect it. But
@@ -211,7 +209,7 @@ ServerManager sm = ServerManager.getInstance();
 It is also necessary to initialize the Storage variable belonging to the RemoteStorageManager class called storage. This is done by:
 
 ``` java
-sm.CreateStorage(getApplicationContext());
+sm.createStorage(getApplicationContext());
 ```
 
 Then the server IP address is set by means of the function _setServerIP_. Also, it
@@ -328,7 +326,8 @@ coordinates. For this example, the Sine of a set of numbers will be used:
     To introduce the data into the graph, the following procedure must be used:
     ``` java
 vm.addSerie("graph", "Sin", array);
-```
+    ```
+
 or
 
   ``` java
